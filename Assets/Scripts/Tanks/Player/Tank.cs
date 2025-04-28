@@ -27,6 +27,9 @@ public class Tank : MonoBehaviour
     [SerializeField] GameObject tankCannon;
 
     [SerializeField] Transform cannonParent;
+    [SerializeField] Transform bulletFiringPoint;
+
+    GameObject bulletPrefab;
 
     SpriteRenderer playerBodySR;
     SpriteRenderer playerCannonSR;
@@ -65,6 +68,8 @@ public class Tank : MonoBehaviour
 
         if (tankCannon != null)
             playerCannonSR = tankCannon.GetComponent<SpriteRenderer>();
+
+        bulletPrefab = Resources.Load<GameObject>("Prefabs/Bullet");
     }
 
     public void HandleBodyMovement(Vector2 movementVector)
@@ -74,7 +79,7 @@ public class Tank : MonoBehaviour
 
     public void HandleCannonMovement(Vector2 mousePos)
     {
-        Debug.Log($"Mouse moved: Position is {mousePos}");
+        //Debug.Log($"Mouse moved: Position is {mousePos}");
         var cannonDirection = (Vector3)mousePos - cannonParent.position;
 
         var angleOfRotation = Mathf.Atan2(cannonDirection.y, cannonDirection.x) * Mathf.Rad2Deg;
