@@ -14,8 +14,9 @@ public class Tank : MonoBehaviour
     public float maxSpeed = 10;
     public float rotationSpeed = 90;
     public float cannonRotationSpeed = 110;
+    public float cannonRotationCompAngle = 90;
 
-    public float cannonRotationOffset = 10;
+    bool isMoving;
 
     Vector2 movementVector;
 
@@ -38,14 +39,20 @@ public class Tank : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 newMovementVector = (Vector2)transform.up * movementVector.y * maxSpeed * Time.fixedDeltaTime;
+        Vector2 newMovementVector = (Vector2)tankBody.transform.up * movementVector.y * maxSpeed * Time.fixedDeltaTime;
 
-        playerRB.AddForce(newMovementVector);
+        playerRB.linearVelocity = newMovementVector;
 
-        //playerRB.linearVelocity = newMovementVector;
+        if (playerRB.linearVelocity != Vector2.zero)
+            isMoving = true;
+        else
+            isMoving = false;
 
-        playerRB.MoveRotation(tankBody.transform.rotation *
-            Quaternion.Euler(0, 0, -movementVector.x * rotationSpeed * Time.fixedDeltaTime));
+        if (isMoving)
+            playerRB.MoveRotation(tankBody.transform.rotation *
+                Quaternion.Euler(0, 0, -movementVector.x * rotationSpeed * Time.fixedDeltaTime));
+
+        //Debug.Log(tankBody.transform.rotation);
     }
 
     private void GetComponents()
@@ -67,17 +74,16 @@ public class Tank : MonoBehaviour
 
     public void HandleCannonMovement(Vector2 mousePos)
     {
-
-
+        Debug.Log($"Mouse moved: Position is {mousePos}");
         var cannonDirection = (Vector3)mousePos - cannonParent.position;
 
         var angleOfRotation = Mathf.Atan2(cannonDirection.y, cannonDirection.x) * Mathf.Rad2Deg;
 
         var roatationStep = cannonRotationSpeed * Time.deltaTime;
 
-        tankCannon.transform.rotation = 
-            Quaternion.RotateTowards(cannonParent.rotation,
-                                     Quaternion.Euler(0, 0, angleOfRotation),
+        cannonParent.rotation = 
+            Quaternion.RotateTowards(tankCannon.transform.rotation,
+                                     Quaternion.Euler(0, 0, angleOfRotation - cannonRotationCompAngle),
                                      roatationStep);
     }
 

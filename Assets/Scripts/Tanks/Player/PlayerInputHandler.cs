@@ -4,18 +4,16 @@ using UnityEngine.Events;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    Tank playerTank;
+    /*
+     * Player input handler that uses events to control the player's tank!
+     */
+
+    [SerializeField] Camera mainCam;
 
     public UnityEvent OnShoot = new UnityEvent();
     public UnityEvent<Vector2> OnBodyMove = new UnityEvent<Vector2>();
     public UnityEvent<Vector2> OnTurretMove = new UnityEvent<Vector2>();
     public UnityEvent OnLayMine = new UnityEvent();
-
-    private void Awake()
-    {
-        // Get Reference to tank class
-        playerTank = GetComponent<Tank>();
-    }
 
     private void Update()
     {
@@ -44,6 +42,7 @@ public class PlayerInputHandler : MonoBehaviour
     private void ApplyCannonMovement()
     {
         OnTurretMove?.Invoke(GetMousePos());
+        
     }
 
     private void ApplyTankMovement()
@@ -60,9 +59,9 @@ public class PlayerInputHandler : MonoBehaviour
     {
         Vector3 mousePos = Input.mousePosition;
 
-        mousePos.z = Camera.main.nearClipPlane;
+        mousePos.z = mainCam.nearClipPlane;
 
-        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        Vector2 mouseWorldPos = mainCam.ScreenToWorldPoint(mousePos);
 
         return mouseWorldPos;
     }
