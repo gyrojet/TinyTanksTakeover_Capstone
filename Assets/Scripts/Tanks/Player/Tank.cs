@@ -18,6 +18,8 @@ public class Tank : MonoBehaviour
 
     bool isMoving;
 
+    private Quaternion toAngle;
+
     Vector2 movementVector;
 
     [SerializeField] Rigidbody2D playerRB;
@@ -90,9 +92,11 @@ public class Tank : MonoBehaviour
 
         var roatationStep = cannonRotationSpeed * Time.deltaTime;
 
+        toAngle = Quaternion.Euler(0, 0, angleOfRotation - cannonRotationCompAngle);
+
         cannonParent.rotation = 
             Quaternion.RotateTowards(tankCannon.transform.rotation,
-                                     Quaternion.Euler(0, 0, angleOfRotation - cannonRotationCompAngle),
+                                     toAngle,
                                      roatationStep);
     }
 
@@ -106,8 +110,7 @@ public class Tank : MonoBehaviour
             // Problem: Bullet is not rotating! Goes either up or down.
             // Maybe ask Darren if he is avalible? If you can't figure it out by today work on it tommorow.
 
-            newBullet.LaunchBullet(new Vector2(cannonParent.rotation.y * cannonRotationCompAngle,
-                                               cannonParent.rotation.z * cannonRotationCompAngle));
+            //newBullet.LaunchBullet((Vector2)toAngle);
         }
         catch (UnityException ex)
         {

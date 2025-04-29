@@ -60,7 +60,7 @@ public class Bullet : MonoBehaviour
     
     public void LaunchBullet(Vector2 launchForce)
     {
-        bulletRB.linearVelocity = launchForce.normalized * moveSpeed;
+        bulletRB.linearVelocity = launchForce * moveSpeed;
     }
 
     private void DestroySelf()
