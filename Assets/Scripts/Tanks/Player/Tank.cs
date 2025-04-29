@@ -13,8 +13,10 @@ public class Tank : MonoBehaviour
 
     public float maxSpeed = 10;
     public float rotationSpeed = 90;
+
     public float cannonRotationSpeed = 110;
     public float cannonRotationCompAngle = 90;
+    public float cannonBulletFiringCompAngle = -90;
 
     bool isMoving;
 
@@ -94,9 +96,16 @@ public class Tank : MonoBehaviour
 
         toAngle = Quaternion.Euler(0, 0, angleOfRotation - cannonRotationCompAngle);
 
+        var firingPointAngle = Quaternion.Euler(0, 0, angleOfRotation + cannonRotationCompAngle);
+
         cannonParent.rotation = 
             Quaternion.RotateTowards(tankCannon.transform.rotation,
                                      toAngle,
+                                     roatationStep);
+
+        cannonFiringPoint.rotation =
+            Quaternion.RotateTowards(tankCannon.transform.rotation,
+                                     firingPointAngle,
                                      roatationStep);
     }
 
@@ -107,10 +116,10 @@ public class Tank : MonoBehaviour
             Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, Quaternion.identity)
                               .GetComponent<Bullet>();
 
-            // Problem: Bullet is not rotating! Goes either up or down.
-            // Maybe ask Darren if he is avalible? If you can't figure it out by today work on it tommorow.
+            //     Problem: Bullet is not rotating! Goes either up or down.
+            //     Maybe ask Darren if he is avalible? If you can't figure it out by today work on it tommorow.
 
-            //newBullet.LaunchBullet((Vector2)toAngle);
+            newBullet.LaunchBullet(cannonFiringPoint.transform.up);
         }
         catch (UnityException ex)
         {
