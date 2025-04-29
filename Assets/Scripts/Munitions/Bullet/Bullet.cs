@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
 
     [Header("Identification")]
     public string killableTag = "Killable";
+    public string bulletTag = "Bullet";
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D bulletRB;
@@ -21,11 +22,6 @@ public class Bullet : MonoBehaviour
         bulletRB = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         lastVelocity = bulletRB.linearVelocity;
@@ -33,7 +29,10 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag(killableTag))
+        if (collision.gameObject.CompareTag(bulletTag) == true)
+            DestroySelf();
+
+        if (collision.gameObject.CompareTag(killableTag) == false)
         {
             if (numOfBounces > 0)
             {
@@ -61,7 +60,7 @@ public class Bullet : MonoBehaviour
     
     public void LaunchBullet(Vector2 launchForce)
     {
-        bulletRB.AddForce(launchForce, ForceMode2D.Force);
+        bulletRB.linearVelocity = launchForce.normalized * moveSpeed;
     }
 
     private void DestroySelf()

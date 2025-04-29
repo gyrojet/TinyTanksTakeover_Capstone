@@ -42,7 +42,6 @@ public class PlayerInputHandler : MonoBehaviour
     private void ApplyCannonMovement()
     {
         OnTurretMove?.Invoke(GetMousePos());
-        
     }
 
     private void ApplyTankMovement()

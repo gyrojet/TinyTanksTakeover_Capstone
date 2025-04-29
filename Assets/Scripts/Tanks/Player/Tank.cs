@@ -27,9 +27,9 @@ public class Tank : MonoBehaviour
     [SerializeField] GameObject tankCannon;
 
     [SerializeField] Transform cannonParent;
-    [SerializeField] Transform bulletFiringPoint;
+    [SerializeField] Transform cannonFiringPoint;
 
-    GameObject bulletPrefab;
+    [SerializeField] GameObject bulletPrefab;
 
     SpriteRenderer playerBodySR;
     SpriteRenderer playerCannonSR;
@@ -69,7 +69,11 @@ public class Tank : MonoBehaviour
         if (tankCannon != null)
             playerCannonSR = tankCannon.GetComponent<SpriteRenderer>();
 
-        bulletPrefab = Resources.Load<GameObject>("Prefabs/Bullet");
+        //if (bulletPrefab == null)
+        //{
+        //    Debug.Log("Loading Prefab Bullet...");
+        //    bulletPrefab = Resources.Load<GameObject>("Prefabs/Bullet");
+        //}
     }
 
     public void HandleBodyMovement(Vector2 movementVector)
@@ -94,7 +98,21 @@ public class Tank : MonoBehaviour
 
     public void HandleShooting()
     {
-        Debug.Log("BANG!");
+        try
+        {
+            Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, Quaternion.identity)
+                              .GetComponent<Bullet>();
+
+            // Problem: Bullet is not rotating! Goes either up or down.
+            // Maybe ask Darren if he is avalible? If you can't figure it out by today work on it tommorow.
+
+            newBullet.LaunchBullet(new Vector2(cannonParent.rotation.y * cannonRotationCompAngle,
+                                               cannonParent.rotation.z * cannonRotationCompAngle));
+        }
+        catch (UnityException ex)
+        {
+            Debug.Log(ex.Message);
+        }
     }
 
     public void HandleMines()
