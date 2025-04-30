@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Tank : MonoBehaviour
@@ -8,6 +10,11 @@ public class Tank : MonoBehaviour
      * This class lets the player control their tank, allowing them to move and Shoot.
      * For now, I will focus on getting moving working, then focus on death and shooting.
      */
+
+    public static Tank playerInstance;
+
+    [SerializeField] PlayerInputHandler playerInputHandler;
+    [SerializeField] GameManager gameManager;
 
     [Header("Locomotion")]
 
@@ -20,7 +27,7 @@ public class Tank : MonoBehaviour
 
     bool isMoving;
 
-    private Quaternion toAngle;
+    //private Quaternion toAngle;
 
     Vector2 movementVector;
 
@@ -35,13 +42,26 @@ public class Tank : MonoBehaviour
 
     [SerializeField] GameObject bulletPrefab;
 
+    public string bulletTag = "Bullet";
+
     SpriteRenderer playerBodySR;
     SpriteRenderer playerCannonSR;
 
     private void Awake()
     {
+        if (playerInstance == null)
+            playerInstance = this;
+    }
+
+    private void Start()
+    {
         // Get the required components
         GetComponents();
+
+        if (playerInputHandler.canPlayerMove == false)
+        {
+            playerInputHandler.canPlayerMove = true;
+        }
     }
 
     private void FixedUpdate()
@@ -78,6 +98,9 @@ public class Tank : MonoBehaviour
         //    Debug.Log("Loading Prefab Bullet...");
         //    bulletPrefab = Resources.Load<GameObject>("Prefabs/Bullet");
         //}
+
+        playerInputHandler = PlayerInputHandler.Instance;
+        gameManager = GameManager.gameManagerInstance;
     }
 
     public void HandleBodyMovement(Vector2 movementVector)
@@ -94,13 +117,13 @@ public class Tank : MonoBehaviour
 
         var roatationStep = cannonRotationSpeed * Time.deltaTime;
 
-        toAngle = Quaternion.Euler(0, 0, angleOfRotation - cannonRotationCompAngle);
+        var desiredAngle = Quaternion.Euler(0, 0, angleOfRotation - cannonRotationCompAngle);
 
         var firingPointAngle = Quaternion.Euler(0, 0, angleOfRotation + cannonRotationCompAngle);
 
         cannonParent.rotation = 
             Quaternion.RotateTowards(tankCannon.transform.rotation,
-                                     toAngle,
+                                     desiredAngle,
                                      roatationStep);
 
         cannonFiringPoint.rotation =
@@ -116,9 +139,6 @@ public class Tank : MonoBehaviour
             Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, Quaternion.identity)
                               .GetComponent<Bullet>();
 
-            //     Problem: Bullet is not rotating! Goes either up or down.
-            //     Maybe ask Darren if he is avalible? If you can't figure it out by today work on it tommorow.
-
             newBullet.LaunchBullet(cannonFiringPoint.transform.up);
         }
         catch (UnityException ex)
@@ -130,5 +150,41 @@ public class Tank : MonoBehaviour
     public void HandleMines()
     {
         Debug.Log("Plop!");
+    }
+
+    public void KillTank()
+    {
+        print("KillTank called!");
+        StartCoroutine(Die());
+    }
+
+    private void DisableTankGraphics()
+    {
+        tankBody.GetComponent<SpriteRenderer>().enabled = false;
+        tankCannon.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+
+    /// <summary>
+    /// Testing the death function: This may be removed later.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator Die()
+    {
+        print("Die called!");
+
+        playerInputHandler.canPlayerMove = false;
+
+        DisableTankGraphics();
+
+        Instantiate(Resources.Load<GameObject>("Prefabs/Explosion"),
+                    transform.position,
+                    Quaternion.identity);
+
+        yield return new WaitForSeconds(2f);
+
+        print("Finished Delay!");
+
+        gameManager.ReloadCurrentLevel();
     }
 }

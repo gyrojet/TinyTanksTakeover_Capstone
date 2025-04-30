@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - Killable
   - Bullet
+  - Breakable
+  - MineExplosion
   layers:
   - Default
   - TransparentFX

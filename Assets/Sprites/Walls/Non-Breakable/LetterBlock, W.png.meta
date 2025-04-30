@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0fd73741554a78d499e008efa6d4fd46
+guid: ca00456eacc4e7a4598745fc6299a873
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6382381566536770739
-    second: Tank Cannon, Base_0
+      213: 4947428986474368652
+    second: LetterBlock, W_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: iOS
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +110,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tank Cannon, Base_0
+      name: LetterBlock, W_0
       rect:
         serializedVersion: 2
-        x: 59
-        y: 8
-        width: 136
-        height: 520
+        x: 0
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3b4ec6e2836c29850800000000000000
-      internalID: 6382381566536770739
+      spriteID: c8e864a537cc8a440800000000000000
+      internalID: 4947428986474368652
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tank Cannon, Base_0: 6382381566536770739
+      LetterBlock, W_0: 4947428986474368652
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

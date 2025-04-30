@@ -8,12 +8,21 @@ public class PlayerInputHandler : MonoBehaviour
      * Player input handler that uses events to control the player's tank!
      */
 
+    public static PlayerInputHandler Instance;
+
     [SerializeField] Camera mainCam;
+    public bool canPlayerMove;
 
     public UnityEvent OnShoot = new UnityEvent();
     public UnityEvent<Vector2> OnBodyMove = new UnityEvent<Vector2>();
     public UnityEvent<Vector2> OnTurretMove = new UnityEvent<Vector2>();
     public UnityEvent OnLayMine = new UnityEvent();
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
 
     private void Update()
     {
@@ -25,23 +34,30 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void ApplyMineAction()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (canPlayerMove)
         {
-            OnLayMine?.Invoke();
+            if (Input.GetMouseButtonDown(1))
+            {
+                OnLayMine?.Invoke();
+            }
         }
     }
 
     private void ApplyShootingAction()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            OnShoot?.Invoke();
+        if (canPlayerMove)
+        { 
+            if (Input.GetMouseButtonDown(0))
+            {
+                OnShoot?.Invoke();
+            }
         }
     }
 
     private void ApplyCannonMovement()
     {
-        OnTurretMove?.Invoke(GetMousePos());
+        if (canPlayerMove)
+            OnTurretMove?.Invoke(GetMousePos());
     }
 
     private void ApplyTankMovement()

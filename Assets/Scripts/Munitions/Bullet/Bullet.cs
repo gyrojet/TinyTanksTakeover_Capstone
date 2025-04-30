@@ -10,8 +10,14 @@ public class Bullet : MonoBehaviour
     Vector2 lastVelocity;
 
     [Header("Identification")]
-    public string killableTag = "Killable";
+    public string wallTag = "Wall";
     public string bulletTag = "Bullet";
+
+    public string playerTag = "Player";
+    public string enemyTag = "Enemy";
+
+    [Header("Explosion Effect")]
+    public GameObject explosion;
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D bulletRB;
@@ -32,7 +38,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag(bulletTag) == true)
             DestroySelf();
 
-        if (collision.gameObject.CompareTag(killableTag) == false)
+        if (collision.gameObject.CompareTag(wallTag))
         {
             if (numOfBounces > 0)
             {
@@ -46,14 +52,28 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                // Add explosion later!
                 DestroySelf();
             }
         }
         else
         {
-            // Add explosion later...
-            DestroySelf();
+            if (collision.gameObject.CompareTag(playerTag) == true)
+            {
+                #region Kill Player
+                print("Hit Player!");
+
+                Tank player = Tank.playerInstance;
+
+                player.KillTank();
+                #endregion
+            }
+            else if (collision.gameObject.CompareTag(enemyTag) == true)
+            {
+                Debug.Log("Hit Foe!");
+                // Add enemy death when finished with it
+            }
+
+                DestroySelf();
         }
     }
 
@@ -65,7 +85,8 @@ public class Bullet : MonoBehaviour
 
     private void DestroySelf()
     {
-        Debug.Log("Destroyed!");
+        Instantiate(explosion, transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 }
