@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 75aa528aee0a23b4282f5b5ff4c34b00
+guid: cf71068329bcf234b92e449069c0aa86
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1889031835839617797
-    second: LetterBlock, C_0
+      213: 6880913013892708308
+    second: White Die 2 pips_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LetterBlock, C_0
+      name: White Die 2 pips_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bf42067cd8fc8c5e0800000000000000
-      internalID: -1889031835839617797
+      spriteID: 4d7ff63fde9ed7f50800000000000000
+      internalID: 6880913013892708308
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LetterBlock, C_0: -1889031835839617797
+      White Die 2 pips_0: 6880913013892708308
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

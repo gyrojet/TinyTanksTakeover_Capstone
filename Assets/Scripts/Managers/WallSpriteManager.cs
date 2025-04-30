@@ -22,12 +22,12 @@ public class WallSpriteManager : MonoBehaviour
 
     public Sprite GetWallSprite(bool isUnbreakable)
     {
-        Sprite wallSprite = null;
+        Sprite wallSprite;
 
         if (isUnbreakable)
-            wallSprite = unbreakableWallSprites[Random.Range(0, unbreakableWallSprites.Count - 1)];
+            wallSprite = unbreakableWallSprites[Random.Range(0, unbreakableWallSprites.Count)];
         else
-            wallSprite = breakableWallSprites[0];
+            wallSprite = breakableWallSprites[Random.Range(0, breakableWallSprites.Count)];
 
         return wallSprite;
     }

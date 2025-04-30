@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6364231073077915136}
   - component: {fileID: 813876516706922869}
   m_Layer: 0
-  m_Name: Wall, W
+  m_Name: Wall, Unbreakable
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8475537542496921249, guid: 083393ea43d3a2a4db33f6acc983d70e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eac9f2edacea24045b00e55f8c0b8065, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e827e156987f5334ea87b604f0031da6, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -147,6 +147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4e2dce8ba68dc45b022ece281f3772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallSprite: {fileID: 0}
   isBreakable: 0
   mineTag: MineExplosion

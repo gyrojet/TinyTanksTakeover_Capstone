@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 75aa528aee0a23b4282f5b5ff4c34b00
+guid: eb15253867fde564485d1dd715e0844d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1889031835839617797
-    second: LetterBlock, C_0
+      213: 838193168420040597
+    second: Red Die 6_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LetterBlock, C_0
+      name: Red Die 6_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bf42067cd8fc8c5e0800000000000000
-      internalID: -1889031835839617797
+      spriteID: 59fe5d8ee3cd1ab00800000000000000
+      internalID: 838193168420040597
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LetterBlock, C_0: -1889031835839617797
+      Red Die 6_0: 838193168420040597
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

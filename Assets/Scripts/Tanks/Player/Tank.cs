@@ -70,12 +70,12 @@ public class Tank : MonoBehaviour
 
         playerRB.linearVelocity = newMovementVector;
 
-        if (playerRB.linearVelocity != Vector2.zero)
-            isMoving = true;
-        else
-            isMoving = false;
+        //if (playerRB.linearVelocity != Vector2.zero)
+        //    isMoving = true;
+        //else
+        //    isMoving = false;
 
-        if (isMoving)
+        //if (isMoving)
             playerRB.MoveRotation(tankBody.transform.rotation *
                 Quaternion.Euler(0, 0, -movementVector.x * rotationSpeed * Time.fixedDeltaTime));
 
