@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ddc3f9e5e6f463469eaff58402e0cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInputHandler: {fileID: 0}
+  gameManager: {fileID: 0}
   maxSpeed: 90
   rotationSpeed: 150
   cannonRotationSpeed: 150
@@ -57,6 +59,7 @@ MonoBehaviour:
   cannonParent: {fileID: 3647606252481366426}
   cannonFiringPoint: {fileID: 8779419731832577654}
   bulletPrefab: {fileID: 1704722613948410065, guid: 4a3409b490cd64447b24b5a2a3a53203, type: 3}
+  minePrefab: {fileID: 2824194964169484779, guid: 4bb8a1345f9f1ce419399f4076f88889, type: 3}
   bulletTag: Bullet
 --- !u!114 &4353858104547051917
 MonoBehaviour:
@@ -231,7 +234,6 @@ GameObject:
   - component: {fileID: 4175886859156843435}
   - component: {fileID: 2361381720469486167}
   - component: {fileID: 5129442373462447444}
-  - component: {fileID: 7808825760352401401}
   m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Untagged
@@ -337,43 +339,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &7808825760352401401
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4916616251336609697}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 4.55, y: 4.5}
-  m_Direction: 0
 --- !u!1 &5345768081181715931
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -41,8 +42,11 @@ public class Tank : MonoBehaviour
     [SerializeField] Transform cannonFiringPoint;
 
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject minePrefab;
 
     public string bulletTag = "Bullet";
+
+    [SerializeField] private List<Bullet> activeBullets = new List<Bullet>();
 
     SpriteRenderer playerBodySR;
     SpriteRenderer playerCannonSR;
@@ -70,14 +74,8 @@ public class Tank : MonoBehaviour
 
         playerRB.linearVelocity = newMovementVector;
 
-        //if (playerRB.linearVelocity != Vector2.zero)
-        //    isMoving = true;
-        //else
-        //    isMoving = false;
-
-        //if (isMoving)
-            playerRB.MoveRotation(tankBody.transform.rotation *
-                Quaternion.Euler(0, 0, -movementVector.x * rotationSpeed * Time.fixedDeltaTime));
+        playerRB.MoveRotation(tankBody.transform.rotation *
+            Quaternion.Euler(0, 0, -movementVector.x * rotationSpeed * Time.fixedDeltaTime));
 
         //Debug.Log(tankBody.transform.rotation);
     }
@@ -136,10 +134,14 @@ public class Tank : MonoBehaviour
     {
         try
         {
-            Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, Quaternion.identity)
+            Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, cannonFiringPoint.rotation)
                               .GetComponent<Bullet>();
 
+            newBullet.owner = this.gameObject;
+
             newBullet.LaunchBullet(cannonFiringPoint.transform.up);
+
+            activeBullets.Add(newBullet);
         }
         catch (UnityException ex)
         {
@@ -150,6 +152,11 @@ public class Tank : MonoBehaviour
     public void HandleMines()
     {
         Debug.Log("Plop!");
+
+        Mine newMine = Instantiate(minePrefab, tankBody.transform.position, Quaternion.identity)
+                       .GetComponent<Mine>();
+
+        newMine.StartExplosionCount();
     }
 
     public void KillTank()
@@ -186,5 +193,17 @@ public class Tank : MonoBehaviour
         print("Finished Delay!");
 
         gameManager.ReloadCurrentLevel();
+    }
+
+    public void RemoveBulletFromList(Bullet bulletToRemove)
+    {
+        try
+        {
+            activeBullets.Remove(bulletToRemove);
+        }
+        catch (UnityException ex)
+        {
+            print(ex.Message);
+        }
     }
 }

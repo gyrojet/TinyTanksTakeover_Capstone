@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Breakable
   - MineExplosion
+  - Enemy
   layers:
   - Default
   - TransparentFX

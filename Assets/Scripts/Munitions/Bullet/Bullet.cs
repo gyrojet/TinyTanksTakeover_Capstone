@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -10,6 +11,8 @@ public class Bullet : MonoBehaviour
     Vector2 lastVelocity;
 
     [Header("Identification")]
+    public GameObject owner;
+
     public string wallTag = "Wall";
     public string bulletTag = "Bullet";
 
@@ -47,7 +50,14 @@ public class Bullet : MonoBehaviour
 
                 Vector2 surfaceNormal = collision.contacts[0].normal;
 
-                bulletRB.linearVelocity = Vector2.Reflect(lastVelocity, surfaceNormal);
+                Vector2 reflectedAngle = Vector2.Reflect(lastVelocity, surfaceNormal);
+
+                print(reflectedAngle);
+
+                bulletRB.linearVelocity = reflectedAngle;
+
+                // Not working...fix later
+                bulletRB.transform.up = Vector2.Reflect(transform.up, surfaceNormal);
                 #endregion
             }
             else
@@ -86,6 +96,12 @@ public class Bullet : MonoBehaviour
     private void DestroySelf()
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
+
+        if (owner.CompareTag(playerTag))
+        {
+            Tank playerOwner = Tank.playerInstance;
+            playerOwner.RemoveBulletFromList(this);
+        }
 
         Destroy(gameObject);
     }

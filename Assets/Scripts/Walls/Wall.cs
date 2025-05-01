@@ -48,18 +48,21 @@ public class Wall : MonoBehaviour
         wallSpriteRenderer.sprite = wallSprite;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isBreakable)
         {
-            if (collision.gameObject.CompareTag(mineTag) == true)
+            print("Breakable wall has been hit by a mine explosion!");
+            if (collision.gameObject.CompareTag(mineTag))
             {
-                Debug.Log("This would appear when a breakable wall is hit by a mine.");
+                wallCollider.enabled = false;
+
+                print("Wall collider disabled!");
+
+                wallSpriteRenderer.enabled = false;
+
+                print("Sprite renderer disabled!");
             }
-            else
-                Debug.Log("Wall is breakable, but was NOT hit by a mine blast!");
         }
-        else
-            Debug.Log("Wall is not breakable!");
     }
 }
