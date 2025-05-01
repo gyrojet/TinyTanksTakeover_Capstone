@@ -52,11 +52,10 @@ public class Bullet : MonoBehaviour
 
                 Vector2 reflectedAngle = Vector2.Reflect(lastVelocity, surfaceNormal);
 
-                print(reflectedAngle);
+                //print(reflectedAngle);
 
                 bulletRB.linearVelocity = reflectedAngle;
 
-                // Not working...fix later
                 bulletRB.transform.up = Vector2.Reflect(transform.up, surfaceNormal);
                 #endregion
             }
@@ -93,7 +92,7 @@ public class Bullet : MonoBehaviour
         bulletRB.linearVelocity = launchForce * moveSpeed;
     }
 
-    private void DestroySelf()
+    public void DestroySelf()
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
 

@@ -12,13 +12,14 @@ public class Mine : MonoBehaviour
     public GameObject explosionEffect;
 
     private CircleCollider2D explosionRadius;
-    private Animator mineAnimator;
 
     private void Start()
     {
         explosionRadius = GetComponent<CircleCollider2D>();
 
         SetExplosionRadius();
+
+        explosionRadius.enabled = false;
     }
 
     private void SetExplosionRadius()
@@ -42,11 +43,30 @@ public class Mine : MonoBehaviour
         #region Explode
         gameObject.tag = mineTag;
 
-        explosionEffect.SetActive(true);
+        explosionRadius.enabled = true;
 
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(0.5f);
 
         Destroy(gameObject);
         #endregion
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    // Something has collided with the game object!
+
+    //    string objectTag = collision.gameObject.tag;
+
+    //    if (objectTag == "Player")
+    //    {
+    //        Tank player = collision.gameObject.GetComponent<Tank>();
+    //        player.KillTank();
+    //    }
+    //    else
+    //    {
+
+    //    }
+    //}
 }
