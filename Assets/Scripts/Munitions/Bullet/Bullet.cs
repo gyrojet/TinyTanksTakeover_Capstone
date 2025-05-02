@@ -22,13 +22,18 @@ public class Bullet : MonoBehaviour
     [Header("Explosion Effect")]
     public GameObject explosion;
 
-    private SpriteRenderer spriteRenderer;
+    private ParticleSystem particleSystem;
     private Rigidbody2D bulletRB;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        particleSystem = GetComponentInChildren<ParticleSystem>();
         bulletRB = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        particleSystem.Play();
     }
 
     private void FixedUpdate()
@@ -95,6 +100,8 @@ public class Bullet : MonoBehaviour
     public void DestroySelf()
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
+
+        particleSystem.Stop();
 
         if (owner.CompareTag(playerTag))
         {
