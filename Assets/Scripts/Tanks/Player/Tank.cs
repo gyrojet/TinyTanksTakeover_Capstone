@@ -26,7 +26,7 @@ public class Tank : MonoBehaviour
     public float cannonRotationCompAngle = 90;
     public float cannonBulletFiringCompAngle = -90;
 
-    bool isMoving;
+    public bool isMoving;
 
     //private Quaternion toAngle;
 
@@ -37,6 +37,8 @@ public class Tank : MonoBehaviour
     [Header("Components")]
     [SerializeField] GameObject tankBody;
     [SerializeField] GameObject tankCannon;
+
+    [SerializeField] List<ParticleSystem> treadMarkMakers;
 
     [SerializeField] Transform cannonParent;
     [SerializeField] Transform cannonFiringPoint;
@@ -77,7 +79,12 @@ public class Tank : MonoBehaviour
         playerRB.MoveRotation(tankBody.transform.rotation *
             Quaternion.Euler(0, 0, -movementVector.x * rotationSpeed * Time.fixedDeltaTime));
 
-        //Debug.Log(tankBody.transform.rotation);
+        if (playerRB.linearVelocity != Vector2.zero)
+            isMoving = true;
+        else
+            isMoving = false;
+
+        HandleTrails();
     }
 
     private void GetComponents()
@@ -91,16 +98,20 @@ public class Tank : MonoBehaviour
         if (tankCannon != null)
             playerCannonSR = tankCannon.GetComponent<SpriteRenderer>();
 
-        //if (bulletPrefab == null)
-        //{
-        //    Debug.Log("Loading Prefab Bullet...");
-        //    bulletPrefab = Resources.Load<GameObject>("Prefabs/Bullet");
-        //}
-
         playerInputHandler = PlayerInputHandler.Instance;
         gameManager = GameManager.gameManagerInstance;
     }
 
+    private void HandleTrails()
+    {
+        foreach(ParticleSystem tankTread in treadMarkMakers)
+        {
+            if(isMoving)
+                tankTread.Play();
+            else
+                tankTread.Stop();
+        }
+    }
     public void HandleBodyMovement(Vector2 movementVector)
     {
         this.movementVector = movementVector;
