@@ -39,11 +39,10 @@ public class Mine : MonoBehaviour
 
         yield return new WaitForSeconds(explosionDelay);
 
-        // Not working, try later
         #region Explode
         gameObject.tag = mineTag;
 
-        explosionRadius.enabled = true;
+        ColliderHack();
 
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
 
@@ -53,20 +52,28 @@ public class Mine : MonoBehaviour
         #endregion
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    // Something has collided with the game object!
+    private void ColliderHack()
+    {
+        explosionRadius.enabled = false;
+        explosionRadius.enabled = true;
+    }
 
-    //    string objectTag = collision.gameObject.tag;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Something has collided with the game object!
 
-    //    if (objectTag == "Player")
-    //    {
-    //        Tank player = collision.gameObject.GetComponent<Tank>();
-    //        player.KillTank();
-    //    }
-    //    else
-    //    {
+        string objectTag = collision.gameObject.tag;
 
-    //    }
-    //}
+        if (objectTag == "Player")
+        {
+            print("Mine has hit player!");
+
+            Tank player = Tank.playerInstance;
+            player.KillTank();
+        }
+        else
+        {
+
+        }
+    }
 }

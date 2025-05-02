@@ -8,7 +8,7 @@ public class Wall : MonoBehaviour
     Sprite wallSprite = null;
     public bool isBreakable = false;
 
-    [SerializeField] string mineTag = "MineExplosion";
+    [SerializeField] string bulletTag = "Bullet";
 
     SpriteRenderer wallSpriteRenderer;
     Collider2D wallCollider;
@@ -64,8 +64,13 @@ public class Wall : MonoBehaviour
     {
         if (isBreakable)
         {
-            if (collision.gameObject.CompareTag(mineTag))
+            if (collision.gameObject.CompareTag(bulletTag))
             {
+                print("Mine explosion hit wall!");
+
+                Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+                bullet.DestroySelf();
+
                 BreakWall();
             }
         }

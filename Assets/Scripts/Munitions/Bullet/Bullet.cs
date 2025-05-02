@@ -82,7 +82,7 @@ public class Bullet : MonoBehaviour
                 // Add enemy death when finished with it
             }
 
-                DestroySelf();
+            DestroySelf();
         }
     }
 
