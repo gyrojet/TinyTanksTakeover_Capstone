@@ -173,7 +173,7 @@ public class Tank : MonoBehaviour
     public void KillTank()
     {
         print("KillTank called!");
-        StartCoroutine(Die());
+        StartCoroutine(KillPlayer());
     }
 
     private void DisableTankGraphics()
@@ -187,7 +187,7 @@ public class Tank : MonoBehaviour
     /// Testing the death function: This may be removed later.
     /// </summary>
     /// <returns></returns>
-    private IEnumerator Die()
+    private IEnumerator KillPlayer()
     {
         print("Die called!");
 

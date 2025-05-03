@@ -109,6 +109,11 @@ public class Bullet : MonoBehaviour
             playerOwner.RemoveBulletFromList(this);
         }
 
+        /* Plans for enemy classes:
+         * - Use an Enum to determine what class should be destroyed
+         * - Or try a base class instead!
+         */
+
         Destroy(gameObject);
     }
 }
