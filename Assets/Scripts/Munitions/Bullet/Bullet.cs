@@ -76,9 +76,9 @@ public class Bullet : MonoBehaviour
                 #region Kill Player
                 print("Hit Player!");
 
-                Tank player = Tank.playerInstance;
+                Player player = Player.playerInstance;
 
-                player.KillTank();
+                player.DeathRoutine();
                 #endregion
             }
             else if (collision.gameObject.CompareTag(enemyTag) == true)
@@ -105,7 +105,7 @@ public class Bullet : MonoBehaviour
 
         if (owner.CompareTag(playerTag))
         {
-            Tank playerOwner = Tank.playerInstance;
+            Player playerOwner = Player.playerInstance;
             playerOwner.RemoveBulletFromList(this);
         }
 

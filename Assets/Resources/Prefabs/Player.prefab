@@ -57,9 +57,6 @@ MonoBehaviour:
   playerRB: {fileID: 5129442373462447444}
   tankBody: {fileID: 4916616251336609697}
   tankCannon: {fileID: 4243140521456451744}
-  treadMarkMakers:
-  - {fileID: 1925734919963250103}
-  - {fileID: 591700705816183852}
   cannonParent: {fileID: 3647606252481366426}
   cannonFiringPoint: {fileID: 8779419731832577654}
   bulletPrefab: {fileID: 1704722613948410065, guid: 4a3409b490cd64447b24b5a2a3a53203, type: 3}
@@ -157,7 +154,7 @@ GameObject:
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8701810688427552974
 Transform:
   m_ObjectHideFlags: 0
@@ -5078,7 +5075,7 @@ GameObject:
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7870991109827021947
 Transform:
   m_ObjectHideFlags: 0

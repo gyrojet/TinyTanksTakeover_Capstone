@@ -68,8 +68,8 @@ public class Mine : MonoBehaviour
         {
             print("Mine has hit player!");
 
-            Tank player = Tank.playerInstance;
-            player.KillTank();
+            Player player = Player.playerInstance;
+            player.DeathRoutine();
         }
         else
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Tank : MonoBehaviour
+public class Player :  BaseTank
 {
     /*
      * - Player Controller Class -
@@ -12,7 +12,7 @@ public class Tank : MonoBehaviour
      * For now, I will focus on getting moving working, then focus on death and shooting.
      */
 
-    public static Tank playerInstance;
+    public static Player playerInstance;
 
     [SerializeField] PlayerInputHandler playerInputHandler;
     [SerializeField] GameManager gameManager;
@@ -38,7 +38,7 @@ public class Tank : MonoBehaviour
     [SerializeField] GameObject tankBody;
     [SerializeField] GameObject tankCannon;
 
-    [SerializeField] List<ParticleSystem> treadMarkMakers;
+    //[SerializeField] List<ParticleSystem> treadMarkMakers;
 
     [SerializeField] Transform cannonParent;
     [SerializeField] Transform cannonFiringPoint;
@@ -84,7 +84,7 @@ public class Tank : MonoBehaviour
         else
             isMoving = false;
 
-        HandleTrails();
+        //HandleTrails();
     }
 
     private void GetComponents()
@@ -104,20 +104,20 @@ public class Tank : MonoBehaviour
 
     private void HandleTrails()
     {
-        foreach(ParticleSystem tankTread in treadMarkMakers)
-        {
-            if(isMoving)
-                tankTread.Play();
-            else
-                tankTread.Stop();
-        }
+        //foreach(ParticleSystem tankTread in treadMarkMakers)
+        //{
+        //    if(isMoving)
+        //        tankTread.Play();
+        //    else
+        //        tankTread.Stop();
+        //}
     }
-    public void HandleBodyMovement(Vector2 movementVector)
+    public override void HandleBodyMovement(Vector2 movementVector)
     {
         this.movementVector = movementVector;
     }
 
-    public void HandleCannonMovement(Vector2 mousePos)
+    public override void HandleCannonMovement(Vector2 mousePos)
     {
         //Debug.Log($"Mouse moved: Position is {mousePos}");
         var cannonDirection = (Vector3)mousePos - cannonParent.position;
@@ -141,7 +141,7 @@ public class Tank : MonoBehaviour
                                      roatationStep);
     }
 
-    public void HandleShooting()
+    public override void HandleShooting()
     {
         try
         {
@@ -160,7 +160,7 @@ public class Tank : MonoBehaviour
         }
     }
 
-    public void HandleMines()
+    public override void HandleMines()
     {
         Debug.Log("Plop!");
 
@@ -170,7 +170,7 @@ public class Tank : MonoBehaviour
         newMine.StartExplosionCount();
     }
 
-    public void KillTank()
+    public void DeathRoutine()
     {
         print("KillTank called!");
         StartCoroutine(KillPlayer());
