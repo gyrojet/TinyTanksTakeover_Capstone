@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -25,8 +26,9 @@ public class EnemyBehaviourHandler : MonoBehaviour
     public UnityEvent<Vector2> OnBodyMove = new UnityEvent<Vector2>();
     public UnityEvent<Vector2> OnCannonMove = new UnityEvent<Vector2>();
 
-    private bool isPlayerVisible;
-    private bool isEligableToShoot;
+    [Header("Debugging Propetries")]
+    [SerializeField] bool isPlayerVisible;
+    [SerializeField] bool isEligableToShoot;
 
     private Vector2 playerPos;
 
@@ -58,7 +60,7 @@ public class EnemyBehaviourHandler : MonoBehaviour
     }
 
     private void ApplyCannonMovement()
-    {
+    { 
         if (isPlayerVisible)
         {
             OnCannonMove?.Invoke(playerPos);
@@ -67,13 +69,17 @@ public class EnemyBehaviourHandler : MonoBehaviour
             OnCannonMove?.Invoke(Random.insideUnitCircle * 1000);
     }
 
-    private IEnumerator ApplyShootingAction()
+    private void ApplyShootingAction()
     {
+        /*
+         * Tank can shoot when using Invoke, but it's so quick that it basically destroys the game.
+         * Work on this tommorow, maybe you can work something out!
+         */
+
         if (canShootBullets)
         {
             if (isEligableToShoot)
             {
-                yield return new WaitForSeconds(attackDelay);
                 OnShoot?.Invoke();
             }
         }

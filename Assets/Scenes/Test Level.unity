@@ -1662,7 +1662,7 @@ MonoBehaviour:
   canMove: 0
   canShootBullets: 1
   canUseMines: 0
-  attackDelay: 4.5
+  attackDelay: 4
   visibilityRadius: 7
   playersLayer:
     serializedVersion: 2
@@ -1703,6 +1703,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+  isPlayerVisible: 0
+  isEligableToShoot: 0
 --- !u!1 &1735273107 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4234917398039207867, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
