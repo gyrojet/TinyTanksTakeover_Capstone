@@ -195,7 +195,7 @@ public class Player :  BaseTank
 
         DisableTankGraphics();
 
-        Instantiate(Resources.Load<GameObject>("Prefabs/Explosion"),
+        Instantiate(Resources.Load<GameObject>("Prefabs/Effects/Explosion"),
                     transform.position,
                     Quaternion.identity);
 
