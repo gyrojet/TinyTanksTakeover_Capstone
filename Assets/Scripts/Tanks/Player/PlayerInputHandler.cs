@@ -15,8 +15,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     public UnityEvent OnShoot = new UnityEvent();
     public UnityEvent<Vector2> OnBodyMove = new UnityEvent<Vector2>();
-    public UnityEvent<Vector2> OnTurretMove = new UnityEvent<Vector2>();
-    public UnityEvent OnLayMine = new UnityEvent();
+    public UnityEvent<Vector2> OnCannonMove = new UnityEvent<Vector2>();
+    public UnityEvent OnUseMines = new UnityEvent();
 
     private void Awake()
     {
@@ -38,7 +38,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(1))
             {
-                OnLayMine?.Invoke();
+                OnUseMines?.Invoke();
             }
         }
     }
@@ -57,7 +57,7 @@ public class PlayerInputHandler : MonoBehaviour
     private void ApplyCannonMovement()
     {
         if (canPlayerMove)
-            OnTurretMove?.Invoke(GetMousePos());
+            OnCannonMove?.Invoke(GetMousePos());
     }
 
     private void ApplyTankMovement()
