@@ -8,6 +8,7 @@ public class EnemyBehaviourHandler : MonoBehaviour
     //public EnemyTank enemyl;
 
     [SerializeField] Player player;
+    [SerializeField] Enemy self;
 
     [Header("Behaviour Attributes")]
     public bool canMove;
@@ -36,6 +37,9 @@ public class EnemyBehaviourHandler : MonoBehaviour
     {
         if (player == null)
             player = Player.playerInstance;
+
+        if (self == null)
+            self = gameObject.GetComponent<Enemy>();
     }
 
     private void Update()
@@ -74,16 +78,26 @@ public class EnemyBehaviourHandler : MonoBehaviour
         /*
          * Tank can shoot when using Invoke, but it's so quick that it basically destroys the game.
          * Work on this tommorow, maybe you can work something out!
+         * 
+         * Ideas: Implement a proper delay into the code...
          */
 
         if (canShootBullets)
         {
             if (isEligableToShoot)
             {
+                canShootBullets = false;
                 OnShoot?.Invoke();
             }
+            else
+                self.StopAllCoroutines();
         }
     }
+
+    //private IEnumerator DelayShooting()
+    //{
+    //    print("Calling DelayShooting");
+    //}
 
     private void ApplyMineAction()
     {

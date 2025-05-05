@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : BaseTank
 {
-
+    [SerializeField] EnemyBehaviourHandler enemyBehaviour;
     [SerializeField] GameManager gameManager;
 
     [Header("Locomotion")]
@@ -62,6 +62,11 @@ public class Enemy : BaseTank
             enemyRB = tankBody.GetComponent<Rigidbody2D>();
         }
 
+        if (enemyBehaviour == null)
+        {
+            enemyBehaviour = gameObject.GetComponent<EnemyBehaviourHandler>();
+        }
+
         gameManager = GameManager.gameManagerInstance;
     }
 
@@ -100,9 +105,33 @@ public class Enemy : BaseTank
 
     public override void HandleShooting()
     {
+
+        StartCoroutine(Shoot());
+        //print("SHOOT CALLED");
+        //try
+        //{
+        //    Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, cannonFiringPoint.rotation)
+        //                      .GetComponent<Bullet>();
+
+        //    newBullet.owner = this.gameObject;
+
+        //    newBullet.LaunchBullet(cannonFiringPoint.transform.up);
+
+        //    //activeBullets.Add(newBullet);
+        //}
+        //catch (UnityException ex)
+        //{
+        //    Debug.Log(ex.Message);
+        //}
+    }
+
+    private IEnumerator Shoot()
+    {
         print("SHOOT CALLED");
-        try
-        {
+        enemyBehaviour.canShootBullets = false;
+
+        yield return new WaitForSeconds(4);
+
             Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, cannonFiringPoint.rotation)
                               .GetComponent<Bullet>();
 
@@ -110,12 +139,10 @@ public class Enemy : BaseTank
 
             newBullet.LaunchBullet(cannonFiringPoint.transform.up);
 
-            //activeBullets.Add(newBullet);
-        }
-        catch (UnityException ex)
-        {
-            Debug.Log(ex.Message);
-        }
+            yield return new WaitForSeconds(2.75f);
+
+        enemyBehaviour.canShootBullets = true;
+        
     }
 
     //private IEnumerator EnemyShoot(float delay)
