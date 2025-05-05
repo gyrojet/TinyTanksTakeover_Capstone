@@ -35,7 +35,7 @@ public class Player :  BaseTank
     [SerializeField] Rigidbody2D playerRB;
 
     [Header("Components")]
-    [SerializeField] GameObject tankBody;
+    [SerializeField] public GameObject tankBody;
     [SerializeField] GameObject tankCannon;
 
     //[SerializeField] List<ParticleSystem> treadMarkMakers;

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +20,8 @@ public class Enemy : BaseTank
 
     public bool isMoving;
     public bool isPlayerVisible;
+
+    [Header("Combat")]
 
     [SerializeField] Rigidbody2D enemyRB;
 
@@ -49,7 +52,7 @@ public class Enemy : BaseTank
     // Update is called once per frame
     void Update()
     {
-        CheckRadiusForPlayer();
+        //CheckRadiusForPlayer();
     }
 
     private void GetComponents()
@@ -64,12 +67,30 @@ public class Enemy : BaseTank
 
     public override void HandleBodyMovement(Vector2 movementVector)
     {
-        base.HandleBodyMovement(movementVector);    
+        base.HandleBodyMovement(movementVector);
     }
 
     public override void HandleCannonMovement(Vector2 movementVector)
     {
-        base.HandleCannonMovement(movementVector);
+        var cannonDirection = (Vector3)movementVector - cannonParent.position;
+
+        var angleOfRotation = Mathf.Atan2(cannonDirection.y, cannonDirection.x) * Mathf.Rad2Deg;
+
+        var roatationStep = cannonRotationSpeed * Time.deltaTime;
+
+        var desiredAngle = Quaternion.Euler(0, 0, angleOfRotation - cannonRotationCompAngle);
+
+        var firingPointAngle = Quaternion.Euler(0, 0, angleOfRotation + cannonRotationCompAngle);
+
+        cannonParent.rotation =
+            Quaternion.RotateTowards(tankCannon.transform.rotation,
+                                     desiredAngle,
+                                     roatationStep);
+
+        cannonFiringPoint.rotation =
+            Quaternion.RotateTowards(tankCannon.transform.rotation,
+                                     firingPointAngle,
+                                     roatationStep);
     }
 
     public override void HandleMines()
@@ -79,18 +100,42 @@ public class Enemy : BaseTank
 
     public override void HandleShooting()
     {
-        base.HandleShooting();
+        print("SHOOT CALLED");
+        try
+        {
+            Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, cannonFiringPoint.rotation)
+                              .GetComponent<Bullet>();
+
+            newBullet.owner = this.gameObject;
+
+            newBullet.LaunchBullet(cannonFiringPoint.transform.up);
+
+            //activeBullets.Add(newBullet);
+        }
+        catch (UnityException ex)
+        {
+            Debug.Log(ex.Message);
+        }
     }
 
-    private void CheckRadiusForPlayer()
-    {
-        isPlayerVisible = Physics2D.OverlapCircle
-            (
-                tankBody.transform.position,
-                visibilityRadius,
-                playerLayerMask
-            );
+    //private IEnumerator EnemyShoot(float delay)
+    //{
+    //    try
+    //    {
+    //        Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, cannonFiringPoint.rotation)
+    //                          .GetComponent<Bullet>();
 
-        print(isPlayerVisible);
-    }
+    //        newBullet.owner = this.gameObject;
+
+    //        newBullet.LaunchBullet(cannonFiringPoint.transform.up);
+
+    //        //activeBullets.Add(newBullet);
+    //    }
+    //    catch (UnityException ex)
+    //    {
+    //        Debug.Log(ex.Message);
+    //    }
+
+    //    yield return new WaitForSeconds(delay);
+    //}
 }
