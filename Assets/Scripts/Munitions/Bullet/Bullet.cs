@@ -83,8 +83,7 @@ public class Bullet : MonoBehaviour
             }
             else if (collision.gameObject.CompareTag(enemyTag) == true)
             {
-                Debug.Log("Hit Foe!");
-                // Add enemy death when finished with it
+                
             }
 
             DestroySelf();

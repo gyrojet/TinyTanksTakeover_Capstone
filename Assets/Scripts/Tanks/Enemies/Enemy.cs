@@ -24,15 +24,15 @@ public class Enemy : BaseTank
     [Header("Combat")]
 
     [SerializeField] Rigidbody2D enemyRB;
+    [SerializeField] float shootingDelay = 4f;
 
     [Header("Components")]
-    [SerializeField] GameObject tankBody;
+    [SerializeField] public GameObject tankBody;
     [SerializeField] GameObject tankCannon;
 
     //[SerializeField] List<ParticleSystem> treadMarkMakers;
-
-    [SerializeField] Transform cannonParent;
-    [SerializeField] Transform cannonFiringPoint;
+    [SerializeField] public Transform cannonParent;
+    [SerializeField] public Transform cannonFiringPoint;
 
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject minePrefab;
@@ -52,7 +52,7 @@ public class Enemy : BaseTank
     // Update is called once per frame
     void Update()
     {
-        //CheckRadiusForPlayer();
+        
     }
 
     private void GetComponents()
@@ -130,39 +130,19 @@ public class Enemy : BaseTank
         print("SHOOT CALLED");
         enemyBehaviour.canShootBullets = false;
 
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(shootingDelay);
 
-            Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, cannonFiringPoint.rotation)
-                              .GetComponent<Bullet>();
+        Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, cannonFiringPoint.rotation)
+                          .GetComponent<Bullet>();
 
-            newBullet.owner = this.gameObject;
+        newBullet.owner = this.gameObject;
 
-            newBullet.LaunchBullet(cannonFiringPoint.transform.up);
+        newBullet.LaunchBullet(cannonFiringPoint.transform.up);
 
-            yield return new WaitForSeconds(2.75f);
+        yield return new WaitForSeconds(2.75f);
 
         enemyBehaviour.canShootBullets = true;
         
     }
 
-    //private IEnumerator EnemyShoot(float delay)
-    //{
-    //    try
-    //    {
-    //        Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, cannonFiringPoint.rotation)
-    //                          .GetComponent<Bullet>();
-
-    //        newBullet.owner = this.gameObject;
-
-    //        newBullet.LaunchBullet(cannonFiringPoint.transform.up);
-
-    //        //activeBullets.Add(newBullet);
-    //    }
-    //    catch (UnityException ex)
-    //    {
-    //        Debug.Log(ex.Message);
-    //    }
-
-    //    yield return new WaitForSeconds(delay);
-    //}
 }

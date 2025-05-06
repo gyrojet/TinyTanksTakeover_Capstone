@@ -8,7 +8,7 @@ public class EnemyBehaviourHandler : MonoBehaviour
     //public EnemyTank enemyl;
 
     [SerializeField] Player player;
-    [SerializeField] Enemy self;
+    [SerializeField] Enemy attachedEnemy;
 
     [Header("Behaviour Attributes")]
     public bool canMove;
@@ -28,18 +28,19 @@ public class EnemyBehaviourHandler : MonoBehaviour
     public UnityEvent<Vector2> OnCannonMove = new UnityEvent<Vector2>();
 
     [Header("Debugging Propetries")]
-    [SerializeField] bool isPlayerVisible;
+    [SerializeField] bool isPlayerWithinRadius;
     [SerializeField] bool isEligableToShoot;
-
+    public bool didHitPlayer;
     private Vector2 playerPos;
+    [SerializeField] Vector2 currentPosition;
 
     private void Start()
     {
         if (player == null)
             player = Player.playerInstance;
 
-        if (self == null)
-            self = gameObject.GetComponent<Enemy>();
+        if (attachedEnemy == null)
+            attachedEnemy = gameObject.GetComponent<Enemy>();
     }
 
     private void Update()
@@ -52,6 +53,7 @@ public class EnemyBehaviourHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         CheckRadiusForPlayer();
     }
 
@@ -65,7 +67,7 @@ public class EnemyBehaviourHandler : MonoBehaviour
 
     private void ApplyCannonMovement()
     { 
-        if (isPlayerVisible)
+        if (isPlayerWithinRadius)
         {
             OnCannonMove?.Invoke(playerPos);
         }
@@ -90,7 +92,7 @@ public class EnemyBehaviourHandler : MonoBehaviour
                 OnShoot?.Invoke();
             }
             else
-                self.StopAllCoroutines();
+                attachedEnemy.StopAllCoroutines();
         }
     }
 
@@ -109,20 +111,42 @@ public class EnemyBehaviourHandler : MonoBehaviour
 
     private void CheckRadiusForPlayer()
     {
-        isPlayerVisible = Physics2D.OverlapCircle
+        isPlayerWithinRadius = Physics2D.OverlapCircle
             (
-                gameObject.transform.position,
+                attachedEnemy.tankBody.transform.position,
                 visibilityRadius,
                 playersLayer
             );
 
-        if (isPlayerVisible)
+        if (isPlayerWithinRadius)
         {
             //print("Tank is eligable to shoot!");
             playerPos = player.tankBody.transform.position;
-            isEligableToShoot = true;
+
+            //Debug.DrawLine(gameObject.transform.position, self.gameObject.transform.position - gameObject.transform.position, Color.red, Mathf.Infinity);
+            if (CheckForPlayerRayHit())
+                isEligableToShoot = true;
         }
         else
             isEligableToShoot = false;
+    }
+
+    private bool CheckForPlayerRayHit()
+    {
+        RaycastHit2D rayHit = Physics2D.Raycast(attachedEnemy.cannonFiringPoint.transform.position, attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position, 100, playersLayer);
+
+        //Debug.DrawLine(attachedEnemy.cannonFiringPoint.transform.position, attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position, Color.red, Mathf.Infinity);
+
+        if (rayHit.collider != null)
+        {
+            if (rayHit.collider.CompareTag("Player")) 
+                didHitPlayer = true;
+            else
+                didHitPlayer = false;
+        }
+
+        Debug.Log($"Raycast Status: {didHitPlayer}");
+
+        return didHitPlayer;
     }
 }
