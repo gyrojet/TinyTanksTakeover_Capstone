@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManagerInstance;
+
+    public float delay;
 
     private void Awake()
     {
@@ -21,5 +24,11 @@ public class GameManager : MonoBehaviour
     public void ReloadCurrentLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public IEnumerator ReloadWithDelay()
+    {
+        yield return new WaitForSeconds(delay);
+        ReloadCurrentLevel();
     }
 }

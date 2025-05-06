@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3057649599146894695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4988157951866539083}
+  - component: {fileID: 5267035436515766155}
+  m_Layer: 0
+  m_Name: WallSpriteManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4988157951866539083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3057649599146894695}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.9183775, y: 0.8176747, z: -0.0011975691}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5267035436515766155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3057649599146894695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5100f43821cd6b3419636a212ba312b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unbreakableWallSprites:
+  - {fileID: 21300000, guid: 75aa528aee0a23b4282f5b5ff4c34b00, type: 3}
+  - {fileID: 21300000, guid: ca00456eacc4e7a4598745fc6299a873, type: 3}
+  - {fileID: 21300000, guid: b2ef62f28f7e5d04e802ecce6a349744, type: 3}
+  - {fileID: 21300000, guid: eac9f2edacea24045b00e55f8c0b8065, type: 3}
+  - {fileID: 21300000, guid: 4c378492c884bfd46ac6e291903a1cbd, type: 3}
+  - {fileID: 21300000, guid: 0f2858227f56e014caca0ba0fb9eab04, type: 3}
+  - {fileID: 21300000, guid: 5b3577f93494c3a4d847570ecc427b8e, type: 3}
+  - {fileID: 21300000, guid: 19d74f2247bb3ec4f8e16e6f1c705a90, type: 3}
+  - {fileID: 21300000, guid: c0f8537de1a169d4f923052d34159897, type: 3}
+  - {fileID: 21300000, guid: 083393ea43d3a2a4db33f6acc983d70e, type: 3}
+  - {fileID: 21300000, guid: 2755c4e78895d1f47bdc5f32f527a4b1, type: 3}
+  - {fileID: 21300000, guid: 4ebece9225e82094a8e3c6b31ca514b5, type: 3}
+  - {fileID: 21300000, guid: cf71068329bcf234b92e449069c0aa86, type: 3}
+  - {fileID: 21300000, guid: c00c8e53adc7f2f439c2b1d776ebb11c, type: 3}
+  - {fileID: 21300000, guid: 1cc3d76710b0df44f98f1b4ce47b18f4, type: 3}
+  - {fileID: 21300000, guid: eb15253867fde564485d1dd715e0844d, type: 3}
+  - {fileID: 21300000, guid: 113c36be59b08c64faeca9ff9cae36fb, type: 3}
+  - {fileID: 21300000, guid: cce745843ef20ed4da1b959e06a54195, type: 3}
+  - {fileID: 21300000, guid: 9ecedab345690cd47acb39a5d9037a89, type: 3}
+  - {fileID: 21300000, guid: df42ce18807efed49a17417409317518, type: 3}
+  breakableWallSprites:
+  - {fileID: 2466475440226354766, guid: 07763dbbe5c123941904b5fda6ae6950, type: 3}
+  - {fileID: -3060565966672724364, guid: 0972074782790d64a95e59eafa35e0b0, type: 3}
+  - {fileID: -9158772862852660334, guid: cd7126407c2c2304d96e3375436a3846, type: 3}

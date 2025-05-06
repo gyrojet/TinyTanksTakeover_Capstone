@@ -62,12 +62,15 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void ApplyTankMovement()
     {
-        Vector2 inputVector = Vector2.zero;
+        if (canPlayerMove)
+        {
+            Vector2 inputVector = Vector2.zero;
 
-        inputVector.x = Input.GetAxis("Horizontal");
-        inputVector.y = Input.GetAxis("Vertical");
+            inputVector.x = Input.GetAxis("Horizontal");
+            inputVector.y = Input.GetAxis("Vertical");
 
-        OnBodyMove?.Invoke(inputVector);
+            OnBodyMove?.Invoke(inputVector);
+        }
     }
 
     private Vector2 GetMousePos()

@@ -10,6 +10,7 @@ TagManager:
   - Breakable
   - MineExplosion
   - Enemy
+  - ID Enemy
   layers:
   - Default
   - TransparentFX

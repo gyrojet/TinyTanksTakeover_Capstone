@@ -173,7 +173,7 @@ public class Player :  BaseTank
     public void DeathRoutine()
     {
         print("KillTank called!");
-        StartCoroutine(KillPlayer());
+        KillPlayer();
     }
 
     private void DisableTankGraphics()
@@ -187,7 +187,7 @@ public class Player :  BaseTank
     /// Testing the death function: This may be removed later.
     /// </summary>
     /// <returns></returns>
-    private IEnumerator KillPlayer()
+    private void KillPlayer()
     {
         print("Die called!");
 
@@ -199,11 +199,9 @@ public class Player :  BaseTank
                     transform.position,
                     Quaternion.identity);
 
-        yield return new WaitForSeconds(2f);
-
         print("Finished Delay!");
 
-        gameManager.ReloadCurrentLevel();
+        StartCoroutine(gameManager.ReloadWithDelay());
     }
 
     public void RemoveBulletFromList(Bullet bulletToRemove)

@@ -9709,7 +9709,7 @@ GameObject:
   - component: {fileID: 6801840413212740840}
   - component: {fileID: 7039788138714612681}
   m_Layer: 0
-  m_Name: PlayerCannon
+  m_Name: EnemyCannon
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -9799,8 +9799,8 @@ GameObject:
   - component: {fileID: 731618355548988297}
   - component: {fileID: 2611862073025326009}
   m_Layer: 0
-  m_Name: PlayerBody
-  m_TagString: Player
+  m_Name: EnemyBody
+  m_TagString: Enemy
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9960,9 +9960,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8000410509267789763}
+  - component: {fileID: 2350986513813019499}
+  - component: {fileID: 2427216602072629718}
   m_Layer: 0
   m_Name: Enemy, Stationary
-  m_TagString: Player
+  m_TagString: ID Enemy
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9975,7 +9977,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6275929807893437348}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.34, y: -2.46, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9983,6 +9985,103 @@ Transform:
   - {fileID: 1839313525071739499}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2350986513813019499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6275929807893437348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3903300c0f888f04b9d79a1010fa1e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyBehaviour: {fileID: 0}
+  gameManager: {fileID: 0}
+  maxSpeed: 10
+  rotationSpeed: 90
+  cannonRotationSpeed: 110
+  cannonRotationCompAngle: 90
+  cannonBulletFiringCompAngle: -90
+  visibilityRadius: 10
+  isMoving: 0
+  isPlayerVisible: 0
+  enemyRB: {fileID: 0}
+  shootingDelay: 4
+  tankBody: {fileID: 5591508357224607253}
+  tankCannon: {fileID: 4234917398039207867}
+  cannonParent: {fileID: 7990933173212443044}
+  cannonFiringPoint: {fileID: 8402390171234522502}
+  bulletPrefab: {fileID: 1704722613948410065, guid: 4a3409b490cd64447b24b5a2a3a53203, type: 3}
+  minePrefab: {fileID: 2824194964169484779, guid: 4bb8a1345f9f1ce419399f4076f88889, type: 3}
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  bulletTag: Bullet
+  activeBullets: []
+--- !u!114 &2427216602072629718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6275929807893437348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edfe29a78420e134eb853d48f5689f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  attachedEnemy: {fileID: 0}
+  canMove: 0
+  canShootBullets: 1
+  canUseMines: 0
+  attackDelay: 4
+  visibilityRadius: 7
+  playersLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  OnShoot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2350986513813019499}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: HandleShooting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  OnUseMines:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBodyMove:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCannonMove:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2350986513813019499}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: HandleCannonMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  isPlayerWithinRadius: 0
+  isEligableToShoot: 0
+  didHitPlayer: 0
+  currentPosition: {x: 0, y: 0}
 --- !u!1 &9179511072892811751
 GameObject:
   m_ObjectHideFlags: 0

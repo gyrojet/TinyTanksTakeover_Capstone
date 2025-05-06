@@ -7,6 +7,8 @@ public class Enemy : BaseTank
     [SerializeField] EnemyBehaviourHandler enemyBehaviour;
     [SerializeField] GameManager gameManager;
 
+    RoundManager roundManager;
+
     [Header("Locomotion")]
 
     public float maxSpeed = 10;
@@ -27,6 +29,7 @@ public class Enemy : BaseTank
     [SerializeField] float shootingDelay = 4f;
 
     [Header("Components")]
+    
     [SerializeField] public GameObject tankBody;
     [SerializeField] GameObject tankCannon;
 
@@ -65,6 +68,11 @@ public class Enemy : BaseTank
         if (enemyBehaviour == null)
         {
             enemyBehaviour = gameObject.GetComponent<EnemyBehaviourHandler>();
+        }
+
+        if (roundManager == null)
+        {
+            roundManager = RoundManager.instance;
         }
 
         gameManager = GameManager.gameManagerInstance;
@@ -143,6 +151,12 @@ public class Enemy : BaseTank
 
         enemyBehaviour.canShootBullets = true;
         
+    }
+
+    public void TempKillFunc()
+    {
+        roundManager.UpdateCount();
+        gameObject.SetActive(false);
     }
 
 }

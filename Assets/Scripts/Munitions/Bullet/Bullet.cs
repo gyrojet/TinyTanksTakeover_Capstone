@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    RoundManager roundManager;
+
     [Header("Movement Properties")]
     public float moveSpeed = 50;
     public int numOfBounces = 1;
@@ -33,6 +35,8 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
+        //roundManager = RoundManager.instance;
+
         particleSystem.Play();
     }
 
@@ -83,7 +87,12 @@ public class Bullet : MonoBehaviour
             }
             else if (collision.gameObject.CompareTag(enemyTag) == true)
             {
-                
+                print("Hit Enemy!");
+
+                Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
+
+                enemy.TempKillFunc();
+                // Enemy Manager kill script here
             }
 
             DestroySelf();
