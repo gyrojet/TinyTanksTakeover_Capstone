@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+
 public class RoundManager : MonoBehaviour
 {
     public static RoundManager instance;
 
     GameManager gameManager;
+    LevelTransmitionManager levelTransmitionManager;
 
     [Header("Enemies & Player")]
     [SerializeField] Player player = null;
@@ -31,7 +33,11 @@ public class RoundManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gameManager = GameManager.gameManagerInstance;
+        if (gameManager == null)
+            gameManager = GameManager.gameManagerInstance;
+
+        if (levelTransmitionManager == null)
+            levelTransmitionManager = LevelTransmitionManager.instance;
 
         GetActivePlayer();
         GetActiveEnemies();
@@ -54,8 +60,12 @@ public class RoundManager : MonoBehaviour
         numOfActiveEnemies--;
 
         if (numOfActiveEnemies <= 0)
-            StartCoroutine(gameManager.ReloadWithDelay());
+            LoadNextLevel();
     }
 
-
+    private void LoadNextLevel()
+    {
+        levelTransmitionManager.LoadSceneWithTransition(
+                levelTransmitionManager.GetCurrentSceneIndex());
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player :  BaseTank
 {
@@ -16,6 +17,7 @@ public class Player :  BaseTank
 
     [SerializeField] PlayerInputHandler playerInputHandler;
     [SerializeField] GameManager gameManager;
+    [SerializeField] LevelTransmitionManager levelTransmitionManager;
 
     [Header("Locomotion")]
 
@@ -68,6 +70,9 @@ public class Player :  BaseTank
         {
             playerInputHandler.canPlayerMove = true;
         }
+
+        if (levelTransmitionManager == null)
+            levelTransmitionManager = LevelTransmitionManager.instance;
     }
 
     private void FixedUpdate()
@@ -192,6 +197,7 @@ public class Player :  BaseTank
         print("Die called!");
 
         playerInputHandler.canPlayerMove = false;
+        playerRB.linearVelocity = Vector2.zero;
 
         DisableTankGraphics();
 
@@ -201,7 +207,9 @@ public class Player :  BaseTank
 
         print("Finished Delay!");
 
-        StartCoroutine(gameManager.ReloadWithDelay());
+
+        levelTransmitionManager.LoadSceneWithTransition(SceneManager.GetActiveScene().buildIndex);
+        //StartCoroutine(gameManager.ReloadWithDelay());
     }
 
     public void RemoveBulletFromList(Bullet bulletToRemove)
