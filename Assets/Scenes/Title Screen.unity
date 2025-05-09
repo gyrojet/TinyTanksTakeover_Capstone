@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 137327905}
   - component: {fileID: 137327907}
   - component: {fileID: 137327906}
+  - component: {fileID: 137327908}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -255,6 +256,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137327904}
   m_CullTransparentMesh: 1
+--- !u!223 &137327908
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137327904}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 3
+  m_TargetDisplay: 0
 --- !u!1 &144168649
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +293,7 @@ GameObject:
   - component: {fileID: 144168651}
   - component: {fileID: 144168654}
   - component: {fileID: 144168655}
+  - component: {fileID: 144168656}
   m_Layer: 5
   m_Name: Start Game
   m_TagString: Untagged
@@ -340,13 +365,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1603215642}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1603215645}
+        m_TargetAssemblyTypeName: TitleScreen_UI_Manager, Assembly-CSharp
+        m_MethodName: StartExitTimeline
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -435,6 +460,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &144168656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144168649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &187564399
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,7 +995,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &1213050233
 MonoBehaviour:
@@ -1454,9 +1496,9 @@ SceneRoots:
   m_Roots:
   - {fileID: 898652894}
   - {fileID: 1207133121}
-  - {fileID: 1363930822}
   - {fileID: 3225969730720865175}
   - {fileID: 565843997}
+  - {fileID: 1363930822}
   - {fileID: 1603215644}
   - {fileID: 187564402}
   - {fileID: 264689589}
