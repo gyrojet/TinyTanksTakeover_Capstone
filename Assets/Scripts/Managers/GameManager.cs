@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    // Currently useless...Maybe 
     public static GameManager gameManagerInstance;
 
     public float delay;

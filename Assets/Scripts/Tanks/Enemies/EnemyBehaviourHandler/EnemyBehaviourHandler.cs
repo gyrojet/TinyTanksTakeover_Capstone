@@ -11,6 +11,8 @@ public class EnemyBehaviourHandler : MonoBehaviour
     [SerializeField] Enemy attachedEnemy;
 
     [Header("Behaviour Attributes")]
+    public bool isEnabled = true;
+
     public bool canMove;
     public bool canShootBullets;
     public bool canUseMines;
@@ -41,19 +43,24 @@ public class EnemyBehaviourHandler : MonoBehaviour
 
         if (attachedEnemy == null)
             attachedEnemy = gameObject.GetComponent<Enemy>();
+
+        if (isEnabled != true)
+            isEnabled = true;
     }
 
     private void Update()
     {
-        ApplyMovement();
-        ApplyCannonMovement();
-        ApplyShootingAction();
-        ApplyMineAction();
+        if (isEnabled)
+        {
+            ApplyMovement();
+            ApplyCannonMovement();
+            ApplyShootingAction();
+            ApplyMineAction();
+        }
     }
 
     private void FixedUpdate()
     {
-        
         CheckRadiusForPlayer();
     }
 

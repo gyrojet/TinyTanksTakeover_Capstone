@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : BaseTank
 {
     [SerializeField] EnemyBehaviourHandler enemyBehaviour;
-    [SerializeField] GameManager gameManager;
+    //[SerializeField] GameManager gameManager;
 
     RoundManager roundManager;
 
@@ -75,11 +75,12 @@ public class Enemy : BaseTank
             roundManager = RoundManager.instance;
         }
 
-        gameManager = GameManager.gameManagerInstance;
+        //gameManager = GameManager.gameManagerInstance;
     }
 
     public override void HandleBodyMovement(Vector2 movementVector)
     {
+        // Replace this later...
         base.HandleBodyMovement(movementVector);
     }
 
@@ -155,7 +156,7 @@ public class Enemy : BaseTank
 
     public void TempKillFunc()
     {
-        roundManager.UpdateCount();
+        roundManager.UpdateCount(gameObject);
         gameObject.SetActive(false);
     }
 

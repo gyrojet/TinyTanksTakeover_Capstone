@@ -1,19 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 
 public class RoundManager : MonoBehaviour
 {
     public static RoundManager instance;
 
-    GameManager gameManager;
+    //GameManager gameManager;
     LevelTransmitionManager levelTransmitionManager;
 
     [Header("Enemies & Player")]
     [SerializeField] Player player = null;
-    [SerializeField] GameObject[] activeEnemies = null;
+    [SerializeField] List<GameObject> activeEnemies = null;
 
-    int numOfActiveEnemies;
+    public int numOfActiveEnemies;
 
     [Header("Identification")]
     [SerializeField] string enemyTag;
@@ -33,8 +34,8 @@ public class RoundManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (gameManager == null)
-            gameManager = GameManager.gameManagerInstance;
+        //if (gameManager == null)
+        //    gameManager = GameManager.gameManagerInstance;
 
         if (levelTransmitionManager == null)
             levelTransmitionManager = LevelTransmitionManager.instance;
@@ -51,21 +52,35 @@ public class RoundManager : MonoBehaviour
 
     private void GetActiveEnemies()
     {
-        activeEnemies = GameObject.FindGameObjectsWithTag(enemyTag);
-        numOfActiveEnemies = activeEnemies.Length;
+        activeEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag(enemyTag));
+        numOfActiveEnemies = activeEnemies.Count;
     }
 
-    public void UpdateCount()
+    public void UpdateCount(GameObject tankToRemove)
     {
         numOfActiveEnemies--;
 
+        activeEnemies.Remove(tankToRemove);
+
         if (numOfActiveEnemies <= 0)
-            LoadNextLevel();
+            StartCoroutine(LoadNextLevel());
     }
 
-    private void LoadNextLevel()
+    private IEnumerator LoadNextLevel()
     {
+        yield return new WaitForSecondsRealtime(3f);
+
         levelTransmitionManager.LoadSceneWithTransition(
                 levelTransmitionManager.GetCurrentSceneIndex());
+    }
+
+    public void ToggleBehavioursOfAllTanks(bool value)
+    {
+        player.playerInputHandler.canPlayerMove = value;
+
+        foreach (GameObject tank in activeEnemies)
+        {
+            tank.GetComponent<EnemyBehaviourHandler>().isEnabled = value;
+        }
     }
 }

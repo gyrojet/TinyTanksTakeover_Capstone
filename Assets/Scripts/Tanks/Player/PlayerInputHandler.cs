@@ -11,7 +11,7 @@ public class PlayerInputHandler : MonoBehaviour
     public static PlayerInputHandler Instance;
 
     [SerializeField] Camera mainCam;
-    public bool canPlayerMove;
+    public bool canPlayerMove = true;
 
     public UnityEvent OnShoot = new UnityEvent();
     public UnityEvent<Vector2> OnBodyMove = new UnityEvent<Vector2>();
@@ -26,10 +26,13 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Update()
     {
-        ApplyTankMovement();
-        ApplyCannonMovement();
-        ApplyShootingAction();
-        ApplyMineAction();
+        if (canPlayerMove)
+        {
+            ApplyTankMovement();
+            ApplyCannonMovement();
+            ApplyShootingAction();
+            ApplyMineAction();
+        }
     }
 
     private void ApplyMineAction()

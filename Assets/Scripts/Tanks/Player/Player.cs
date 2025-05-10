@@ -15,8 +15,8 @@ public class Player :  BaseTank
 
     public static Player playerInstance;
 
-    [SerializeField] PlayerInputHandler playerInputHandler;
-    [SerializeField] GameManager gameManager;
+    public PlayerInputHandler playerInputHandler;
+    //[SerializeField] GameManager gameManager;
     [SerializeField] LevelTransmitionManager levelTransmitionManager;
 
     [Header("Locomotion")]
@@ -104,7 +104,7 @@ public class Player :  BaseTank
             playerCannonSR = tankCannon.GetComponent<SpriteRenderer>();
 
         playerInputHandler = PlayerInputHandler.Instance;
-        gameManager = GameManager.gameManagerInstance;
+        //gameManager = GameManager.gameManagerInstance;
     }
 
     private void HandleTrails()
