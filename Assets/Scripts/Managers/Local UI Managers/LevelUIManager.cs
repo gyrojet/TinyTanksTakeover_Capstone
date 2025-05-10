@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class LevelUIManager : MonoBehaviour
 {
+    LevelTransmitionManager levelTransmitionManager;
     RoundManager roundManager;
 
     private const float TIMESCALE_PAUSED = 0.0f;
@@ -19,8 +20,8 @@ public class LevelUIManager : MonoBehaviour
     [Header("Pause Screen Controls")]
     #region PauseScreenControls
 
-    //public Button resumeGame;
-    //public Button endGame;
+    public Button resumeGame;
+    public Button endGame;
 
     #endregion
 
@@ -28,7 +29,11 @@ public class LevelUIManager : MonoBehaviour
 
     private void Start()
     {
+        levelTransmitionManager = LevelTransmitionManager.instance;
         roundManager = RoundManager.instance;
+
+        resumeGame.onClick.AddListener((TogglePause));
+        endGame.onClick.AddListener(levelTransmitionManager.ReturnToTitle);
     }
 
     private void Update()
@@ -39,12 +44,10 @@ public class LevelUIManager : MonoBehaviour
         }
     }
 
-    private void TogglePause()
+    public void TogglePause()
     {
         if (pauseScreen.activeSelf == false)
         {
-
-
             Time.timeScale = TIMESCALE_PAUSED;
             pauseScreen.SetActive(true);
 

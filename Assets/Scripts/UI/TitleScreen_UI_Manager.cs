@@ -7,7 +7,7 @@ public class TitleScreen_UI_Manager : MonoBehaviour
 {
     [Header("Button")]
     public Button startGame_TEST;
-    bool isIntroOver;
+    public bool isIntroOver;
 
     PlayableDirector timelineManager;
 
@@ -17,7 +17,7 @@ public class TitleScreen_UI_Manager : MonoBehaviour
     [SerializeField] TimelineAsset titleScreen_START;
     //[SerializeField] TimelineAsset titleScreen_END;
 
-    private void Awake()
+    private void Start()
     {
         isIntroOver = false;
     }

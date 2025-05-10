@@ -48,6 +48,16 @@ public class LevelTransmitionManager : MonoBehaviour
         StartCoroutine(DelayLoadScene(sceneIndex));
     }
 
+    public void ReturnToTitle()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        if (currentScene.buildIndex != 0)
+            animator.SetTrigger(ANIMATION_TRIGGER_FADEOUT);
+
+        StartCoroutine(DelayLoadScene(0));
+    }
+
     public int GetCurrentSceneIndex()
     {
         return SceneManager.GetActiveScene().buildIndex;
