@@ -34,8 +34,8 @@ public class LevelTransmitionManager : MonoBehaviour
     private void Update()
     {
         // Scene Transition Tests
-        if (Input.GetKeyDown(KeyCode.Space))
-            LoadSceneWithTransition(1);
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    LoadSceneWithTransition(1);
     }
 
     public void LoadSceneWithTransition(int sceneIndex)
