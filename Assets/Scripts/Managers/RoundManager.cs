@@ -9,6 +9,7 @@ public class RoundManager : MonoBehaviour
 
     //GameManager gameManager;
     LevelTransmitionManager levelTransmitionManager;
+    LevelUIManager levelUIManager;
 
     [Header("Enemies & Player")]
     [SerializeField] Player player = null;
@@ -40,9 +41,13 @@ public class RoundManager : MonoBehaviour
         if (levelTransmitionManager == null)
             levelTransmitionManager = LevelTransmitionManager.instance;
 
+        if (levelUIManager == null)
+            levelUIManager = LevelUIManager.Instance;
+
         GetActivePlayer();
         GetActiveEnemies();
 
+        levelUIManager.UpdateTankCount(numOfActiveEnemies);
     }
 
     private void GetActivePlayer()
@@ -61,6 +66,8 @@ public class RoundManager : MonoBehaviour
         numOfActiveEnemies--;
 
         activeEnemies.Remove(tankToRemove);
+
+        levelUIManager.UpdateTankCount(numOfActiveEnemies);
 
         if (numOfActiveEnemies <= 0)
             StartCoroutine(LoadNextLevel());

@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInputHandler: {fileID: 0}
-  gameManager: {fileID: 0}
-  maxSpeed: 90
+  levelTransmitionManager: {fileID: 0}
+  maxSpeed: 120
   rotationSpeed: 150
   cannonRotationSpeed: 150
   cannonRotationCompAngle: 90
@@ -107,36 +107,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-  OnTurretMove:
+  OnCannonMove:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 455762437654898053}
-        m_TargetAssemblyTypeName: Tank, Assembly-CSharp
-        m_MethodName: HandleCannonMovement
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  OnLayMine:
+      m_Calls: []
+  OnUseMines:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 455762437654898053}
-        m_TargetAssemblyTypeName: Tank, Assembly-CSharp
-        m_MethodName: HandleMines
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
 --- !u!1 &4085933225819848370
 GameObject:
   m_ObjectHideFlags: 0

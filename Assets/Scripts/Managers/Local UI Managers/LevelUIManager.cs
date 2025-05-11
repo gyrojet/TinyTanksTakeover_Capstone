@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class LevelUIManager : MonoBehaviour
 {
+    public static LevelUIManager Instance;
+
     LevelTransmitionManager levelTransmitionManager;
     RoundManager roundManager;
 
@@ -27,6 +29,12 @@ public class LevelUIManager : MonoBehaviour
 
     public TextMeshProUGUI numberOfTanksRemaining;
 
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
+
     private void Start()
     {
         levelTransmitionManager = LevelTransmitionManager.instance;
@@ -38,7 +46,7 @@ public class LevelUIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.P))
         {
             TogglePause();
         }
@@ -60,5 +68,10 @@ public class LevelUIManager : MonoBehaviour
 
             roundManager.ToggleBehavioursOfAllTanks(true);
         }
+    }
+
+    public void UpdateTankCount(int numberRemaining)
+    {
+        numberOfTanksRemaining.text = numberRemaining.ToString();
     }
 }

@@ -11,6 +11,7 @@ TagManager:
   - MineExplosion
   - Enemy
   - ID Enemy
+  - LevelManager
   layers:
   - Default
   - TransparentFX

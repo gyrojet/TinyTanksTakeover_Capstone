@@ -71,6 +71,7 @@ public class LevelTransmitionManager : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(transitionDelay);
 
-        animator.SetTrigger(ANIMATION_TRIGGER_FADEIN);
+        if (GetCurrentSceneIndex() != 0)
+            animator.SetTrigger(ANIMATION_TRIGGER_FADEIN);
     }
 }
