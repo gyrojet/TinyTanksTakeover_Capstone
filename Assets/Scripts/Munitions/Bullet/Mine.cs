@@ -71,11 +71,11 @@ public class Mine : MonoBehaviour
             Player player = Player.playerInstance;
             player.DeathRoutine();
         }
-        else if (objectTag == "ID Enemy")
+        else if (objectTag == "Enemy")
         {
             print("mine has hit enemy!");
 
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
             enemy.TempKillFunc();
         }
     }

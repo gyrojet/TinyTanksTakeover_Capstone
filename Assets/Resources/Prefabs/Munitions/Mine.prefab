@@ -125,9 +125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionDelay: 3
-  explosionSize: 0.28
+  explosionSize: 0.55
   mineTag: MineExplosion
-  explosionEffect: {fileID: 2110944849920046143, guid: b701d59f2cf52bd47b5ccee215ef6967, type: 3}
+  explosionEffect: {fileID: 2110944849920046143, guid: bd2f3242c334138488e96a983e0b5db4, type: 3}
 --- !u!58 &-2207213698060239536
 CircleCollider2D:
   m_ObjectHideFlags: 0

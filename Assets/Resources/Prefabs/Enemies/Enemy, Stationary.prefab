@@ -9677,7 +9677,7 @@ GameObject:
   - component: {fileID: 7990933173212443044}
   m_Layer: 0
   m_Name: CannonParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9710,7 +9710,7 @@ GameObject:
   - component: {fileID: 7039788138714612681}
   m_Layer: 0
   m_Name: EnemyCannon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9904,7 +9904,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!61 &2611862073025326009
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9998,7 +9998,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBehaviour: {fileID: 0}
-  gameManager: {fileID: 0}
   maxSpeed: 10
   rotationSpeed: 90
   cannonRotationSpeed: 110
@@ -10034,10 +10033,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   attachedEnemy: {fileID: 0}
+  isEnabled: 1
   canMove: 0
   canShootBullets: 1
   canUseMines: 0
   attackDelay: 4
+  attackRecognitionRange: 50
   visibilityRadius: 7
   playersLayer:
     serializedVersion: 2
@@ -10080,7 +10081,7 @@ MonoBehaviour:
         m_CallState: 1
   isPlayerWithinRadius: 0
   isEligableToShoot: 0
-  didHitPlayer: 0
+  didFindPlayer: 0
   currentPosition: {x: 0, y: 0}
 --- !u!1 &9179511072892811751
 GameObject:
@@ -10093,7 +10094,7 @@ GameObject:
   - component: {fileID: 8402390171234522502}
   m_Layer: 0
   m_Name: Firing Point
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

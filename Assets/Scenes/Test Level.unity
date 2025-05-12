@@ -874,6 +874,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 731618355548988297, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
+      propertyPath: m_Constraints
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6275929807893437348, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
       propertyPath: m_Name
       value: Enemy, Stationary (1)

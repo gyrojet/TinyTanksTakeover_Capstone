@@ -18,6 +18,7 @@ public class EnemyBehaviourHandler : MonoBehaviour
     public bool canUseMines;
 
     public float attackDelay = 5;
+    public float attackRecognitionRange = 50;
 
     [Header("Enemy Sight")]
     public float visibilityRadius = 7;
@@ -32,7 +33,7 @@ public class EnemyBehaviourHandler : MonoBehaviour
     [Header("Debugging Propetries")]
     [SerializeField] bool isPlayerWithinRadius;
     [SerializeField] bool isEligableToShoot;
-    public bool didHitPlayer;
+    public bool didFindPlayer;
     private Vector2 playerPos;
     [SerializeField] Vector2 currentPosition;
 
@@ -78,8 +79,6 @@ public class EnemyBehaviourHandler : MonoBehaviour
         {
             OnCannonMove?.Invoke(playerPos);
         }
-        else
-            OnCannonMove?.Invoke(Random.insideUnitCircle * 1000);
     }
 
     private void ApplyShootingAction()
@@ -131,6 +130,8 @@ public class EnemyBehaviourHandler : MonoBehaviour
             playerPos = player.tankBody.transform.position;
 
             //Debug.DrawLine(gameObject.transform.position, self.gameObject.transform.position - gameObject.transform.position, Color.red, Mathf.Infinity);
+
+            // If the player is within the tank's set range
             if (CheckForPlayerRayHit())
                 isEligableToShoot = true;
         }
@@ -140,20 +141,23 @@ public class EnemyBehaviourHandler : MonoBehaviour
 
     private bool CheckForPlayerRayHit()
     {
-        RaycastHit2D rayHit = Physics2D.Raycast(attachedEnemy.cannonFiringPoint.transform.position, attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position, 100, playersLayer);
+        // If player is within radius AND within distance of the raycast:
+        RaycastHit2D rayHit = Physics2D.Raycast(attachedEnemy.cannonFiringPoint.transform.position, attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position, attackRecognitionRange, playersLayer);
 
         //Debug.DrawLine(attachedEnemy.cannonFiringPoint.transform.position, attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position, Color.red, Mathf.Infinity);
 
         if (rayHit.collider != null)
         {
+            // If ray hits player:
             if (rayHit.collider.CompareTag("Player")) 
-                didHitPlayer = true;
+                didFindPlayer = true;
             else
-                didHitPlayer = false;
+                didFindPlayer = false;
         }
 
-        Debug.Log($"Raycast Status: {didHitPlayer}");
+        //Debug.Log($"Raycast Status: {didFindPlayer}");
 
-        return didHitPlayer;
+        // Return result of raycast
+        return didFindPlayer;
     }
 }
