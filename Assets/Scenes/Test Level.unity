@@ -1965,6 +1965,8 @@ MonoBehaviour:
   activeEnemies: []
   numOfActiveEnemies: 0
   enemyTag: ID Enemy
+  bulletTag: Bullet
+  mineTag: MineExplosion
 --- !u!1001 &1840174421
 PrefabInstance:
   m_ObjectHideFlags: 0

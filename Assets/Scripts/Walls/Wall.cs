@@ -69,7 +69,7 @@ public class Wall : MonoBehaviour
                 print("Mine explosion hit wall!");
 
                 Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-                bullet.DestroySelf();
+                bullet.DestroySelf(false);
 
                 BreakWall();
             }

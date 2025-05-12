@@ -19,6 +19,8 @@ public class RoundManager : MonoBehaviour
 
     [Header("Identification")]
     [SerializeField] string enemyTag;
+    [SerializeField] string bulletTag;
+    [SerializeField] string mineTag;
 
     private void Awake()
     {
@@ -48,6 +50,7 @@ public class RoundManager : MonoBehaviour
         GetActiveEnemies();
 
         levelUIManager.UpdateTankCount(numOfActiveEnemies);
+        //ToggleBehavioursOfAllTanks(false);
     }
 
     private void GetActivePlayer()
@@ -70,7 +73,10 @@ public class RoundManager : MonoBehaviour
         levelUIManager.UpdateTankCount(numOfActiveEnemies);
 
         if (numOfActiveEnemies <= 0)
+        {
+            DestroyAllMunitions();
             StartCoroutine(LoadNextLevel());
+        }
     }
 
     private IEnumerator LoadNextLevel()
@@ -79,6 +85,24 @@ public class RoundManager : MonoBehaviour
 
         levelTransmitionManager.LoadSceneWithTransition(
                 levelTransmitionManager.GetCurrentSceneIndex());
+    }
+
+    public void DestroyAllMunitions()
+    {
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag(bulletTag);
+        GameObject[] mines = GameObject.FindGameObjectsWithTag(mineTag);
+
+        foreach (GameObject bullet in bullets)
+        {
+            Bullet b = bullet.GetComponent<Bullet>();
+            b.DestroySelf(true);
+        }
+
+        foreach (GameObject mine in mines)
+        {
+            Mine m = mine.GetComponent<Mine>();
+            m.FakeExplode();
+        }
     }
 
     public void ToggleBehavioursOfAllTanks(bool value)

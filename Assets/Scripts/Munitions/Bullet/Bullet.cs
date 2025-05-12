@@ -48,7 +48,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(bulletTag) == true)
-            DestroySelf();
+            DestroySelf(false);
 
         if (collision.gameObject.CompareTag(wallTag))
         {
@@ -70,7 +70,7 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                DestroySelf();
+                DestroySelf(false);
             }
         }
         else
@@ -95,7 +95,7 @@ public class Bullet : MonoBehaviour
                 // Enemy Manager kill script here
             }
 
-            DestroySelf();
+            DestroySelf(false);
         }
     }
 
@@ -105,16 +105,19 @@ public class Bullet : MonoBehaviour
         bulletRB.linearVelocity = launchForce * moveSpeed;
     }
 
-    public void DestroySelf()
+    public void DestroySelf(bool isEndOfRound)
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
 
         particleSystem.Stop();
 
-        if (owner.CompareTag(playerTag))
+        if (isEndOfRound == false)
         {
-            Player playerOwner = Player.playerInstance;
-            playerOwner.RemoveBulletFromList(this);
+            if (owner.CompareTag(playerTag))
+            {
+                Player playerOwner = Player.playerInstance;
+                playerOwner.RemoveBulletFromList(this);
+            }
         }
 
         /* Plans for enemy classes:

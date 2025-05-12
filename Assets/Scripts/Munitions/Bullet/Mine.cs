@@ -52,6 +52,13 @@ public class Mine : MonoBehaviour
         #endregion
     }
 
+    public void FakeExplode()
+    {
+        Instantiate(explosionEffect, transform.position, Quaternion.identity);
+
+        Destroy(gameObject);
+    }
+
     private void ColliderHack()
     {
         explosionRadius.enabled = false;
