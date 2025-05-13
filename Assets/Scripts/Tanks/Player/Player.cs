@@ -55,6 +55,8 @@ public class Player :  BaseTank
     SpriteRenderer playerBodySR;
     SpriteRenderer playerCannonSR;
 
+    RoundManager roundManager;
+
     private void Awake()
     {
         if (playerInstance == null)
@@ -73,6 +75,9 @@ public class Player :  BaseTank
 
         if (levelTransmitionManager == null)
             levelTransmitionManager = LevelTransmitionManager.instance;
+
+        if (roundManager == null)
+            roundManager = RoundManager.instance;
     }
 
     private void FixedUpdate()
@@ -207,8 +212,8 @@ public class Player :  BaseTank
 
         print("Finished Delay!");
 
-
-        levelTransmitionManager.LoadSceneWithTransition(SceneManager.GetActiveScene().buildIndex);
+        roundManager.EndingSequence();
+        
         //StartCoroutine(gameManager.ReloadWithDelay());
     }
 

@@ -81,17 +81,21 @@ public class RoundManager : MonoBehaviour
 
         if (numOfActiveEnemies <= 0)
         {
-            DestroyAllMunitions();
-            ToggleBehavioursOfAllTanks(false);
-            StopPlayerMovment();
-
-            StartCoroutine(LoadNextLevel());
+            EndingSequence();
         }
     }
 
-    public void EndingSequence(bool isPlayerDead)
+    public void EndingSequence(/*bool isPlayerDead*/)
     {
+        DestroyAllMunitions();
+        ToggleBehavioursOfAllTanks(false);
+        StopPlayerMovment();
 
+        // If player is dead, reload level
+        // If not load new one
+        // Bool has no use as of yet
+        
+        StartCoroutine(LoadNextLevel());
     }
 
     private IEnumerator LoadNextLevel()

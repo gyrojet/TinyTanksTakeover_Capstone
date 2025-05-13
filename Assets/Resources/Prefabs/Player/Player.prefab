@@ -54,6 +54,7 @@ MonoBehaviour:
   cannonRotationCompAngle: 90
   cannonBulletFiringCompAngle: -90
   isMoving: 0
+  movementVector: {x: 0, y: 0}
   playerRB: {fileID: 5129442373462447444}
   tankBody: {fileID: 4916616251336609697}
   tankCannon: {fileID: 4243140521456451744}
@@ -9947,7 +9948,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4997927927744480888, guid: 5cf270c22bb8a0c42b53779d7ecb3dc0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 540a3fd754e00f045aff253e405437e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10010,7 +10011,7 @@ Transform:
   m_GameObject: {fileID: 5345768081181715931}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07762365, y: -0.007, z: 0}
+  m_LocalPosition: {x: -0, y: -0.007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10029,7 +10030,7 @@ GameObject:
   m_Layer: 0
   m_Name: Firing Point
   m_TagString: Untagged
-  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
