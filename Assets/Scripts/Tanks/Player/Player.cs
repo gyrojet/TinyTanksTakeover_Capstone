@@ -32,7 +32,7 @@ public class Player :  BaseTank
 
     //private Quaternion toAngle;
 
-    Vector2 movementVector;
+    public Vector2 movementVector;
 
     [SerializeField] Rigidbody2D playerRB;
 
@@ -177,7 +177,7 @@ public class Player :  BaseTank
 
     public void DeathRoutine()
     {
-        print("KillTank called!");
+        
         KillPlayer();
     }
 

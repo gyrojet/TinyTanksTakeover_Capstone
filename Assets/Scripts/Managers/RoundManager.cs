@@ -17,6 +17,10 @@ public class RoundManager : MonoBehaviour
 
     public int numOfActiveEnemies;
 
+    [Header("Round Start Sequence")]
+
+    public int roundStartCountdown;
+
     [Header("Identification")]
     [SerializeField] string enemyTag;
     [SerializeField] string bulletTag;
@@ -50,7 +54,10 @@ public class RoundManager : MonoBehaviour
         GetActiveEnemies();
 
         levelUIManager.UpdateTankCount(numOfActiveEnemies);
-        //ToggleBehavioursOfAllTanks(false);
+
+        ToggleBehavioursOfAllTanks(false);
+
+        StartCoroutine(RoundStartSequence());
     }
 
     private void GetActivePlayer()
@@ -75,14 +82,23 @@ public class RoundManager : MonoBehaviour
         if (numOfActiveEnemies <= 0)
         {
             DestroyAllMunitions();
+            ToggleBehavioursOfAllTanks(false);
+            StopPlayerMovment();
+
             StartCoroutine(LoadNextLevel());
         }
+    }
+
+    public void EndingSequence(bool isPlayerDead)
+    {
+
     }
 
     private IEnumerator LoadNextLevel()
     {
         yield return new WaitForSecondsRealtime(3f);
 
+        // Changle later...
         levelTransmitionManager.LoadSceneWithTransition(
                 levelTransmitionManager.GetCurrentSceneIndex());
     }
@@ -113,5 +129,28 @@ public class RoundManager : MonoBehaviour
         {
             tank.GetComponent<EnemyBehaviourHandler>().isEnabled = value;
         }
+    }
+
+    private void StopPlayerMovment()
+    {
+        player.movementVector = Vector2.zero;
+    }
+
+    private IEnumerator RoundStartSequence()
+    {
+        int countdown = roundStartCountdown;
+
+        while (countdown > 0)
+        {
+            levelUIManager.UpdateRoundStartTimer(countdown);
+
+            yield return new WaitForSecondsRealtime(1f);
+
+            countdown--;
+        }
+
+        levelUIManager.ToggleRoundStartTimer();
+
+        ToggleBehavioursOfAllTanks(true);
     }
 }

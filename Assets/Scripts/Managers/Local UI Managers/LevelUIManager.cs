@@ -22,6 +22,10 @@ public class LevelUIManager : MonoBehaviour
     [Header("Pause Screen Controls")]
     #region PauseScreenControls
 
+    [Header("Round Start Timer")]
+    [SerializeField] GameObject roundStartTimer;
+    [SerializeField] TextMeshProUGUI timerText;
+
     public Button resumeGame;
     public Button endGame;
 
@@ -73,5 +77,15 @@ public class LevelUIManager : MonoBehaviour
     public void UpdateTankCount(int numberRemaining)
     {
         numberOfTanksRemaining.text = numberRemaining.ToString();
+    }
+
+    public void UpdateRoundStartTimer(int num)
+    {
+        timerText.text = num.ToString();
+    }
+
+    public void ToggleRoundStartTimer()
+    {
+        roundStartTimer.SetActive(!roundStartTimer.activeSelf);
     }
 }

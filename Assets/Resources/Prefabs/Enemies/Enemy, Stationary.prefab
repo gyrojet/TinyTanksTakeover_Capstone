@@ -10003,7 +10003,7 @@ MonoBehaviour:
   cannonRotationSpeed: 110
   cannonRotationCompAngle: 90
   cannonBulletFiringCompAngle: -90
-  visibilityRadius: 10
+  visibilityRadius: 25
   isMoving: 0
   isPlayerVisible: 0
   enemyRB: {fileID: 0}
