@@ -7,6 +7,9 @@ public class TimelineManagerUI : MonoBehaviour
 
     PlayableDirector playableDirector;
 
+    [SerializeField] PlayableAsset roundStart;
+    [SerializeField] PlayableAsset roundEnd;
+
     void Awake()
     {
         if (instance == null)
@@ -19,8 +22,15 @@ public class TimelineManagerUI : MonoBehaviour
             playableDirector = GetComponent<PlayableDirector>();
     }
 
-    public void PlayTimeline()
+    public void PlayRoundStartTimeline()
     {
+        playableDirector.playableAsset = roundStart;
+        playableDirector.Play();
+    }
+
+    public void PlayRoundEndTimeline()
+    {
+        playableDirector.playableAsset = roundEnd;
         playableDirector.Play();
     }
 }

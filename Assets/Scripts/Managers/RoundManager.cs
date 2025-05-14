@@ -96,6 +96,8 @@ public class RoundManager : MonoBehaviour
         ToggleBehavioursOfAllTanks(false);
         StopPlayerMovment();
 
+        timelineManagerUI.PlayRoundEndTimeline();
+
         // If player is dead, reload level
         // If not load new one
         // Bool has no use as of yet
@@ -160,7 +162,7 @@ public class RoundManager : MonoBehaviour
 
         //levelUIManager.ToggleRoundStartTimer();
 
-        timelineManagerUI.PlayTimeline();
+        timelineManagerUI.PlayRoundStartTimeline();
 
         ToggleBehavioursOfAllTanks(true);
     }
