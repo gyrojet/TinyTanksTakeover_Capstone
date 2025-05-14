@@ -58,6 +58,7 @@ public class RoundManager : MonoBehaviour
         GetActiveEnemies();
 
         levelUIManager.UpdateTankCount(numOfActiveEnemies);
+        levelUIManager.UpdateLevelDisplay(levelTransmitionManager.GetCurrentSceneIndex());
 
         ToggleBehavioursOfAllTanks(false);
 
@@ -157,7 +158,9 @@ public class RoundManager : MonoBehaviour
             countdown--;
         }
 
-        levelUIManager.ToggleRoundStartTimer();
+        //levelUIManager.ToggleRoundStartTimer();
+
+        timelineManagerUI.PlayTimeline();
 
         ToggleBehavioursOfAllTanks(true);
     }

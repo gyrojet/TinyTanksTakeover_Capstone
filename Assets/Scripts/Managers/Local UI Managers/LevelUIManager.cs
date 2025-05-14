@@ -20,17 +20,17 @@ public class LevelUIManager : MonoBehaviour
     public Animator animator_PauseScreen;
 
     [Header("Pause Screen Controls")]
-    #region PauseScreenControls
+    public Button resumeGame;
+    public Button endGame;
 
     [Header("Round Start Timer")]
     [SerializeField] GameObject roundStartTimer;
     [SerializeField] TextMeshProUGUI timerText;
 
-    public Button resumeGame;
-    public Button endGame;
+    [Header("Level Display")]
+    [SerializeField] TextMeshProUGUI levelDisplayText;
 
-    #endregion
-
+    [Header("Tanks Remaining Display")]
     public TextMeshProUGUI numberOfTanksRemaining;
 
     private void Awake()
@@ -82,6 +82,11 @@ public class LevelUIManager : MonoBehaviour
     public void UpdateRoundStartTimer(int num)
     {
         timerText.text = num.ToString();
+    }
+
+    public void UpdateLevelDisplay(int  level)
+    { 
+        levelDisplayText.text = level.ToString();
     }
 
     // REPLACE WITH TIMELINE ANIMATION
