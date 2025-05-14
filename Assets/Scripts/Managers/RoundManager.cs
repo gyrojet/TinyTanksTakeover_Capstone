@@ -10,6 +10,7 @@ public class RoundManager : MonoBehaviour
     //GameManager gameManager;
     LevelTransmitionManager levelTransmitionManager;
     LevelUIManager levelUIManager;
+    TimelineManagerUI timelineManagerUI;
 
     [Header("Enemies & Player")]
     [SerializeField] Player player = null;
@@ -49,6 +50,9 @@ public class RoundManager : MonoBehaviour
 
         if (levelUIManager == null)
             levelUIManager = LevelUIManager.Instance;
+
+        if (timelineManagerUI == null)
+            timelineManagerUI = TimelineManagerUI.instance;
 
         GetActivePlayer();
         GetActiveEnemies();
@@ -102,7 +106,7 @@ public class RoundManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(3f);
 
-        // Changle later...
+        // Change later...
         levelTransmitionManager.LoadSceneWithTransition(
                 levelTransmitionManager.GetCurrentSceneIndex());
     }

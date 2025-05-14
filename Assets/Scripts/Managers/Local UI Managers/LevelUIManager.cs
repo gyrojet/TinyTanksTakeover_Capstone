@@ -50,7 +50,7 @@ public class LevelUIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
         }
@@ -84,6 +84,7 @@ public class LevelUIManager : MonoBehaviour
         timerText.text = num.ToString();
     }
 
+    // REPLACE WITH TIMELINE ANIMATION
     public void ToggleRoundStartTimer()
     {
         roundStartTimer.SetActive(!roundStartTimer.activeSelf);
