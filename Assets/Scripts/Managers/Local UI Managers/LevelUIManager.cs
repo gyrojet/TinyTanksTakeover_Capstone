@@ -4,7 +4,12 @@ using UnityEngine.UI;
 
 public class LevelUIManager : MonoBehaviour
 {
+    [Header("Pause Button")]
+    public KeyCode pauseButton;
+
     public static LevelUIManager Instance;
+
+    public bool isRoundStarted = false;
 
     LevelTransmitionManager levelTransmitionManager;
     RoundManager roundManager;
@@ -50,9 +55,12 @@ public class LevelUIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (isRoundStarted)
         {
-            TogglePause();
+            if (Input.GetKeyDown(pauseButton))
+            {
+                TogglePause();
+            }
         }
     }
 

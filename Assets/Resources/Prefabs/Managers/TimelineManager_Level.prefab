@@ -14,7 +14,7 @@ GameObject:
   m_Layer: 0
   m_Name: TimelineManager_Level
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3ce8df85481844b82f0fe49fd21ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundStart: {fileID: 11400000, guid: a3faa1b71065d134f8489d540c0a5364, type: 2}
+  roundEnd: {fileID: 11400000, guid: 095cffbd73704e84cb56baa1ee1e18aa, type: 2}
 --- !u!320 &7003523113601763132
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -61,6 +63,10 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 979198144241598338, guid: a3faa1b71065d134f8489d540c0a5364, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7662529267758243387, guid: a3faa1b71065d134f8489d540c0a5364, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 1170736692248529146, guid: 095cffbd73704e84cb56baa1ee1e18aa, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []

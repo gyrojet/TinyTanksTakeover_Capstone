@@ -54,6 +54,8 @@ public class RoundManager : MonoBehaviour
         if (timelineManagerUI == null)
             timelineManagerUI = TimelineManagerUI.instance;
 
+        levelUIManager.isRoundStarted = false;
+
         GetActivePlayer();
         GetActiveEnemies();
 
@@ -168,5 +170,7 @@ public class RoundManager : MonoBehaviour
         timelineManagerUI.PlayRoundStartTimeline();
 
         ToggleBehavioursOfAllTanks(true);
+
+        levelUIManager.isRoundStarted = true;
     }
 }
