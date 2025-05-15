@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Red Die 7 (Breakable)_0: -3060565966672724364
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -58,7 +58,9 @@ public class RoundManager : MonoBehaviour
         GetActiveEnemies();
 
         levelUIManager.UpdateTankCount(numOfActiveEnemies);
-        levelUIManager.UpdateLevelDisplay(levelTransmitionManager.GetCurrentSceneIndex());
+
+        // Quick fix to show to jason...
+        levelUIManager.UpdateLevelDisplay(1);
 
         ToggleBehavioursOfAllTanks(false);
 
