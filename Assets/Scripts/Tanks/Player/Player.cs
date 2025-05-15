@@ -212,7 +212,7 @@ public class Player :  BaseTank
 
         print("Finished Delay!");
 
-        roundManager.EndingSequence();
+        roundManager.EndingSequence(true);
         
         //StartCoroutine(gameManager.ReloadWithDelay());
     }

@@ -57,12 +57,12 @@ public class RoundManager : MonoBehaviour
         GetActivePlayer();
         GetActiveEnemies();
 
+        ToggleBehavioursOfAllTanks(false);
+
         levelUIManager.UpdateTankCount(numOfActiveEnemies);
 
         // Quick fix to show to jason...
         levelUIManager.UpdateLevelDisplay(1);
-
-        ToggleBehavioursOfAllTanks(false);
 
         StartCoroutine(RoundStartSequence());
     }
@@ -88,17 +88,18 @@ public class RoundManager : MonoBehaviour
 
         if (numOfActiveEnemies <= 0)
         {
-            EndingSequence();
+            EndingSequence(false);
         }
     }
 
-    public void EndingSequence(/*bool isPlayerDead*/)
+    public void EndingSequence(bool isPlayerDead)
     {
         DestroyAllMunitions();
         ToggleBehavioursOfAllTanks(false);
         StopPlayerMovment();
 
-        timelineManagerUI.PlayRoundEndTimeline();
+        if (!isPlayerDead)
+            timelineManagerUI.PlayRoundEndTimeline();
 
         // If player is dead, reload level
         // If not load new one
