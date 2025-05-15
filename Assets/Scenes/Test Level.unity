@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f3862f976ceb44daf0d3e6d4abaae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridWorldSize: {x: 17.16, y: 9.34}
+  gridWorldSize: {x: 17.16, y: 9.36}
   gridOffset: {x: 0.05, y: 0.7}
   nodeRadius: 0.5
   nonTraversableMask:
@@ -2769,7 +2769,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 689385483307438706, guid: 8cbbc261b0b6d79418209211214060ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -11.875705
       objectReference: {fileID: 0}
     - target: {fileID: 689385483307438706, guid: 8cbbc261b0b6d79418209211214060ac, type: 3}
       propertyPath: m_LocalPosition.y
