@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Unbreakable (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -266,6 +270,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 149616933}
     m_Modifications:
+    - target: {fileID: 1026074329893685228, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1075692589934005144, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.57861865
@@ -277,6 +285,10 @@ PrefabInstance:
     - target: {fileID: 1075692589934005144, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.035266597
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116989301129461485, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4175543189209035417, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
       propertyPath: m_LocalPosition.x
@@ -305,6 +317,10 @@ PrefabInstance:
     - target: {fileID: 4832872681864397719, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
       propertyPath: m_Name
       value: Wall, Unbreakable (Group, 4x1) (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832872681864397719, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4832872681864397719, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
       propertyPath: m_TagString
@@ -350,6 +366,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 6912241337816075397, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7503821188609784304, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.421382
@@ -361,6 +381,10 @@ PrefabInstance:
     - target: {fileID: 7503821188609784304, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.035266597
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415599427259209188, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -424,6 +448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Unbreakable (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -486,6 +514,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Unbreakable (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -505,8 +537,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 374330945}
+  - component: {fileID: 374330946}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: A*
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -521,12 +554,30 @@ Transform:
   m_GameObject: {fileID: 374330944}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: -2, z: -0.024201505}
+  m_LocalPosition: {x: 0.03, y: -0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &374330946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374330944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f3862f976ceb44daf0d3e6d4abaae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridWorldSize: {x: 17.16, y: 9.34}
+  gridOffset: {x: 0.05, y: 0.7}
+  nodeRadius: 0.5
+  nonTraversableMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &420593928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -610,6 +661,10 @@ PrefabInstance:
     - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_Name
       value: Wall, Unbreakable (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -862,7 +917,7 @@ GameObject:
   - component: {fileID: 571369605}
   - component: {fileID: 571369607}
   - component: {fileID: 571369606}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestWall (3)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1182,6 +1237,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Breakable (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4589509966798639201, guid: cdffc4523cb7ea14ca3498f2585c6eb8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1244,6 +1303,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Breakable (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4589509966798639201, guid: cdffc4523cb7ea14ca3498f2585c6eb8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1265,7 +1328,7 @@ GameObject:
   - component: {fileID: 873160570}
   - component: {fileID: 873160572}
   - component: {fileID: 873160571}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestWall (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1475,6 +1538,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Unbreakable (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1683,7 +1750,7 @@ GameObject:
   - component: {fileID: 1500635335}
   - component: {fileID: 1500635337}
   - component: {fileID: 1500635336}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1845,6 +1912,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 149616933}
     m_Modifications:
+    - target: {fileID: 1026074329893685228, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1075692589934005144, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.0459523
@@ -1856,6 +1927,10 @@ PrefabInstance:
     - target: {fileID: 1075692589934005144, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.035266597
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116989301129461485, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4175543189209035417, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1884,6 +1959,10 @@ PrefabInstance:
     - target: {fileID: 4832872681864397719, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
       propertyPath: m_Name
       value: Wall, Unbreakable (Group, 4x1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832872681864397719, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4832872681864397719, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
       propertyPath: m_TagString
@@ -1929,6 +2008,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6912241337816075397, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7503821188609784304, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.9540477
@@ -1940,6 +2023,10 @@ PrefabInstance:
     - target: {fileID: 7503821188609784304, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.035266597
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415599427259209188, guid: da5db9d785c00594d9c900d12a487f19, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2003,6 +2090,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Unbreakable (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2060,7 +2151,7 @@ GameObject:
   - component: {fileID: 1818962591}
   - component: {fileID: 1818962593}
   - component: {fileID: 1818962592}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestWall (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -2286,6 +2377,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Unbreakable (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2347,6 +2442,10 @@ PrefabInstance:
     - target: {fileID: 4589509966798639201, guid: cdffc4523cb7ea14ca3498f2585c6eb8, type: 3}
       propertyPath: m_Name
       value: Wall, Breakable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589509966798639201, guid: cdffc4523cb7ea14ca3498f2585c6eb8, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2410,6 +2509,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Breakable (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4589509966798639201, guid: cdffc4523cb7ea14ca3498f2585c6eb8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2471,6 +2574,10 @@ PrefabInstance:
     - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_Name
       value: Wall, Unbreakable (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3122,6 +3229,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 374330945}
   - {fileID: 619394802}
   - {fileID: 519420032}
   - {fileID: 65525989}
@@ -3135,4 +3243,3 @@ SceneRoots:
   - {fileID: 1794309593}
   - {fileID: 1417006123}
   - {fileID: 1335431495}
-  - {fileID: 374330945}

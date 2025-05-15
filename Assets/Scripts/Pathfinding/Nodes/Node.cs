@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 
-public class Node : MonoBehaviour
+public class Node
 {
     [Header("Traversability")]
     public bool isTraversable;
+    public Vector2 worldPosition;
 
-    [Header("Attributes")]
-    public int G;
-    public int H;
-    public int F;
+    public Node(bool _isTraversable,  Vector2 _worldPosition)
+    {
+        isTraversable = _isTraversable;
+        worldPosition = _worldPosition;
+    }
 }
