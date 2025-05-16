@@ -538,6 +538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 374330945}
   - component: {fileID: 374330946}
+  - component: {fileID: 374330947}
   m_Layer: 0
   m_Name: A*
   m_TagString: Untagged
@@ -572,12 +573,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f3862f976ceb44daf0d3e6d4abaae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyToUse: {fileID: 0}
   gridWorldSize: {x: 17.16, y: 9.36}
   gridOffset: {x: 0.05, y: 0.7}
   nodeRadius: 0.5
   nonTraversableMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &374330947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374330944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bda62492165e2a4e96b35d32e63b031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &420593928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2500,6 +2514,90 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: unbreakableWallSprites.Array.size
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[8]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 113c36be59b08c64faeca9ff9cae36fb, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[9]'
+      value: 
+      objectReference: {fileID: 21300000, guid: c00c8e53adc7f2f439c2b1d776ebb11c, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[10]'
+      value: 
+      objectReference: {fileID: 2810025155792842768, guid: 2a0de32a764eda14fac6fb7c4bf70105, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[11]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 083393ea43d3a2a4db33f6acc983d70e, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[12]'
+      value: 
+      objectReference: {fileID: 4051085692043530320, guid: 60eed5ad06adccc4bb1bd39fd538a628, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[13]'
+      value: 
+      objectReference: {fileID: 21300000, guid: c0f8537de1a169d4f923052d34159897, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[14]'
+      value: 
+      objectReference: {fileID: 21300000, guid: cce745843ef20ed4da1b959e06a54195, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[15]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 2755c4e78895d1f47bdc5f32f527a4b1, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[16]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 4ebece9225e82094a8e3c6b31ca514b5, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[17]'
+      value: 
+      objectReference: {fileID: -4228044263698030977, guid: 7c0e80b66859efa4988b710c57161332, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[18]'
+      value: 
+      objectReference: {fileID: 21300000, guid: cf71068329bcf234b92e449069c0aa86, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[19]'
+      value: 
+      objectReference: {fileID: -2096598994022568450, guid: a229bf325b074634ba96ac8979a0f1be, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[20]'
+      value: 
+      objectReference: {fileID: -4419330455834016755, guid: 6a64366909200a440bc8426ad4b4541f, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[21]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 1cc3d76710b0df44f98f1b4ce47b18f4, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[22]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 9ecedab345690cd47acb39a5d9037a89, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[23]'
+      value: 
+      objectReference: {fileID: 1292039478380954790, guid: b37822a8fbb5d7d48a8b595186540ea3, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[24]'
+      value: 
+      objectReference: {fileID: 21300000, guid: eb15253867fde564485d1dd715e0844d, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[25]'
+      value: 
+      objectReference: {fileID: 21300000, guid: df42ce18807efed49a17417409317518, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[26]'
+      value: 
+      objectReference: {fileID: 21300000, guid: df42ce18807efed49a17417409317518, type: 3}
+    - target: {fileID: 5267035436515766155, guid: c06c1288858b2654cb133d2b57c15331, type: 3}
+      propertyPath: 'unbreakableWallSprites.Array.data[27]'
+      value: 
+      objectReference: {fileID: 21300000, guid: df42ce18807efed49a17417409317518, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

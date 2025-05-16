@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class AStarGrid : MonoBehaviour
 {
+    public Transform enemyToUse;
+
     public Vector2 gridWorldSize;
     public Vector2 gridOffset;
     public float nodeRadius;
@@ -47,6 +49,20 @@ public class AStarGrid : MonoBehaviour
                 nodeGrid[x, y] = new Node(walkable, worldPoint);
             }
         }
+    }
+
+    public Node NodeFromWorldPoint(Vector2 worldPoint)
+    {
+        float percentX = (worldPoint.x + gridWorldSize.x / 2) / gridWorldSize.x;
+        float percentY = (worldPoint.y + gridWorldSize.y / 2) / gridWorldSize.y;
+
+        percentX = Mathf.Clamp01(percentX);
+        percentY = Mathf.Clamp01(percentY);
+
+        int index_X = Mathf.RoundToInt((gridSizeX - 1) * percentX);
+        int index_Y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
+
+        return nodeGrid[index_X, index_Y];
     }
 
     private void OnDrawGizmos()
