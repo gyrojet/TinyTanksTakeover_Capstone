@@ -1012,6 +1012,14 @@ PrefabInstance:
       propertyPath: alwaysDrawGizmos
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1187216970423203427, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
+      propertyPath: endReachedDistance
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187216970423203427, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
+      propertyPath: constrainInsideGraph
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2427216602072629718, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
       propertyPath: canMove
       value: 1
@@ -2958,6 +2966,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2427216602072629718, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
+      propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6275929807893437348, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
       propertyPath: m_Name
       value: Enemy, Stationary

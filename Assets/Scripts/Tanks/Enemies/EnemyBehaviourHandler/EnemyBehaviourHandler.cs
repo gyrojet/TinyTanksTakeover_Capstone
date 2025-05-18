@@ -6,201 +6,215 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemyBehaviourHandler : MonoBehaviour
+namespace Pathfinding
 {
-    //public EnemyTank enemyl;
-
-    [SerializeField] Player player;
-    [SerializeField] Enemy attachedEnemy;
-    
-    public Seeker seeker;
-    public AIPath pathfinder;
-    public AIDestinationSetter destinationSetter;
-
-    [Header("Behaviour Attributes")]
-    public bool isEnabled = true;
-
-    public bool canMove;
-    public bool canShootBullets;
-    public bool canUseMines;
-
-    public float attackDelay = 5;
-    public float attackRecognitionRange = 50;
-
-    [Header("Enemy Sight")]
-    public float visibilityRadius = 7;
-    public float pathfindingTargetRadius = 4.5f;
-    public LayerMask playersLayer;
-
-    public UnityEvent OnShoot = new UnityEvent();
-    public UnityEvent OnUseMines = new UnityEvent();
-
-    public UnityEvent<Vector2> OnBodyMove = new UnityEvent<Vector2>();
-    public UnityEvent<Vector2> OnCannonMove = new UnityEvent<Vector2>();
-
-    [Header("Debugging Propetries")]
-    [SerializeField] bool isPlayerWithinRadius;
-    [SerializeField] bool isEligableToShoot;
-    public bool didFindPlayer;
-    private Vector2 playerPos;
-    [SerializeField] Vector2 currentPosition;
-
-    private void Start()
+    public class EnemyBehaviourHandler : MonoBehaviour
     {
-        if (player == null)
-            player = Player.playerInstance;
+        //public EnemyTank enemyl;
 
-        if (attachedEnemy == null)
-            attachedEnemy = gameObject.GetComponent<Enemy>();
+        [SerializeField] Player player;
+        [SerializeField] Enemy attachedEnemy;
 
-        if (pathfinder == null)
-            pathfinder = gameObject.GetComponent<AIPath>();
+        public Seeker seeker;
+        public AIPath pathfinder;
+        public AIDestinationSetter destinationSetter;
 
-        if (destinationSetter == null)
-            destinationSetter = gameObject.GetComponent<AIDestinationSetter>();
+        [Header("Behaviour Attributes")]
+        public bool isEnabled = true;
 
-        if (seeker == null)
-            seeker = gameObject.GetComponent<Seeker>();
+        public bool canMove;
+        public bool canShootBullets;
+        public bool canUseMines;
 
-        if (isEnabled != true)
-            isEnabled = true;
+        public float attackDelay = 5;
+        public float attackRecognitionRange = 50;
 
-        // Gets random path
-        // Check radius for player: If true, set them as the new position. If false, choose a random position and head to it.
-        //seeker.GetNewPath(attachedEnemy.tankBody.transform.position, )
+        [Header("Enemy Sight")]
+        public float visibilityRadius = 7;
+        public float pathfindingTargetRadius = 4.5f;
 
-        if (canMove)
-            UpdatePathfindingTarget();
-    }
+        public float pathfindingTargetOffset = 1.65f;
 
-    public bool IsPlayerWithinRadius(float radiusToCheck)
-    {
-        return Physics2D.OverlapCircle
-            (
-                attachedEnemy.tankBody.transform.position,
-                radiusToCheck,
-                playersLayer
-            );
-    }
+        public LayerMask playersLayer;
 
-    public void UpdatePathfindingTarget()
-    { 
-        if (IsPlayerWithinRadius(visibilityRadius))
-        { 
-            print("Finding path to player...");
-            destinationSetter.target = player.tankBody.transform;
-        }
-        else
+        public UnityEvent OnShoot = new UnityEvent();
+        public UnityEvent OnUseMines = new UnityEvent();
+
+        public UnityEvent<Vector2> OnBodyMove = new UnityEvent<Vector2>();
+        public UnityEvent<Vector2> OnCannonMove = new UnityEvent<Vector2>();
+
+        [Header("Debugging Propetries")]
+        [SerializeField] bool isPlayerWithinRadius;
+        [SerializeField] bool isEligableToShoot;
+        public bool didFindPlayer;
+        private Vector2 playerPos;
+        [SerializeField] Vector2 currentPosition;
+
+        private void Start()
         {
-            print("Player Not Found!");
-            //destinationSetter.target = 
+            if (player == null)
+                player = Player.playerInstance;
+
+            if (attachedEnemy == null)
+                attachedEnemy = gameObject.GetComponent<Enemy>();
+
+            if (pathfinder == null)
+                pathfinder = gameObject.GetComponent<AIPath>();
+
+            if (destinationSetter == null)
+                destinationSetter = gameObject.GetComponent<AIDestinationSetter>();
+
+            if (seeker == null)
+                seeker = gameObject.GetComponent<Seeker>();
+
+            if (isEnabled != true)
+                isEnabled = true;
+
+            // Gets random path
+            // Check radius for player: If true, set them as the new position. If false, choose a random position and head to it.
+            //seeker.GetNewPath(attachedEnemy.tankBody.transform.position, )
+
+            if (canMove)
+                UpdatePathfindingTarget();
         }
-    }
 
-    private void Update()
-    {
-        if (isEnabled)
+        public bool IsPlayerWithinRadius(float radiusToCheck)
         {
-            ApplyMovement();
-            ApplyCannonMovement();
-            ApplyShootingAction();
-            ApplyMineAction();
+            return Physics2D.OverlapCircle
+                (
+                    attachedEnemy.tankBody.transform.position,
+                    radiusToCheck,
+                    playersLayer
+                );
         }
-    }
 
-    private void FixedUpdate()
-    {
-        CheckRadiusForPlayer();
-    }
-
-    private void ApplyMovement()
-    {
-        if (canMove)
+        public void UpdatePathfindingTarget()
         {
-            OnBodyMove?.Invoke(new Vector2(0, 0));
-        }
-    }
-
-    private void ApplyCannonMovement()
-    { 
-        if (isPlayerWithinRadius)
-        {
-            OnCannonMove?.Invoke(playerPos);
-        }
-    }
-
-    private void ApplyShootingAction()
-    {
-        /*
-         * Tank can shoot when using Invoke, but it's so quick that it basically destroys the game.
-         * Work on this tommorow, maybe you can work something out!
-         * 
-         * Ideas: Implement a proper delay into the code...
-         */
-
-        if (canShootBullets)
-        {
-            if (isEligableToShoot)
+            if (IsPlayerWithinRadius(visibilityRadius))
             {
-                canShootBullets = false;
-                OnShoot?.Invoke();
+                print("Finding path to player...");
+
+                GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
+
+                float targetX = player.tankBody.transform.position.x + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+                float targetY = player.tankBody.transform.position.y + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+
+                targetObj.transform.position = new Vector2(targetX, targetY);
+
+                destinationSetter.target = targetObj.transform;
             }
             else
-                attachedEnemy.StopAllCoroutines();
+            {
+                print("Player Not Found!");
+                //destinationSetter.target = 
+            }
         }
-    }
 
-    //private IEnumerator DelayShooting()
-    //{
-    //    print("Calling DelayShooting");
-    //}
-
-    private void ApplyMineAction()
-    {
-        if (canUseMines)
+        private void Update()
         {
-            OnUseMines?.Invoke();
+            if (isEnabled)
+            {
+                ApplyMovement();
+                ApplyCannonMovement();
+                ApplyShootingAction();
+                ApplyMineAction();
+            }
         }
-    }
 
-    private void CheckRadiusForPlayer()
-    {
-        isPlayerWithinRadius = IsPlayerWithinRadius(visibilityRadius);
-
-        if (isPlayerWithinRadius)
+        private void FixedUpdate()
         {
-            //print("Tank is eligable to shoot!");
-            playerPos = player.tankBody.transform.position;
-
-            //Debug.DrawLine(gameObject.transform.position, self.gameObject.transform.position - gameObject.transform.position, Color.red, Mathf.Infinity);
-
-            // If the player is within the tank's set range
-            if (CheckForPlayerRayHit())
-                isEligableToShoot = true;
+            CheckRadiusForPlayer();
         }
-        else
-            isEligableToShoot = false;
-    }
 
-    private bool CheckForPlayerRayHit()
-    {
-        // If player is within radius AND within distance of the raycast:
-        RaycastHit2D rayHit = Physics2D.Raycast(attachedEnemy.cannonFiringPoint.transform.position, attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position, attackRecognitionRange);
-
-        //Debug.DrawLine(attachedEnemy.cannonFiringPoint.transform.position, attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position, Color.red, Mathf.Infinity);
-
-        if (rayHit.collider != null)
+        private void ApplyMovement()
         {
-            // If ray hits player:
-            if (rayHit.collider.CompareTag("Player")) 
-                didFindPlayer = true;
+            if (canMove)
+            {
+                OnBodyMove?.Invoke(new Vector2(0, 0));
+            }
+        }
+
+        private void ApplyCannonMovement()
+        {
+            if (isPlayerWithinRadius)
+            {
+                OnCannonMove?.Invoke(playerPos);
+            }
+        }
+
+        private void ApplyShootingAction()
+        {
+            /*
+             * Tank can shoot when using Invoke, but it's so quick that it basically destroys the game.
+             * Work on this tommorow, maybe you can work something out!
+             * 
+             * Ideas: Implement a proper delay into the code...
+             */
+
+            if (canShootBullets)
+            {
+                if (isEligableToShoot)
+                {
+                    canShootBullets = false;
+                    OnShoot?.Invoke();
+                }
+                else
+                    attachedEnemy.StopAllCoroutines();
+            }
+        }
+
+        //private IEnumerator DelayShooting()
+        //{
+        //    print("Calling DelayShooting");
+        //}
+
+        private void ApplyMineAction()
+        {
+            if (canUseMines)
+            {
+                OnUseMines?.Invoke();
+            }
+        }
+
+        private void CheckRadiusForPlayer()
+        {
+            isPlayerWithinRadius = IsPlayerWithinRadius(visibilityRadius);
+
+            if (isPlayerWithinRadius)
+            {
+                //print("Tank is eligable to shoot!");
+                playerPos = player.tankBody.transform.position;
+
+                //Debug.DrawLine(gameObject.transform.position, self.gameObject.transform.position - gameObject.transform.position, Color.red, Mathf.Infinity);
+
+                // If the player is within the tank's set range
+                if (CheckForPlayerRayHit())
+                    isEligableToShoot = true;
+            }
             else
-                didFindPlayer = false;
+                isEligableToShoot = false;
         }
 
-        //Debug.Log($"Raycast Status: {didFindPlayer}");
+        private bool CheckForPlayerRayHit()
+        {
+            // If player is within radius AND within distance of the raycast:
+            RaycastHit2D rayHit = Physics2D.Raycast(attachedEnemy.cannonFiringPoint.transform.position, attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position, attackRecognitionRange);
 
-        // Return result of raycast
-        return didFindPlayer;
+            //Debug.DrawLine(attachedEnemy.cannonFiringPoint.transform.position, attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position, Color.red, Mathf.Infinity);
+
+            if (rayHit.collider != null)
+            {
+                // If ray hits player:
+                if (rayHit.collider.CompareTag("Player"))
+                    didFindPlayer = true;
+                else
+                    didFindPlayer = false;
+            }
+
+            //Debug.Log($"Raycast Status: {didFindPlayer}");
+
+            // Return result of raycast
+            return didFindPlayer;
+        }
     }
 }
