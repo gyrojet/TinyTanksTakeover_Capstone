@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6300009769049424815}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall, Unbreakable (Group, 4x1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,15 +45,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5466683
+      value: 1.0459523
       objectReference: {fileID: 0}
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.114331245
+      value: 0.16000009
       objectReference: {fileID: 0}
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.035266593
+      value: 0.035266597
       objectReference: {fileID: 0}
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalRotation.w
@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Unbreakable (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -107,15 +111,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.453258
+      value: -0.9540477
       objectReference: {fileID: 0}
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.114331245
+      value: 0.16000009
       objectReference: {fileID: 0}
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.035266593
+      value: 0.035266597
       objectReference: {fileID: 0}
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalRotation.w
@@ -149,6 +153,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Unbreakable (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -169,15 +177,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5466316
+      value: 2.0459523
       objectReference: {fileID: 0}
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.114331245
+      value: 0.16000009
       objectReference: {fileID: 0}
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.035266593
+      value: 0.035266597
       objectReference: {fileID: 0}
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalRotation.w
@@ -211,6 +219,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Unbreakable (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -231,15 +243,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.46000004
+      value: 0.04595232
       objectReference: {fileID: 0}
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.113
+      value: 0.16000009
       objectReference: {fileID: 0}
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.035266593
+      value: 0.035266597
       objectReference: {fileID: 0}
     - target: {fileID: 5206209495513080202, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_LocalRotation.w
@@ -272,6 +284,10 @@ PrefabInstance:
     - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
       propertyPath: m_Name
       value: Wall, Unbreakable
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191830008111060223, guid: 66509be3fe3b89144875e48c7afa6049, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

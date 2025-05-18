@@ -143,7 +143,12 @@ public class RoundManager : MonoBehaviour
 
         foreach (GameObject tank in activeEnemies)
         {
-            tank.GetComponent<EnemyBehaviourHandler>().isEnabled = value;
+            EnemyBehaviourHandler enemy = tank.GetComponent<EnemyBehaviourHandler>();
+
+            enemy.isEnabled = value;
+            
+            if (enemy.canMove)
+                enemy.pathfinder.canMove = value;
         }
     }
 

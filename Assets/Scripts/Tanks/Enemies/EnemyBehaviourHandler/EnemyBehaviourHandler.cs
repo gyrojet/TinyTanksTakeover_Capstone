@@ -1,5 +1,8 @@
+using Pathfinding;
 using System.Collections;
+using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +12,10 @@ public class EnemyBehaviourHandler : MonoBehaviour
 
     [SerializeField] Player player;
     [SerializeField] Enemy attachedEnemy;
+    
+    public Seeker seeker;
+    public AIPath pathfinder;
+    public AIDestinationSetter destinationSetter;
 
     [Header("Behaviour Attributes")]
     public bool isEnabled = true;
@@ -22,6 +29,7 @@ public class EnemyBehaviourHandler : MonoBehaviour
 
     [Header("Enemy Sight")]
     public float visibilityRadius = 7;
+    public float pathfindingTargetRadius = 4.5f;
     public LayerMask playersLayer;
 
     public UnityEvent OnShoot = new UnityEvent();
@@ -45,8 +53,48 @@ public class EnemyBehaviourHandler : MonoBehaviour
         if (attachedEnemy == null)
             attachedEnemy = gameObject.GetComponent<Enemy>();
 
+        if (pathfinder == null)
+            pathfinder = gameObject.GetComponent<AIPath>();
+
+        if (destinationSetter == null)
+            destinationSetter = gameObject.GetComponent<AIDestinationSetter>();
+
+        if (seeker == null)
+            seeker = gameObject.GetComponent<Seeker>();
+
         if (isEnabled != true)
             isEnabled = true;
+
+        // Gets random path
+        // Check radius for player: If true, set them as the new position. If false, choose a random position and head to it.
+        //seeker.GetNewPath(attachedEnemy.tankBody.transform.position, )
+
+        if (canMove)
+            UpdatePathfindingTarget();
+    }
+
+    public bool IsPlayerWithinRadius(float radiusToCheck)
+    {
+        return Physics2D.OverlapCircle
+            (
+                attachedEnemy.tankBody.transform.position,
+                radiusToCheck,
+                playersLayer
+            );
+    }
+
+    public void UpdatePathfindingTarget()
+    { 
+        if (IsPlayerWithinRadius(visibilityRadius))
+        { 
+            print("Finding path to player...");
+            destinationSetter.target = player.tankBody.transform;
+        }
+        else
+        {
+            print("Player Not Found!");
+            //destinationSetter.target = 
+        }
     }
 
     private void Update()
@@ -117,12 +165,7 @@ public class EnemyBehaviourHandler : MonoBehaviour
 
     private void CheckRadiusForPlayer()
     {
-        isPlayerWithinRadius = Physics2D.OverlapCircle
-            (
-                attachedEnemy.tankBody.transform.position,
-                visibilityRadius,
-                playersLayer
-            );
+        isPlayerWithinRadius = IsPlayerWithinRadius(visibilityRadius);
 
         if (isPlayerWithinRadius)
         {
@@ -142,7 +185,7 @@ public class EnemyBehaviourHandler : MonoBehaviour
     private bool CheckForPlayerRayHit()
     {
         // If player is within radius AND within distance of the raycast:
-        RaycastHit2D rayHit = Physics2D.Raycast(attachedEnemy.cannonFiringPoint.transform.position, attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position, attackRecognitionRange, playersLayer);
+        RaycastHit2D rayHit = Physics2D.Raycast(attachedEnemy.cannonFiringPoint.transform.position, attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position, attackRecognitionRange);
 
         //Debug.DrawLine(attachedEnemy.cannonFiringPoint.transform.position, attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position, Color.red, Mathf.Infinity);
 
