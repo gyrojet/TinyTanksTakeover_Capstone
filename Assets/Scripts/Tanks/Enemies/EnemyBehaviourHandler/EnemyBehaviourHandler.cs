@@ -1,5 +1,7 @@
+using NUnit.Framework;
 using Pathfinding;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 using UnityEditor;
@@ -38,12 +40,15 @@ namespace Pathfinding
         public float randomMoveRange = 2f;
 
         public LayerMask playersLayer;
+        public LayerMask nodeLayer;
 
         public UnityEvent OnShoot = new UnityEvent();
         public UnityEvent OnUseMines = new UnityEvent();
 
         public UnityEvent<Vector2> OnBodyMove = new UnityEvent<Vector2>();
         public UnityEvent<Vector2> OnCannonMove = new UnityEvent<Vector2>();
+
+        List<GameObject> possibleTargetNodes;
 
         bool isChosenTargetValid = false;
 
@@ -78,6 +83,8 @@ namespace Pathfinding
             // Check radius for player: If true, set them as the new position. If false, choose a random position and head to it.
             //seeker.GetNewPath(attachedEnemy.tankBody.transform.position, )
 
+            //nearbyNodes.Clear();
+
             if (canMove)
                 UpdatePathfindingTarget();
         }
@@ -94,29 +101,15 @@ namespace Pathfinding
 
         public void UpdatePathfindingTarget()
         {
-            //Vector2 randomRange, tankPos, randomPos = Vector2.zero;
+            //Collider2D[] nearbyNodes;
 
-            //while (isChosenTargetValid != true)
-            //{
-            //    randomRange = Random.insideUnitCircle * randomMoveRange;
+            //Physics2D.OverlapCircle(
+            //    attachedEnemy.tankBody.transform.position,
+            //    pathfindingTargetRadius,
+            //    nodeLayer
+              
+            //    );
 
-            //    tankPos = attachedEnemy.tankBody.transform.position;
-            //    randomPos = (Vector2)attachedEnemy.tankBody.transform.position - randomRange;
-
-            //    RaycastHit2D objectCheck = Physics2D.Raycast(tankPos, randomPos, Vector2.Distance(tankPos, randomPos));
-
-            //    if (objectCheck.collider != null)
-            //    {
-            //        if (objectCheck.collider.tag == "Wall") 
-            //            isChosenTargetValid = false;
-            //    }
-            //    else
-            //        isChosenTargetValid = true;
-            //}
-
-            //GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
-
-            //float targetX = randomPos.x;
             //float targetY = randomPos.y;
 
             if (IsPlayerWithinRadius(visibilityRadius))

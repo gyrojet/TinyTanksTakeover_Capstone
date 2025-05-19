@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - ID Enemy
   - LevelManager
+  - Node
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - UI
   - PlayerLayer
   - Unwalkable
-  - 
+  - Node
   - 
   - 
   - 
