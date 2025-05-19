@@ -35,6 +35,8 @@ namespace Pathfinding
 
         public float pathfindingTargetOffset = 1.65f;
 
+        public float randomMoveRange = 2f;
+
         public LayerMask playersLayer;
 
         public UnityEvent OnShoot = new UnityEvent();
@@ -42,6 +44,8 @@ namespace Pathfinding
 
         public UnityEvent<Vector2> OnBodyMove = new UnityEvent<Vector2>();
         public UnityEvent<Vector2> OnCannonMove = new UnityEvent<Vector2>();
+
+        bool isChosenTargetValid = false;
 
         [Header("Debugging Propetries")]
         [SerializeField] bool isPlayerWithinRadius;
@@ -90,6 +94,31 @@ namespace Pathfinding
 
         public void UpdatePathfindingTarget()
         {
+            //Vector2 randomRange, tankPos, randomPos = Vector2.zero;
+
+            //while (isChosenTargetValid != true)
+            //{
+            //    randomRange = Random.insideUnitCircle * randomMoveRange;
+
+            //    tankPos = attachedEnemy.tankBody.transform.position;
+            //    randomPos = (Vector2)attachedEnemy.tankBody.transform.position - randomRange;
+
+            //    RaycastHit2D objectCheck = Physics2D.Raycast(tankPos, randomPos, Vector2.Distance(tankPos, randomPos));
+
+            //    if (objectCheck.collider != null)
+            //    {
+            //        if (objectCheck.collider.tag == "Wall") 
+            //            isChosenTargetValid = false;
+            //    }
+            //    else
+            //        isChosenTargetValid = true;
+            //}
+
+            //GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
+
+            //float targetX = randomPos.x;
+            //float targetY = randomPos.y;
+
             if (IsPlayerWithinRadius(visibilityRadius))
             {
                 print("Finding path to player...");
@@ -106,7 +135,18 @@ namespace Pathfinding
             else
             {
                 print("Player Not Found!");
-                //destinationSetter.target = 
+
+                //  REMOVE LATER
+                print("Finding path to player...");
+
+                GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
+
+                float targetX = player.tankBody.transform.position.x + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+                float targetY = player.tankBody.transform.position.y + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+
+                targetObj.transform.position = new Vector2(targetX, targetY);
+
+                destinationSetter.target = targetObj.transform;
             }
         }
 
@@ -119,6 +159,8 @@ namespace Pathfinding
                 ApplyShootingAction();
                 ApplyMineAction();
             }
+
+
         }
 
         private void FixedUpdate()
@@ -131,6 +173,15 @@ namespace Pathfinding
             if (canMove)
             {
                 OnBodyMove?.Invoke(new Vector2(0, 0));
+
+
+                ///
+                /// REMOVE LATER
+                ///
+                if (pathfinder.reachedDestination)
+                    UpdatePathfindingTarget();
+
+                print(pathfinder.reachedDestination);
             }
         }
 
