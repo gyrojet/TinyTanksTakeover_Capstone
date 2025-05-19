@@ -3,6 +3,7 @@ using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Reflection.Emit;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
@@ -101,46 +102,43 @@ namespace Pathfinding
 
         public void UpdatePathfindingTarget()
         {
-            //Collider2D[] nearbyNodes;
+            Collider2D[] nodes = Physics2D.OverlapCircleAll(
+                attachedEnemy.tankBody.transform.position,
+                pathfindingTargetRadius,
+                nodeLayer
+                );
 
-            //Physics2D.OverlapCircle(
-            //    attachedEnemy.tankBody.transform.position,
-            //    pathfindingTargetRadius,
-            //    nodeLayer
-              
-            //    );
+            destinationSetter.target = nodes[Random.Range(0, nodes.Length)].gameObject.transform;
 
-            //float targetY = randomPos.y;
+            //if (IsPlayerWithinRadius(visibilityRadius))
+            //{
+            //    print("Finding path to player...");
 
-            if (IsPlayerWithinRadius(visibilityRadius))
-            {
-                print("Finding path to player...");
+            //    GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
 
-                GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
+            //    float targetX = player.tankBody.transform.position.x + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+            //    float targetY = player.tankBody.transform.position.y + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
 
-                float targetX = player.tankBody.transform.position.x + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
-                float targetY = player.tankBody.transform.position.y + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+            //    targetObj.transform.position = new Vector2(targetX, targetY);
 
-                targetObj.transform.position = new Vector2(targetX, targetY);
+            //    destinationSetter.target = targetObj.transform;
+            //}
+            //else
+            //{
+            //    print("Player Not Found!");
 
-                destinationSetter.target = targetObj.transform;
-            }
-            else
-            {
-                print("Player Not Found!");
+            //    //  REMOVE LATER
+            //    print("Finding path to player...");
 
-                //  REMOVE LATER
-                print("Finding path to player...");
+            //    GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
 
-                GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
+            //    float targetX = player.tankBody.transform.position.x + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+            //    float targetY = player.tankBody.transform.position.y + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
 
-                float targetX = player.tankBody.transform.position.x + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
-                float targetY = player.tankBody.transform.position.y + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+            //    targetObj.transform.position = new Vector2(targetX, targetY);
 
-                targetObj.transform.position = new Vector2(targetX, targetY);
-
-                destinationSetter.target = targetObj.transform;
-            }
+            //    destinationSetter.target = targetObj.transform;
+            //}
         }
 
         private void Update()

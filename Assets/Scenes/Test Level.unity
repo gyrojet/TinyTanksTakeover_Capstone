@@ -3323,6 +3323,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2427216602072629718, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
+      propertyPath: nodeLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 2427216602072629718, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
       propertyPath: pathfindingTargetOffset
       value: 0.75
       objectReference: {fileID: 0}
@@ -11407,6 +11411,10 @@ PrefabInstance:
     - target: {fileID: 2427216602072629718, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
       propertyPath: canShootBullets
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2427216602072629718, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
+      propertyPath: nodeLayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2427216602072629718, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
       propertyPath: pathfindingTargetOffset
