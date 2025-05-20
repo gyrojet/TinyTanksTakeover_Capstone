@@ -32,6 +32,8 @@ namespace Pathfinding
         public float attackDelay = 5;
         public float attackRecognitionRange = 50;
 
+        public MovementType movementType;
+
         [Header("Enemy Sight")]
         public float visibilityRadius = 7;
         public float pathfindingTargetRadius = 4.5f;
@@ -102,13 +104,65 @@ namespace Pathfinding
 
         public void UpdatePathfindingTarget()
         {
-            Collider2D[] nodes = Physics2D.OverlapCircleAll(
-                attachedEnemy.tankBody.transform.position,
-                pathfindingTargetRadius,
-                nodeLayer
-                );
+            
+            switch (movementType)
+            {
+                case MovementType.Random:
 
-            destinationSetter.target = nodes[Random.Range(0, nodes.Length)].gameObject.transform;
+                    Collider2D[] nodes = Physics2D.OverlapCircleAll(
+                        attachedEnemy.tankBody.transform.position,
+                        pathfindingTargetRadius,
+                        nodeLayer
+                        );
+
+                    destinationSetter.target = nodes[Random.Range(0, nodes.Length)].gameObject.transform;
+                    break;
+
+                case MovementType.FollowPlayer:
+
+                    if (IsPlayerWithinRadius(visibilityRadius))
+                    {
+                        print("Finding path to player...");
+
+                        GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
+
+                        float targetX = player.tankBody.transform.position.x + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+                        float targetY = player.tankBody.transform.position.y + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+
+                        targetObj.transform.position = new Vector2(targetX, targetY);
+
+                        destinationSetter.target = targetObj.transform;
+                    }
+                    else
+                    {
+                        print("Player Not Found!");
+
+                        //  REMOVE LATER
+                        print("Finding path to player...");
+
+                        GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
+
+                        float targetX = player.tankBody.transform.position.x + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+                        float targetY = player.tankBody.transform.position.y + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+
+                        targetObj.transform.position = new Vector2(targetX, targetY);
+
+                        destinationSetter.target = targetObj.transform;
+                    }
+                    break;
+
+                default:
+                    print("SOMETHING'S WRONG!");
+                    break;
+            }
+            
+            //Collider2D[] nodes = Physics2D.OverlapCircleAll(
+            //    attachedEnemy.tankBody.transform.position,
+            //    pathfindingTargetRadius,
+            //    nodeLayer
+            //    );
+
+            //destinationSetter.target = nodes[Random.Range(0, nodes.Length)].gameObject.transform;
 
             //if (IsPlayerWithinRadius(visibilityRadius))
             //{
@@ -140,6 +194,7 @@ namespace Pathfinding
             //    destinationSetter.target = targetObj.transform;
             //}
         }
+        
 
         private void Update()
         {
@@ -163,16 +218,11 @@ namespace Pathfinding
         {
             if (canMove)
             {
-                OnBodyMove?.Invoke(new Vector2(0, 0));
-
-
                 ///
                 /// REMOVE LATER
                 ///
                 if (pathfinder.reachedDestination)
                     UpdatePathfindingTarget();
-
-                print(pathfinder.reachedDestination);
             }
         }
 
