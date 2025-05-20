@@ -151,7 +151,7 @@ public class Enemy : BaseTank
 
         newBullet.LaunchBullet(cannonFiringPoint.transform.up);
 
-        yield return new WaitForSeconds(2.75f);
+        yield return new WaitForSeconds(1f);
 
         enemyBehaviour.canShootBullets = true;
         
@@ -161,7 +161,7 @@ public class Enemy : BaseTank
     {
         roundManager.UpdateCount(gameObject);
 
-        GameObject deathMarker = Instantiate(deathMarkerPrefab, tankBody.transform.position, tankBody.transform.rotation);
+        GameObject deathMarker = Instantiate(deathMarkerPrefab, tankBody.transform.position, Quaternion.identity);
 
         gameObject.SetActive(false);
     }

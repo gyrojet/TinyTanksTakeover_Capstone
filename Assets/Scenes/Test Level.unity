@@ -11577,6 +11577,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 455762437654898053, guid: 17cae555abb75ac4c956241891635b4b, type: 3}
+      propertyPath: cannonRotationSpeed
+      value: 220
+      objectReference: {fileID: 0}
     - target: {fileID: 3114594733371538703, guid: 17cae555abb75ac4c956241891635b4b, type: 3}
       propertyPath: m_Name
       value: Player

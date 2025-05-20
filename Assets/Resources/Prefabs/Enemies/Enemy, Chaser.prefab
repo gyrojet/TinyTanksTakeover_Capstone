@@ -9917,7 +9917,7 @@ MonoBehaviour:
   cannonRotationSpeed: 220
   cannonRotationCompAngle: 90
   cannonBulletFiringCompAngle: -90
-  visibilityRadius: 25
+  visibilityRadius: 100
   isMoving: 0
   isPlayerVisible: 0
   enemyRB: {fileID: 0}
@@ -9956,7 +9956,7 @@ MonoBehaviour:
   canShootBullets: 1
   canUseMines: 0
   attackDelay: 2
-  attackRecognitionRange: 100
+  attackRecognitionRange: 200
   movementType: 1
   visibilityRadius: 20
   pathfindingTargetRadius: 4.5

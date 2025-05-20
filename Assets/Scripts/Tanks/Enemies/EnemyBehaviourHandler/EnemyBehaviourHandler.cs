@@ -205,8 +205,6 @@ namespace Pathfinding
                 ApplyShootingAction();
                 ApplyMineAction();
             }
-
-
         }
 
         private void FixedUpdate()
@@ -236,13 +234,6 @@ namespace Pathfinding
 
         private void ApplyShootingAction()
         {
-            /*
-             * Tank can shoot when using Invoke, but it's so quick that it basically destroys the game.
-             * Work on this tommorow, maybe you can work something out!
-             * 
-             * Ideas: Implement a proper delay into the code...
-             */
-
             if (canShootBullets)
             {
                 if (isEligableToShoot)
@@ -290,18 +281,18 @@ namespace Pathfinding
         private bool CheckForPlayerRayHit()
         {
             // If player is within radius AND within distance of the raycast:
-            RaycastHit2D rayHit = Physics2D.Raycast(attachedEnemy.cannonFiringPoint.transform.position, attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position, attackRecognitionRange);
+            RaycastHit2D rayHit = Physics2D.Raycast(attachedEnemy.cannonFiringPoint.transform.position, (attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position) * attackRecognitionRange, attackRecognitionRange);
 
-            //Debug.DrawLine(attachedEnemy.cannonFiringPoint.transform.position, attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position, Color.red, Mathf.Infinity);
+            Debug.DrawLine(attachedEnemy.cannonFiringPoint.transform.position, (attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position) * attackRecognitionRange, Color.red, Mathf.Infinity);
 
-            if (rayHit.collider != null)
-            {
+            //if (rayHit.collider != null)
+            //{
                 // If ray hits player:
                 if (rayHit.collider.CompareTag("Player"))
                     didFindPlayer = true;
                 else
                     didFindPlayer = false;
-            }
+            //}
 
             //Debug.Log($"Raycast Status: {didFindPlayer}");
 
