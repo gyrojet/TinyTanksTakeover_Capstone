@@ -83,7 +83,7 @@ public class Mine : MonoBehaviour
             print("mine has hit enemy!");
 
             Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
-            enemy.TempKillFunc();
+            enemy.KillTank();
         }
     }
 }

@@ -41,6 +41,8 @@ public class Enemy : BaseTank
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject minePrefab;
 
+    [SerializeField] GameObject deathMarkerPrefab;
+
     public LayerMask playerLayerMask;
 
     public string bulletTag = "Bullet";
@@ -155,9 +157,12 @@ public class Enemy : BaseTank
         
     }
 
-    public void TempKillFunc()
+    public void KillTank()
     {
         roundManager.UpdateCount(gameObject);
+
+        GameObject deathMarker = Instantiate(deathMarkerPrefab, tankBody.transform.position, tankBody.transform.rotation);
+
         gameObject.SetActive(false);
     }
 

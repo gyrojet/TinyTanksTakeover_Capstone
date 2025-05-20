@@ -8782,7 +8782,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11351,18 +11351,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2350986513813019499, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: shootingDelay
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427216602072629718, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: canShootBullets
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427216602072629718, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: visibilityRadius
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 6275929807893437348, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
       propertyPath: m_Name
       value: Enemy, Stationary
@@ -11532,22 +11520,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2398736948143634597, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
-      propertyPath: rotationSpeed
-      value: 270
-      objectReference: {fileID: 0}
-    - target: {fileID: 2398736948143634597, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
-      propertyPath: autoRepath.mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2398736948143634597, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
-      propertyPath: pickNextWaypointDist
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2398736948143634597, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
-      propertyPath: autoRepath.visualizeSensitivity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6556278549797500921, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7
@@ -11587,22 +11559,6 @@ PrefabInstance:
     - target: {fileID: 6556278549797500921, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6784497912880253541, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
-      propertyPath: attackDelay
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6784497912880253541, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
-      propertyPath: canShootBullets
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6784497912880253541, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
-      propertyPath: visibilityRadius
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6784497912880253541, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
-      propertyPath: attackRecognitionRange
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6838883117536397898, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
       propertyPath: m_Name
@@ -11682,22 +11638,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2288796418521369960, guid: 3ecd931b4b495234990361f097bf0c1d, type: 3}
-      propertyPath: attackDelay
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2288796418521369960, guid: 3ecd931b4b495234990361f097bf0c1d, type: 3}
-      propertyPath: canShootBullets
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2288796418521369960, guid: 3ecd931b4b495234990361f097bf0c1d, type: 3}
-      propertyPath: visibilityRadius
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2288796418521369960, guid: 3ecd931b4b495234990361f097bf0c1d, type: 3}
-      propertyPath: attackRecognitionRange
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 3594467044844461283, guid: 3ecd931b4b495234990361f097bf0c1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6
@@ -11741,22 +11681,6 @@ PrefabInstance:
     - target: {fileID: 5038868210030624855, guid: 3ecd931b4b495234990361f097bf0c1d, type: 3}
       propertyPath: m_Name
       value: Enemy, Chaser
-      objectReference: {fileID: 0}
-    - target: {fileID: 8635887175616809599, guid: 3ecd931b4b495234990361f097bf0c1d, type: 3}
-      propertyPath: rotationSpeed
-      value: 270
-      objectReference: {fileID: 0}
-    - target: {fileID: 8635887175616809599, guid: 3ecd931b4b495234990361f097bf0c1d, type: 3}
-      propertyPath: autoRepath.mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8635887175616809599, guid: 3ecd931b4b495234990361f097bf0c1d, type: 3}
-      propertyPath: pickNextWaypointDist
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8635887175616809599, guid: 3ecd931b4b495234990361f097bf0c1d, type: 3}
-      propertyPath: autoRepath.visualizeSensitivity
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

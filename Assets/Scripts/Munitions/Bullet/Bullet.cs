@@ -91,7 +91,7 @@ public class Bullet : MonoBehaviour
 
                 Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
 
-                enemy.TempKillFunc();
+                enemy.KillTank();
                 // Enemy Manager kill script here
             }
 

@@ -108,8 +108,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -3341514868158047764, guid: 2e9d941ccbdc6e14f8ddc214e7d790d6, type: 3}
-  m_Color: {r: 0.8235295, g: 0.27058825, b: 0.2627451, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e6c4c607078be074ab4fd1e55f35a4e5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -200,8 +200,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2754418203193770982, guid: ab6973ac16e4d904a8454b0de9672f46, type: 3}
-  m_Color: {r: 0.6320754, g: 0.14012992, b: 0.61227, a: 1}
+  m_Sprite: {fileID: -8673450805451255161, guid: 62e1f1302c79efe4799e3814c030d1ab, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -276,7 +276,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.55, y: 4.5}
+    oldSize: {x: 4.67, y: 4.66}
     newSize: {x: 4.55, y: 4.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5201,7 +5201,7 @@ MonoBehaviour:
   enemyBehaviour: {fileID: 0}
   maxSpeed: 10
   rotationSpeed: 90
-  cannonRotationSpeed: 110
+  cannonRotationSpeed: 220
   cannonRotationCompAngle: 90
   cannonBulletFiringCompAngle: -90
   visibilityRadius: 25
@@ -5215,6 +5215,7 @@ MonoBehaviour:
   cannonFiringPoint: {fileID: 2986803344139165129}
   bulletPrefab: {fileID: 1704722613948410065, guid: 4a3409b490cd64447b24b5a2a3a53203, type: 3}
   minePrefab: {fileID: 2824194964169484779, guid: 4bb8a1345f9f1ce419399f4076f88889, type: 3}
+  deathMarkerPrefab: {fileID: 3470200241154924858, guid: 2f175d582b6dea74cbb4bedd046153d8, type: 3}
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -5241,10 +5242,10 @@ MonoBehaviour:
   canMove: 1
   canShootBullets: 1
   canUseMines: 0
-  attackDelay: 1.5
-  attackRecognitionRange: 50
+  attackDelay: 2
+  attackRecognitionRange: 100
   movementType: 0
-  visibilityRadius: 7
+  visibilityRadius: 20
   pathfindingTargetRadius: 4.5
   pathfindingTargetOffset: 1.5
   randomMoveRange: 2
@@ -5356,9 +5357,9 @@ MonoBehaviour:
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
-  rotationSpeed: 360
+  rotationSpeed: 270
   slowdownDistance: 0.6
-  pickNextWaypointDist: 1
+  pickNextWaypointDist: 0.5
   endReachedDistance: 0.45
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
