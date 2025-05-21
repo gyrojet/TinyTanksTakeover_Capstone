@@ -283,7 +283,7 @@ namespace Pathfinding
             // If player is within radius AND within distance of the raycast:
             RaycastHit2D rayHit = Physics2D.Raycast(attachedEnemy.cannonFiringPoint.transform.position, (attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position) * attackRecognitionRange, attackRecognitionRange);
 
-            Debug.DrawLine(attachedEnemy.cannonFiringPoint.transform.position, (attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position) * attackRecognitionRange, Color.red, Mathf.Infinity);
+            Debug.DrawRay(attachedEnemy.cannonFiringPoint.transform.position, (attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position) * attackRecognitionRange, Color.red, 0.001f);
 
             //if (rayHit.collider != null)
             //{
