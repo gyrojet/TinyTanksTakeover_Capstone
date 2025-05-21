@@ -149,7 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBreakable: 1
-  mineTag: MineExplosion
+  bulletTag: Bullet
+  broken: {fileID: 2183782807590326228, guid: 931fe9ea4a7c8974e8971fdeb27df274, type: 3}
 --- !u!50 &-6143383714948196807
 Rigidbody2D:
   serializedVersion: 5

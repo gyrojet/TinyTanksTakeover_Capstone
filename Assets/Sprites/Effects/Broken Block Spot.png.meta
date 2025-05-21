@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: a229bf325b074634ba96ac8979a0f1be
+guid: 931fe9ea4a7c8974e8971fdeb27df274
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2096598994022568450
-    second: PokerDice_8OfDiamonds_0
+      213: 2183782807590326228
+    second: Broken Block Spot_0
+  - first:
+      213: 2183132952077558042
+    second: Broken Block Spot_1
+  - first:
+      213: 7660380400115750458
+    second: Broken Block Spot_2
+  - first:
+      213: 8262114974368991913
+    second: Broken Block Spot_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +135,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PokerDice_8OfDiamonds_0
+      name: Broken Block Spot_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
+        x: 2
+        y: 3
+        width: 250
+        height: 252
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +150,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: efde7dcb25267e2e0800000000000000
-      internalID: -2096598994022568450
+      spriteID: 4dfc601b4ea5e4e10800000000000000
+      internalID: 2183782807590326228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broken Block Spot_1
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 244
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a11680a6adb0c4e10800000000000000
+      internalID: 2183132952077558042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broken Block Spot_2
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 221
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a36934133632f4a60800000000000000
+      internalID: 7660380400115750458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broken Block Spot_3
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 23
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9aa03bc6bcde8a270800000000000000
+      internalID: 8262114974368991913
       vertices: []
       indices: 
       edges: []
@@ -160,8 +235,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      PokerDice_8OfDiamonds_0: -2096598994022568450
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

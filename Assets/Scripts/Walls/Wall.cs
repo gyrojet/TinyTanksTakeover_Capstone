@@ -10,6 +10,8 @@ public class Wall : MonoBehaviour
 
     [SerializeField] string bulletTag = "Bullet";
 
+    [SerializeField] Sprite broken;
+
     SpriteRenderer wallSpriteRenderer;
     Collider2D wallCollider;
 
@@ -54,12 +56,13 @@ public class Wall : MonoBehaviour
 
         print("Wall collider disabled!");
 
-        wallSpriteRenderer.enabled = false;
+        wallSpriteRenderer.sprite = broken;
+        wallSpriteRenderer.sortingOrder = -1;
 
         print("Sprite renderer disabled!");
     }
 
-    // Wall Destruction test
+    // Wall Destruction
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isBreakable)

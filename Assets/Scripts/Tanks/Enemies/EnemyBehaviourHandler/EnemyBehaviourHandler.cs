@@ -271,11 +271,8 @@ namespace Pathfinding
                 //Debug.DrawLine(gameObject.transform.position, self.gameObject.transform.position - gameObject.transform.position, Color.red, Mathf.Infinity);
 
                 // If the player is within the tank's set range
-                if (CheckForPlayerRayHit())
-                    isEligableToShoot = true;
+                isEligableToShoot = CheckForPlayerRayHit();
             }
-            else
-                isEligableToShoot = false;
         }
 
         private bool CheckForPlayerRayHit()

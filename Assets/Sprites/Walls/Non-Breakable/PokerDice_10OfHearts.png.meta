@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PokerDice_10OfHearts_0: -8121394240668253526
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
