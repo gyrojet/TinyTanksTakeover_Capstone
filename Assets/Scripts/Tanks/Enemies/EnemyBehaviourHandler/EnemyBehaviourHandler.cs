@@ -45,6 +45,10 @@ namespace Pathfinding
         public LayerMask playersLayer;
         public LayerMask nodeLayer;
 
+        [Header("LayerMask for Raycasting")]
+
+        [SerializeField] string[] layersToGetWithRaycast;
+
         public UnityEvent OnShoot = new UnityEvent();
         public UnityEvent OnUseMines = new UnityEvent();
 
@@ -278,18 +282,30 @@ namespace Pathfinding
         private bool CheckForPlayerRayHit()
         {
             // If player is within radius AND within distance of the raycast:
-            RaycastHit2D rayHit = Physics2D.Raycast(attachedEnemy.cannonFiringPoint.transform.position, (attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position) * attackRecognitionRange, attackRecognitionRange);
 
-            Debug.DrawRay(attachedEnemy.cannonFiringPoint.transform.position, (attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position) * attackRecognitionRange, Color.red, 0.001f);
+            Vector2 origin = attachedEnemy.cannonFiringPoint.transform.position;
+            Vector2 direction = (attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position) * attackRecognitionRange;
 
-            //if (rayHit.collider != null)
-            //{
-                // If ray hits player:
+            float distance = attackRecognitionRange;
+            
+
+            ///
+            /// COME BACK HERE LATER!
+            ///
+            RaycastHit2D rayHit = Physics2D.Raycast(origin, direction, distance, LayerMask.GetMask(layersToGetWithRaycast));
+
+            //RaycastHit2D rayHit = Physics2D.Raycast(attachedEnemy.cannonFiringPoint.transform.position, (attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position) * attackRecognitionRange, attackRecognitionRange, playersLayer);
+
+            Debug.DrawRay(origin, direction, Color.red, 0.001f);
+
+            if (rayHit.collider != null)
+            {
+                //If ray hits player:
                 if (rayHit.collider.CompareTag("Player"))
                     didFindPlayer = true;
                 else
                     didFindPlayer = false;
-            //}
+            }
 
             //Debug.Log($"Raycast Status: {didFindPlayer}");
 
