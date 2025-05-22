@@ -161,13 +161,13 @@ namespace Pathfinding
                 case MovementType.RandomLongest:
                     #region Random, Farthest Distance
 
-                    Collider2D[] nodesSecond = Physics2D.OverlapCircleAll(
+                    List<Collider2D> nodesSecond = Physics2D.OverlapCircleAll(
                         attachedEnemy.tankBody.transform.position,
                         pathfindingTargetRadius,
                         nodeLayer
-                        );
+                        ).ToList();
 
-                    //nodesSecond = nodesSecond.OrderBy((dist) => dist);
+                    //nodesSecond.Sort((x, y) =>)
                     break;
 
                 #endregion
