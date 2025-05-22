@@ -8759,7 +8759,7 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 2810c312c715dd341b0ca5624d6dbe7a, type: 2}
@@ -11343,79 +11343,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1794309593}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &6305395442743743240
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2427216602072629718, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: canShootBullets
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427216602072629718, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: layersToGetWithRaycast.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427216602072629718, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: 'layersToGetWithRaycast.Array.data[0]'
-      value: PlayerLayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427216602072629718, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: 'layersToGetWithRaycast.Array.data[1]'
-      value: Unwalkable
-      objectReference: {fileID: 0}
-    - target: {fileID: 6275929807893437348, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: m_Name
-      value: Enemy, Stationary
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000410509267789763, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000410509267789763, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000410509267789763, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000410509267789763, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000410509267789763, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000410509267789763, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000410509267789763, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000410509267789763, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000410509267789763, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000410509267789763, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
 --- !u!1001 &6802256039108231061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11582,7 +11509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6784497912880253541, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
       propertyPath: canShootBullets
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6784497912880253541, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
       propertyPath: layersToGetWithRaycast.Array.size
@@ -11684,11 +11611,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2288796418521369960, guid: 3ecd931b4b495234990361f097bf0c1d, type: 3}
       propertyPath: canMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2288796418521369960, guid: 3ecd931b4b495234990361f097bf0c1d, type: 3}
       propertyPath: canShootBullets
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2288796418521369960, guid: 3ecd931b4b495234990361f097bf0c1d, type: 3}
       propertyPath: layersToGetWithRaycast.Array.size
@@ -11756,7 +11683,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 374330945}
-  - {fileID: 1657984041}
   - {fileID: 960148751}
   - {fileID: 619394802}
   - {fileID: 519420032}
@@ -11765,7 +11691,6 @@ SceneRoots:
   - {fileID: 508894723}
   - {fileID: 7717216108474741140}
   - {fileID: 1283179060}
-  - {fileID: 6305395442743743240}
   - {fileID: 7323927236486956650}
   - {fileID: 8186437643494108168}
   - {fileID: 149616933}
@@ -11773,3 +11698,4 @@ SceneRoots:
   - {fileID: 1417006123}
   - {fileID: 1335431495}
   - {fileID: 569055188}
+  - {fileID: 1657984041}

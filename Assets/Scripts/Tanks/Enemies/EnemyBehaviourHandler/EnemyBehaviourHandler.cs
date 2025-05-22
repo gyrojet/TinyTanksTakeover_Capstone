@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Reflection.Emit;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
@@ -112,7 +113,7 @@ namespace Pathfinding
             switch (movementType)
             {
                 case MovementType.Random:
-
+                    #region Random Movement
                     Collider2D[] nodes = Physics2D.OverlapCircleAll(
                         attachedEnemy.tankBody.transform.position,
                         pathfindingTargetRadius,
@@ -121,9 +122,10 @@ namespace Pathfinding
 
                     destinationSetter.target = nodes[Random.Range(0, nodes.Length)].gameObject.transform;
                     break;
+                    #endregion
 
                 case MovementType.FollowPlayer:
-
+                    #region Follow Player
                     if (IsPlayerWithinRadius(visibilityRadius))
                     {
                         print("Finding path to player...");
@@ -154,49 +156,26 @@ namespace Pathfinding
                         destinationSetter.target = targetObj.transform;
                     }
                     break;
+                #endregion
 
+                case MovementType.RandomLongest:
+                    #region Random, Farthest Distance
+
+                    Collider2D[] nodesSecond = Physics2D.OverlapCircleAll(
+                        attachedEnemy.tankBody.transform.position,
+                        pathfindingTargetRadius,
+                        nodeLayer
+                        );
+
+                    //nodesSecond = nodesSecond.OrderBy((dist) => dist);
+                    break;
+
+                #endregion
                 default:
                     print("SOMETHING'S WRONG!");
                     break;
             }
             
-            //Collider2D[] nodes = Physics2D.OverlapCircleAll(
-            //    attachedEnemy.tankBody.transform.position,
-            //    pathfindingTargetRadius,
-            //    nodeLayer
-            //    );
-
-            //destinationSetter.target = nodes[Random.Range(0, nodes.Length)].gameObject.transform;
-
-            //if (IsPlayerWithinRadius(visibilityRadius))
-            //{
-            //    print("Finding path to player...");
-
-            //    GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
-
-            //    float targetX = player.tankBody.transform.position.x + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
-            //    float targetY = player.tankBody.transform.position.y + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
-
-            //    targetObj.transform.position = new Vector2(targetX, targetY);
-
-            //    destinationSetter.target = targetObj.transform;
-            //}
-            //else
-            //{
-            //    print("Player Not Found!");
-
-            //    //  REMOVE LATER
-            //    print("Finding path to player...");
-
-            //    GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
-
-            //    float targetX = player.tankBody.transform.position.x + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
-            //    float targetY = player.tankBody.transform.position.y + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
-
-            //    targetObj.transform.position = new Vector2(targetX, targetY);
-
-            //    destinationSetter.target = targetObj.transform;
-            //}
         }
         
 
