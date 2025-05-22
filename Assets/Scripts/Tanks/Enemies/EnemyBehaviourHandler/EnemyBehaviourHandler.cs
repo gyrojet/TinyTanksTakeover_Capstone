@@ -166,7 +166,8 @@ namespace Pathfinding
                         nodeLayer
                         ).ToList();
 
-                    
+                    // Sort here, if you can figure it out!
+
                     break;
 
                 #endregion
