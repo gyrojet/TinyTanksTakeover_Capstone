@@ -109,7 +109,6 @@ namespace Pathfinding
 
         public void UpdatePathfindingTarget()
         {
-            
             switch (movementType)
             {
                 case MovementType.Random:
@@ -167,7 +166,7 @@ namespace Pathfinding
                         nodeLayer
                         ).ToList();
 
-                    //nodesSecond.Sort((x, y) =>)
+                    
                     break;
 
                 #endregion
@@ -175,7 +174,6 @@ namespace Pathfinding
                     print("SOMETHING'S WRONG!");
                     break;
             }
-            
         }
         
 
