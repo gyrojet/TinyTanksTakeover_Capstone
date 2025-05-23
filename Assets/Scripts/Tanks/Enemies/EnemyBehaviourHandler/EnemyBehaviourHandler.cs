@@ -296,9 +296,7 @@ namespace Pathfinding
             float distance = attackRecognitionRange;
             
 
-            ///
-            /// COME BACK HERE LATER!
-            ///
+           
             RaycastHit2D rayHit = Physics2D.Raycast(origin, direction, distance, LayerMask.GetMask(layersToGetWithRaycast));
 
             //RaycastHit2D rayHit = Physics2D.Raycast(attachedEnemy.cannonFiringPoint.transform.position, (attachedEnemy.cannonFiringPoint.transform.position - attachedEnemy.gameObject.transform.position) * attackRecognitionRange, attackRecognitionRange, playersLayer);

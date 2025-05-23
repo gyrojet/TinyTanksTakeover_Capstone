@@ -1728,7 +1728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8000410509267789763, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00658755
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 8000410509267789763, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3719,10 +3719,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Breakable (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 4589509966798639201, guid: cdffc4523cb7ea14ca3498f2585c6eb8, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4767,10 +4763,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Breakable (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 4589509966798639201, guid: cdffc4523cb7ea14ca3498f2585c6eb8, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5380,7 +5372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACYn+vxSQceWwIAABEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1zmzAQ/SsenZsO4DYJvbWO7fTgxBO3kwsXWVpAYyExkvBHMv7vXQkwxJ2cvH77dvfth3gnQtkamNNmaQRfaQ7kx4R4m3yZDM5HONJCq414g57zKrgrPYkGzgt1QiMe+zCrK3BGsJ+qkJ4cIdgokWtTzXkBM22dRTin0gK6jHY+WiH0PiFH/LlJfcgJreTOW29opdHkjCYD5cAM1J7Y01pWo5ikVQ3cSx7I8V3HTgNLYS8dwetmWkphOyHEnerQ6KYuwYDvlAuKfYXi0dcUgRJEUTqvchz9nOcWXCfJ0NODMDigNi35pdupVdTuWl17KpugILkPotqkq//8N3Fw50ZXj33dOPI1XCnY7oWeGLVuNNYx/DBIj8N4DlTu6FbCawnqSS+NbhRHpzOND20sJA/D30trsxLYbsBbqVdgU3++HN/DOXR/nElRbcMkv7XARuow8LB6MLia3yg4HIbtUiDqVfy18IcW4wvqHAthrENX16Xy8ra6MZ5KFmj4ybPGzbRRYMYJalBUutMa07jrFV75Po9aUP9WuuKdr38CVyEBHvhRdOVa68NlWbbUhxXY8rlxUigYJu0dTzinmVaqvTD70emjNo3JKRtFFY3gHy+L5N+necpTntxCEscxv7mdblPK2D27m94nCZ+ScHpCYZtUrlud3XRwaWpIrvDM+i/IZGloHY6dG3pYirdKj/QJlesNMwDquc3QT8iCwSL4KvmcC5zPBpwTKqybvGdEarYDnl0SZaHT+dEZmg1ZMlKLvXYeycgsfDIy4uHLKa8N7AUcfPE+2Zmc/wFQSwMEFAAACAgAAJif68F6xuttAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFKaqXGaZYplipFZqpGhoWGKrplxkmVicrJFsrmxhZFRirFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAJif6/FJBx5bAgAAEQUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAJif68F6xuttAAAAeAAAAAkAJAAAAAAAAAAAAAAAqAIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABgAwAAAAA=
+    dataString: UEsDBBQAAAgIAACYn+sbq7ypWwIAABEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzqWDIU3i3lqSkB6SMCGdXHwR0hprkCWPJAdIhv/eXdnGDp2cWN6+3X37IX8wZXwFIli3cEo+WAns54iRzb6Neuc97PnGmpV6h47zqmQoiMQj55kHZRFPKMzbEoJT4pfZaCJPEKyNyq0rb+UG5tYHj3DOtQd0ORso2iD0MWJ7/BmnFHJAa3pF1jta6WR0RFOACeB6akfsaA2rNkLzsgJJkntyctWy08gy2EtLIN3Caq18K4SFQxUbXVUFOKBOpeLYVyw++Z4iUIDaFIFUDqOf8txDaCU5frhRDgfUpGW/bTO1kvtto+uN65oKXV400pukD//5x0l0586W913dZEI1QqHE9pkfBPdhMNYhfNNLT+J4dlxv+VrDawHm0S6crY1EZ3A1hdYepjf931Nr8wLEtscbqWdgXX29HOrhGLvfz7Uq13GSFw2w0jYOPK4eHK7mDwqOh+HbFIiSir8eXvhmeEGt4045H9DVdmlI3trWjqjsDg2avKjD3DoDbpigAsN1OCwxTThf4Znv66g7Tm+lLd76uidwFhLhnj+ZnLmWdndali/s7gF88VQHrQz0kybHI85pbo1pLsx/dlLUqnY5F4OoTa3k58ti+Y9ZnspUTi9hmiSJHF/O1ikX4lpcza6nUzlj8fSUwTa5XjY62+ng0kyf3OCZdV+Q0cLxKh67dHy3UO+lHehTJrcr4QDMU5Ohm5AHh0XwVcpbqXA+KwhBmbhu9pExbcUWZHZKlMVOb/fB8azPkrFKvdlASMbm8ZORMYJPp7x08KZgR8W7ZEd2/AdQSwMEFAAACAgAAJif68F6xuttAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFKaqXGaZYplipFZqpGhoWGKrplxkmVicrJFsrmxhZFRirFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAJif6xurvKlbAgAAEQUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAJif68F6xuttAAAAeAAAAAkAJAAAAAAAAAAAAAAAqAIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABgAwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -7521,6 +7513,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6556278549797500921, guid: 586876ff83debd443bf4dbab51f925a5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784497912880253541, guid: 586876ff83debd443bf4dbab51f925a5, type: 3}
+      propertyPath: canMove
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6784497912880253541, guid: 586876ff83debd443bf4dbab51f925a5, type: 3}
@@ -10012,10 +10008,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall, Breakable
       objectReference: {fileID: 0}
-    - target: {fileID: 4589509966798639201, guid: cdffc4523cb7ea14ca3498f2585c6eb8, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10687,10 +10679,6 @@ PrefabInstance:
     - target: {fileID: 4589509966798639201, guid: cdffc4523cb7ea14ca3498f2585c6eb8, type: 3}
       propertyPath: m_Name
       value: Wall, Breakable (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589509966798639201, guid: cdffc4523cb7ea14ca3498f2585c6eb8, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11635,7 +11623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6784497912880253541, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
       propertyPath: canMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6784497912880253541, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
       propertyPath: movementType
@@ -11730,10 +11718,10 @@ SceneRoots:
   - {fileID: 1283179060}
   - {fileID: 7323927236486956650}
   - {fileID: 307947525}
+  - {fileID: 1352856146}
   - {fileID: 149616933}
   - {fileID: 1794309593}
   - {fileID: 1417006123}
   - {fileID: 1335431495}
   - {fileID: 569055188}
   - {fileID: 1657984041}
-  - {fileID: 1352856146}
