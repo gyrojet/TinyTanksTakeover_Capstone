@@ -136,8 +136,7 @@ namespace Pathfinding
 
                 case MovementType.FollowPlayer:
                     #region Follow Player
-                    if (IsPlayerWithinRadius(visibilityRadius))
-                    {
+
                         print("Finding path to player...");
 
                         GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
@@ -148,23 +147,7 @@ namespace Pathfinding
                         targetObj.transform.position = new Vector2(targetX, targetY);
 
                         destinationSetter.target = targetObj.transform;
-                    }
-                    else
-                    {
-                        print("Player Not Found!");
-
-                        //  REMOVE LATER
-                        print("Finding path to player...");
-
-                        GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
-
-                        float targetX = player.tankBody.transform.position.x + (UnityEngine.Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
-                        float targetY = player.tankBody.transform.position.y + (UnityEngine.Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
-
-                        targetObj.transform.position = new Vector2(targetX, targetY);
-
-                        destinationSetter.target = targetObj.transform;
-                    }
+          
                     break;
                 #endregion
 

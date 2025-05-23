@@ -5245,6 +5245,7 @@ MonoBehaviour:
   attackDelay: 2
   attackRecognitionRange: 200
   movementType: 0
+  lastPosition_RANDOM_LONGEST: {fileID: 0}
   visibilityRadius: 20
   pathfindingTargetRadius: 4.5
   pathfindingTargetOffset: 1.5
@@ -5298,6 +5299,7 @@ MonoBehaviour:
   isEligableToShoot: 0
   didFindPlayer: 0
   currentPosition: {x: 0, y: 0}
+  nodesVIEW: []
 --- !u!114 &3397063873789916837
 MonoBehaviour:
   m_ObjectHideFlags: 0
