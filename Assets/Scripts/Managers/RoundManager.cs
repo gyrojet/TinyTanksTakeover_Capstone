@@ -65,7 +65,7 @@ public class RoundManager : MonoBehaviour
         levelUIManager.UpdateTankCount(numOfActiveEnemies);
 
         // Quick fix to show to jason...
-        levelUIManager.UpdateLevelDisplay(1);
+        levelUIManager.UpdateLevelDisplay(levelTransmitionManager.GetCurrentSceneIndex());
 
         StartCoroutine(RoundStartSequence());
     }
@@ -108,16 +108,40 @@ public class RoundManager : MonoBehaviour
         // If not load new one
         // Bool has no use as of yet
         
-        StartCoroutine(LoadNextLevel());
+        if (!isPlayerDead)
+            StartCoroutine(LoadNextLevel());
+        else
+            StartCoroutine(ReloadLevel());
+    }
+
+    private IEnumerator ReloadLevel()
+    {
+        yield return new WaitForSecondsRealtime(3f);
+
+        try
+        {
+            levelTransmitionManager.LoadSceneWithTransition(
+                    levelTransmitionManager.GetCurrentSceneIndex());
+        }
+        catch (UnityException e)
+        {
+            Debug.Log(e.Message);
+        }
     }
 
     private IEnumerator LoadNextLevel()
     {
         yield return new WaitForSecondsRealtime(3f);
 
-        // Change later...
-        levelTransmitionManager.LoadSceneWithTransition(
-                levelTransmitionManager.GetCurrentSceneIndex());
+        try
+        {
+            levelTransmitionManager.LoadSceneWithTransition(
+                    levelTransmitionManager.GetCurrentSceneIndex() + 1);
+        }
+        catch (UnityException e) 
+        {
+            Debug.Log(e.Message);
+        }
     }
 
     public void DestroyAllMunitions()

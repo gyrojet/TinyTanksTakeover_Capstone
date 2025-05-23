@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.46, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4175886859156843435}
@@ -50,7 +50,7 @@ MonoBehaviour:
   levelTransmitionManager: {fileID: 0}
   maxSpeed: 120
   rotationSpeed: 150
-  cannonRotationSpeed: 150
+  cannonRotationSpeed: 220
   cannonRotationCompAngle: 90
   cannonBulletFiringCompAngle: -90
   isMoving: 0
@@ -4983,7 +4983,7 @@ GameObject:
   - component: {fileID: 8528290331346510836}
   m_Layer: 6
   m_Name: PlayerCannon
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10114,7 +10114,7 @@ Transform:
   m_GameObject: {fileID: 5372999211899453049}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.15256037, w: 0.9882942}
-  m_LocalPosition: {x: 0, y: 2.4900002, z: 0}
+  m_LocalPosition: {x: 0, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -29,6 +29,8 @@ public class Enemy : BaseTank
     [SerializeField] Rigidbody2D enemyRB;
     [SerializeField] float shootingDelay = 4f;
 
+    public IEnumerator shootBullet;
+
     [Header("Components")]
     
     [SerializeField] public GameObject tankBody;
@@ -53,6 +55,8 @@ public class Enemy : BaseTank
     void Start()
     {
         GetComponents();
+
+        shootBullet = Shoot();
     }
 
     // Update is called once per frame
@@ -117,27 +121,10 @@ public class Enemy : BaseTank
 
     public override void HandleShooting()
     {
-
         StartCoroutine(Shoot());
-        //print("SHOOT CALLED");
-        //try
-        //{
-        //    Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, cannonFiringPoint.rotation)
-        //                      .GetComponent<Bullet>();
-
-        //    newBullet.owner = this.gameObject;
-
-        //    newBullet.LaunchBullet(cannonFiringPoint.transform.up);
-
-        //    //activeBullets.Add(newBullet);
-        //}
-        //catch (UnityException ex)
-        //{
-        //    Debug.Log(ex.Message);
-        //}
     }
 
-    private IEnumerator Shoot()
+    public IEnumerator Shoot()
     {
         print("SHOOT CALLED");
         enemyBehaviour.canShootBullets = false;

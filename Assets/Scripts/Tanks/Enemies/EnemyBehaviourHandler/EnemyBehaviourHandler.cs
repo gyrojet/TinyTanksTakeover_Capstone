@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 namespace Pathfinding
 {
@@ -34,6 +35,8 @@ namespace Pathfinding
         public float attackRecognitionRange = 50;
 
         public MovementType movementType;
+
+        public Transform lastPosition_RANDOM_LONGEST;
 
         [Header("Enemy Sight")]
         public float visibilityRadius = 7;
@@ -66,6 +69,9 @@ namespace Pathfinding
         public bool didFindPlayer;
         private Vector2 playerPos;
         [SerializeField] Vector2 currentPosition;
+
+        //[Header("DEBUGGING ONLY")]
+        [SerializeField] Collider2D[] nodesVIEW;
 
         private void Start()
         {
@@ -113,13 +119,18 @@ namespace Pathfinding
             {
                 case MovementType.Random:
                     #region Random Movement
+                    print("Moving with RANDOM behaviour!");
+
                     Collider2D[] nodes = Physics2D.OverlapCircleAll(
                         attachedEnemy.tankBody.transform.position,
                         pathfindingTargetRadius,
                         nodeLayer
                         );
 
-                    destinationSetter.target = nodes[Random.Range(0, nodes.Length)].gameObject.transform;
+                    // FOR DEBUGING
+                    nodesVIEW = nodes;
+
+                    destinationSetter.target = nodes[UnityEngine.Random.Range(0, nodes.Length)].gameObject.transform;
                     break;
                     #endregion
 
@@ -131,8 +142,8 @@ namespace Pathfinding
 
                         GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
 
-                        float targetX = player.tankBody.transform.position.x + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
-                        float targetY = player.tankBody.transform.position.y + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+                        float targetX = player.tankBody.transform.position.x + (UnityEngine.Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+                        float targetY = player.tankBody.transform.position.y + (UnityEngine.Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
 
                         targetObj.transform.position = new Vector2(targetX, targetY);
 
@@ -147,8 +158,8 @@ namespace Pathfinding
 
                         GameObject targetObj = Instantiate(new GameObject("TankTargetPoint", typeof(Transform)));
 
-                        float targetX = player.tankBody.transform.position.x + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
-                        float targetY = player.tankBody.transform.position.y + (Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+                        float targetX = player.tankBody.transform.position.x + (UnityEngine.Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
+                        float targetY = player.tankBody.transform.position.y + (UnityEngine.Random.Range(-pathfindingTargetOffset, pathfindingTargetOffset));
 
                         targetObj.transform.position = new Vector2(targetX, targetY);
 
@@ -160,14 +171,29 @@ namespace Pathfinding
                 case MovementType.RandomLongest:
                     #region Random, Farthest Distance
 
-                    List<Collider2D> nodesSecond = Physics2D.OverlapCircleAll(
+                    lastPosition_RANDOM_LONGEST = null;
+
+                    List<Collider2D> nodesLongest = Physics2D.OverlapCircleAll(
                         attachedEnemy.tankBody.transform.position,
                         pathfindingTargetRadius,
                         nodeLayer
                         ).ToList();
 
-                    // Sort here, if you can figure it out!
+                    List<BestDistance> eligableNodes = new List<BestDistance>();
 
+                    // Sort here, if you can figure it out!
+                    nodesLongest = nodesLongest.OrderByDescending(
+                        (distance) => (distance.gameObject.transform.position - attachedEnemy.tankBody.transform.position).sqrMagnitude)
+                        .ToList();
+
+                    nodesVIEW = nodesLongest.ToArray();
+
+                    //Transform newTarget = nodesLongest[0].transform;
+
+                    //if (newTarget == lastPosition_RANDOM_LONGEST)
+                    //    newTarget == nodesLongest[1].transform;
+
+                    destinationSetter.target = nodesLongest[0].gameObject.transform;
                     break;
 
                 #endregion
@@ -224,7 +250,10 @@ namespace Pathfinding
                     OnShoot?.Invoke();
                 }
                 else
-                    attachedEnemy.StopAllCoroutines();
+                {
+                    attachedEnemy.StopCoroutine(attachedEnemy.shootBullet);
+                    StopAllCoroutines();
+                }
             }
         }
 
@@ -290,5 +319,7 @@ namespace Pathfinding
             // Return result of raycast
             return didFindPlayer;
         }
+
+        
     }
 }
