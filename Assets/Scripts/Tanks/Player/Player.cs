@@ -34,6 +34,8 @@ public class Player :  BaseTank
 
     public Vector2 movementVector;
 
+    public int maxBullets = 5;
+
     [SerializeField] Rigidbody2D playerRB;
 
     [Header("Components")]
@@ -155,14 +157,17 @@ public class Player :  BaseTank
     {
         try
         {
-            Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, cannonFiringPoint.rotation)
-                              .GetComponent<Bullet>();
+            if (activeBullets.Count < maxBullets)
+            {
+                Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, cannonFiringPoint.rotation)
+                                  .GetComponent<Bullet>();
 
-            newBullet.owner = this.gameObject;
+                newBullet.owner = this.gameObject;
 
-            newBullet.LaunchBullet(cannonFiringPoint.transform.up);
+                newBullet.LaunchBullet(cannonFiringPoint.transform.up);
 
-            activeBullets.Add(newBullet);
+                activeBullets.Add(newBullet);
+            }
         }
         catch (UnityException ex)
         {
