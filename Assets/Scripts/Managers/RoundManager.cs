@@ -181,27 +181,32 @@ public class RoundManager : MonoBehaviour
     {
         player.playerInputHandler.canPlayerMove = value;
 
-        foreach (GameObject tank in activeEnemies)
-        {
-            EnemyBehaviourHandler enemy = tank.GetComponent<EnemyBehaviourHandler>();
+        if (value)
+            player.engineNoise.Play();
+        else if (!value)
+            player.engineNoise.Stop();
 
-            enemy.isEnabled = value;
-            
-            if (enemy.canMove)
-                enemy.pathfinder.canMove = value;
-
-            if (enemy.canMakeEngineNoises)
+            foreach (GameObject tank in activeEnemies)
             {
-                if (value)
+                EnemyBehaviourHandler enemy = tank.GetComponent<EnemyBehaviourHandler>();
+
+                enemy.isEnabled = value;
+
+                if (enemy.canMove)
+                    enemy.pathfinder.canMove = value;
+
+                if (enemy.canMakeEngineNoises)
                 {
-                    enemy.audioSource.Play();
-                }
-                else
-                {
-                    enemy.audioSource.Stop();
+                    if (value)
+                    {
+                        enemy.audioSource.Play();
+                    }
+                    else
+                    {
+                        enemy.audioSource.Stop();
+                    }
                 }
             }
-        }
     }
 
     private void StopPlayerMovment()

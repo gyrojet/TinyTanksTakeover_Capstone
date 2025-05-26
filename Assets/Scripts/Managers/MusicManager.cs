@@ -11,7 +11,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField] AudioClip mainMenu;
     [SerializeField] AudioClip level_v1;
 
-    const float MAX_VOLUME = 0.5f;
+    const float MAX_VOLUME = 0.35f;
     const float MIN_VOLUME = 0.2f;
 
     public float MaxVolume { get { return MAX_VOLUME; } }

@@ -17,6 +17,8 @@ public class Player :  BaseTank
 
     public static Player playerInstance;
 
+    public AudioSource engineNoise;
+
     public PlayerInputHandler playerInputHandler;
     //[SerializeField] GameManager gameManager;
     [SerializeField] LevelTransmitionManager levelTransmitionManager;
@@ -85,6 +87,9 @@ public class Player :  BaseTank
             playerInputHandler.canPlayerMove = true;
         }
 
+        if (engineNoise == null)
+            engineNoise = GetComponent<AudioSource>();
+
         if (levelTransmitionManager == null)
             levelTransmitionManager = LevelTransmitionManager.instance;
 
@@ -108,6 +113,11 @@ public class Player :  BaseTank
             isMoving = true;
         else
             isMoving = false;
+
+        if (isMoving)
+            engineNoise.volume = 0.35f;
+        else
+            engineNoise.volume = 0.05f;
 
         //HandleTrails();
     }
