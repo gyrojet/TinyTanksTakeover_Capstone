@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
+    SfxManager sfxManager;
+
     [Header("Attributes")]
     public float explosionDelay = 3f;
     public float explosionSize = 0.245f;
@@ -13,8 +15,16 @@ public class Mine : MonoBehaviour
 
     private CircleCollider2D explosionRadius;
 
+    [Header("SFX")]
+    [SerializeField] AudioClip mineExplode;
+
     private void Start()
     {
+        if (sfxManager == null)
+        {
+            sfxManager = SfxManager.instance;
+        }
+
         explosionRadius = GetComponent<CircleCollider2D>();
 
         SetExplosionRadius();
@@ -45,6 +55,8 @@ public class Mine : MonoBehaviour
         ColliderHack();
 
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
+
+        sfxManager.PlaySFX(mineExplode, gameObject.transform, 1f);
 
         yield return new WaitForSeconds(0.5f);
 

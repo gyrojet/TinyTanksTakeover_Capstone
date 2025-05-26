@@ -10018,6 +10018,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1704722613948410065, guid: 4a3409b490cd64447b24b5a2a3a53203, type: 3}
   minePrefab: {fileID: 2824194964169484779, guid: 4bb8a1345f9f1ce419399f4076f88889, type: 3}
   deathMarkerPrefab: {fileID: 3470200241154924858, guid: 2f175d582b6dea74cbb4bedd046153d8, type: 3}
+  shoot: {fileID: 8300000, guid: a5bd54c45972d5043a120bc8b919ce4c, type: 3}
+  die: {fileID: 8300000, guid: f8da937ac3ed2584b84f917eddf112c5, type: 3}
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -10047,6 +10049,7 @@ MonoBehaviour:
   attackDelay: 4
   attackRecognitionRange: 200
   movementType: 0
+  lastPosition_RANDOM_LONGEST: {fileID: 0}
   visibilityRadius: 20
   pathfindingTargetRadius: 4.5
   pathfindingTargetOffset: 0.75
@@ -10100,6 +10103,7 @@ MonoBehaviour:
   isEligableToShoot: 0
   didFindPlayer: 0
   currentPosition: {x: 0, y: 0}
+  nodesVIEW: []
 --- !u!114 &2645711105287307897
 MonoBehaviour:
   m_ObjectHideFlags: 0

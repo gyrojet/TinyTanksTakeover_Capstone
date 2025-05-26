@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    SfxManager sfxManager;
     RoundManager roundManager;
 
     [Header("Movement Properties")]
@@ -27,10 +28,16 @@ public class Bullet : MonoBehaviour
     private ParticleSystem particleSystem;
     private Rigidbody2D bulletRB;
 
+    [Header("SFX")]
+    [SerializeField] AudioClip wallBounce;
+    [SerializeField] AudioClip explode;
+
     private void Awake()
     {
         particleSystem = GetComponentInChildren<ParticleSystem>();
         bulletRB = GetComponent<Rigidbody2D>();
+
+        sfxManager = SfxManager.instance;
     }
 
     private void Start()
@@ -66,6 +73,8 @@ public class Bullet : MonoBehaviour
                 bulletRB.linearVelocity = reflectedAngle;
 
                 bulletRB.transform.up = Vector2.Reflect(transform.up, surfaceNormal);
+
+                sfxManager.PlaySFX(wallBounce, gameObject.transform, 1f);
                 #endregion
             }
             else
@@ -120,11 +129,8 @@ public class Bullet : MonoBehaviour
             }
         }
 
-        /* Plans for enemy classes:
-         * - Use an Enum to determine what class should be destroyed
-         * - Or try a base class instead!
-         */
-
+        sfxManager.PlaySFX(explode, gameObject.transform, 1f);
+       
         Destroy(gameObject);
     }
 }

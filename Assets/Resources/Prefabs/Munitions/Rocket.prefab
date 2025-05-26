@@ -138,6 +138,8 @@ MonoBehaviour:
   playerTag: Player
   enemyTag: Enemy
   explosion: {fileID: 2110944849920046143, guid: b701d59f2cf52bd47b5ccee215ef6967, type: 3}
+  wallBounce: {fileID: 8300000, guid: bbd07b4b688180a4387ec025af134399, type: 3}
+  explode: {fileID: 8300000, guid: a5bd54c45972d5043a120bc8b919ce4c, type: 3}
 --- !u!58 &-770054491365412366
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ public class Player :  BaseTank
      * For now, I will focus on getting moving working, then focus on death and shooting.
      */
 
+    SfxManager sfxManager;
+
     public static Player playerInstance;
 
     public PlayerInputHandler playerInputHandler;
@@ -50,6 +52,9 @@ public class Player :  BaseTank
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject minePrefab;
 
+    [SerializeField] GameObject deathMarker;
+    [SerializeField] GameObject explosionPrefab;
+
     public string bulletTag = "Bullet";
 
     [SerializeField] private List<Bullet> activeBullets = new List<Bullet>();
@@ -58,6 +63,11 @@ public class Player :  BaseTank
     SpriteRenderer playerCannonSR;
 
     RoundManager roundManager;
+
+    [Header("SFX")]
+    [SerializeField] AudioClip shoot;
+    [SerializeField] AudioClip setMine;
+    [SerializeField] AudioClip die;
 
     private void Awake()
     {
@@ -80,6 +90,9 @@ public class Player :  BaseTank
 
         if (roundManager == null)
             roundManager = RoundManager.instance;
+
+        if (sfxManager == null)
+            sfxManager = SfxManager.instance;
     }
 
     private void FixedUpdate()
@@ -166,6 +179,8 @@ public class Player :  BaseTank
 
                 newBullet.LaunchBullet(cannonFiringPoint.transform.up);
 
+                sfxManager.PlaySFX(shoot, newBullet.transform, 1f);
+
                 activeBullets.Add(newBullet);
             }
         }
@@ -181,6 +196,8 @@ public class Player :  BaseTank
 
         Mine newMine = Instantiate(minePrefab, tankBody.transform.position, Quaternion.identity)
                        .GetComponent<Mine>();
+
+        sfxManager.PlaySFX(setMine, newMine.transform, 1f);
 
         newMine.StartExplosionCount();
     }
@@ -211,9 +228,13 @@ public class Player :  BaseTank
 
         DisableTankGraphics();
 
-        Instantiate(Resources.Load<GameObject>("Prefabs/Effects/Explosion"),
+        Instantiate(explosionPrefab,
                     transform.position,
                     Quaternion.identity);
+
+        Instantiate(deathMarker, tankBody.transform.position, Quaternion.identity);
+
+        sfxManager.PlaySFX(die, gameObject.transform, 1f);
 
         print("Finished Delay!");
 

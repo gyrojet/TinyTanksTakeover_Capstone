@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class TitleScreen_UI_Manager : MonoBehaviour
 {
+    [SerializeField] SfxManager sfxManager;
+
     [Header("Button")]
     public Button startGame_TEST;
     public bool isIntroOver;
+
+    [SerializeField] AudioClip sfxStart;
 
     PlayableDirector timelineManager;
 
@@ -19,14 +23,10 @@ public class TitleScreen_UI_Manager : MonoBehaviour
 
     private void Start()
     {
-        isIntroOver = false;
-    }
+        if (sfxManager == null)
+            sfxManager = SfxManager.instance;
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (Input.GetKey(KeyCode.Space) && isIntroOver == true)
-        //    manager_START_GAME.Play();
+        isIntroOver = false;
     }
 
     public void ToggleIsIntroOver()
@@ -36,6 +36,8 @@ public class TitleScreen_UI_Manager : MonoBehaviour
 
     public void StartExitTimeline()
     {
+        sfxManager.PlaySFX(sfxStart, gameObject.transform, 1f);
+
         print("Starting Exit Timeline!");
         manager_START_GAME.Play();
     }

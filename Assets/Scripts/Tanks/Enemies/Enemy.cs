@@ -8,6 +8,7 @@ public class Enemy : BaseTank
     [SerializeField] EnemyBehaviourHandler enemyBehaviour;
     //[SerializeField] GameManager gameManager;
 
+    SfxManager sfxManager;
     RoundManager roundManager;
 
     [Header("Locomotion")]
@@ -45,6 +46,10 @@ public class Enemy : BaseTank
 
     [SerializeField] GameObject deathMarkerPrefab;
 
+    [Header("SFX")]
+    [SerializeField] AudioClip shoot;
+    [SerializeField] AudioClip die;
+
     public LayerMask playerLayerMask;
 
     public string bulletTag = "Bullet";
@@ -60,10 +65,7 @@ public class Enemy : BaseTank
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     private void GetComponents()
     {
@@ -80,6 +82,11 @@ public class Enemy : BaseTank
         if (roundManager == null)
         {
             roundManager = RoundManager.instance;
+        }
+
+        if (sfxManager == null)
+        {
+            sfxManager = SfxManager.instance;
         }
 
         //gameManager = GameManager.gameManagerInstance;
@@ -138,6 +145,8 @@ public class Enemy : BaseTank
 
         newBullet.LaunchBullet(cannonFiringPoint.transform.up);
 
+        sfxManager.PlaySFX(shoot, cannonFiringPoint.transform, 1f);
+
         yield return new WaitForSeconds(1f);
 
         enemyBehaviour.canShootBullets = true;
@@ -148,6 +157,8 @@ public class Enemy : BaseTank
     {
         roundManager.UpdateCount(gameObject);
 
+        sfxManager.PlaySFX(die, tankBody.transform, 1f);
+        
         GameObject deathMarker = Instantiate(deathMarkerPrefab, tankBody.transform.position, Quaternion.identity);
 
         gameObject.SetActive(false);

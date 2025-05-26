@@ -13,6 +13,9 @@ public class RoundManager : MonoBehaviour
     LevelUIManager levelUIManager;
     TimelineManagerUI timelineManagerUI;
 
+    MusicManager musicManager;
+    SfxManager sfxManager;
+
     [Header("Enemies & Player")]
     [SerializeField] Player player = null;
     [SerializeField] List<GameObject> activeEnemies = null;
@@ -22,6 +25,8 @@ public class RoundManager : MonoBehaviour
     [Header("Round Start Sequence")]
 
     public int roundStartCountdown;
+    public AudioClip countdownSfx;
+    public AudioClip endRound;
 
     [Header("Identification")]
     [SerializeField] string enemyTag;
@@ -54,6 +59,12 @@ public class RoundManager : MonoBehaviour
 
         if (timelineManagerUI == null)
             timelineManagerUI = TimelineManagerUI.instance;
+
+        if (musicManager == null)
+            musicManager = MusicManager.instance;
+
+        if (sfxManager == null)
+            sfxManager = SfxManager.instance;
 
         levelUIManager.isRoundStarted = false;
 
@@ -97,16 +108,19 @@ public class RoundManager : MonoBehaviour
 
     public void EndingSequence(bool isPlayerDead)
     {
+        musicManager.StopMusic();
+
         DestroyAllMunitions();
         ToggleBehavioursOfAllTanks(false);
         StopPlayerMovment();
 
         if (!isPlayerDead)
+        {
+            sfxManager.PlaySFX(endRound, gameObject.transform, 1f);
             timelineManagerUI.PlayRoundEndTimeline();
+        }
 
-        // If player is dead, reload level
-        // If not load new one
-        // Bool has no use as of yet
+        
         
         if (!isPlayerDead)
             StartCoroutine(LoadNextLevel());
@@ -190,6 +204,8 @@ public class RoundManager : MonoBehaviour
         {
             levelUIManager.UpdateRoundStartTimer(countdown);
 
+            sfxManager.PlaySFX(countdownSfx, gameObject.transform, 1f);
+
             yield return new WaitForSecondsRealtime(1f);
 
             countdown--;
@@ -202,5 +218,7 @@ public class RoundManager : MonoBehaviour
         ToggleBehavioursOfAllTanks(true);
 
         levelUIManager.isRoundStarted = true;
+
+        musicManager.PlayLevelMusic();
     }
 }

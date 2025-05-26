@@ -55,6 +55,7 @@ MonoBehaviour:
   cannonBulletFiringCompAngle: -90
   isMoving: 0
   movementVector: {x: 0, y: 0}
+  maxBullets: 5
   playerRB: {fileID: 5129442373462447444}
   tankBody: {fileID: 4916616251336609697}
   tankCannon: {fileID: 4243140521456451744}
@@ -62,8 +63,13 @@ MonoBehaviour:
   cannonFiringPoint: {fileID: 8779419731832577654}
   bulletPrefab: {fileID: 1704722613948410065, guid: 4a3409b490cd64447b24b5a2a3a53203, type: 3}
   minePrefab: {fileID: 2824194964169484779, guid: 4bb8a1345f9f1ce419399f4076f88889, type: 3}
+  deathMarker: {fileID: 3470200241154924858, guid: 2f175d582b6dea74cbb4bedd046153d8, type: 3}
+  explosionPrefab: {fileID: 2110944849920046143, guid: b701d59f2cf52bd47b5ccee215ef6967, type: 3}
   bulletTag: Bullet
   activeBullets: []
+  shoot: {fileID: 8300000, guid: a5bd54c45972d5043a120bc8b919ce4c, type: 3}
+  setMine: {fileID: 8300000, guid: 303bbde837235a342a61a2585777cede, type: 3}
+  die: {fileID: 8300000, guid: f8da937ac3ed2584b84f917eddf112c5, type: 3}
 --- !u!114 &4353858104547051917
 MonoBehaviour:
   m_ObjectHideFlags: 0
