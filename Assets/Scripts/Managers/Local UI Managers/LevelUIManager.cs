@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,6 +39,11 @@ public class LevelUIManager : MonoBehaviour
     [Header("Tanks Remaining Display")]
     public TextMeshProUGUI numberOfTanksRemaining;
 
+    MusicManager musicManager;
+    SfxManager sfxManager;
+
+    [SerializeField] AudioClip pauseClip;
+
     private void Awake()
     {
         if (Instance == null)
@@ -46,11 +52,24 @@ public class LevelUIManager : MonoBehaviour
 
     private void Start()
     {
+        if (musicManager == null)
+            musicManager = MusicManager.instance;
+
+        if (sfxManager == null)
+            sfxManager = SfxManager.instance;
+
+        pauseClip = Resources.Load<AudioClip>("Sounds/SFX/UI/PauseSound");
+
         levelTransmitionManager = LevelTransmitionManager.instance;
         roundManager = RoundManager.instance;
 
         resumeGame.onClick.AddListener((TogglePause));
+
         endGame.onClick.AddListener(levelTransmitionManager.ReturnToTitle);
+        endGame.onClick.AddListener(() => {
+            musicManager.StopMusic();
+            musicManager.SetMusicVolume(musicManager.MaxVolume);
+        });
     }
 
     private void Update()
@@ -66,10 +85,14 @@ public class LevelUIManager : MonoBehaviour
 
     public void TogglePause()
     {
+        sfxManager.PlaySFX(pauseClip, gameObject.transform, 1f);
+
         if (pauseScreen.activeSelf == false)
         {
             Time.timeScale = TIMESCALE_PAUSED;
             pauseScreen.SetActive(true);
+
+            musicManager.SetMusicVolume(musicManager.MinVolume);
 
             roundManager.ToggleBehavioursOfAllTanks(false);
         }
@@ -77,6 +100,8 @@ public class LevelUIManager : MonoBehaviour
         {
             Time.timeScale = TIMESCALE_RUNNING;
             pauseScreen.SetActive(false);
+
+            musicManager.SetMusicVolume(musicManager.MaxVolume);
 
             roundManager.ToggleBehavioursOfAllTanks(true);
         }

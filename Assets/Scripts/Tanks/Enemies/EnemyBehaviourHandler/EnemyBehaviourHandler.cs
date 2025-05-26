@@ -20,6 +20,10 @@ namespace Pathfinding
         [SerializeField] Player player;
         [SerializeField] Enemy attachedEnemy;
 
+        [Header("Audio")]
+        public AudioSource audioSource;
+        public AudioClip engineSfx;
+
         public Seeker seeker;
         public AIPath pathfinder;
         public AIDestinationSetter destinationSetter;
@@ -30,6 +34,8 @@ namespace Pathfinding
         public bool canMove;
         public bool canShootBullets;
         public bool canUseMines;
+
+        public bool canMakeEngineNoises;
 
         public float attackDelay = 5;
         public float attackRecognitionRange = 50;
@@ -89,6 +95,9 @@ namespace Pathfinding
 
             if (seeker == null)
                 seeker = gameObject.GetComponent<Seeker>();
+
+            if (audioSource == null)
+                audioSource = attachedEnemy.tankBody.GetComponent<AudioSource>();
 
             if (isEnabled != true)
                 isEnabled = true;

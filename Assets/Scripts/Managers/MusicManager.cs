@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
@@ -9,6 +10,12 @@ public class MusicManager : MonoBehaviour
     [Header("Music Tracks")]
     [SerializeField] AudioClip mainMenu;
     [SerializeField] AudioClip level_v1;
+
+    const float MAX_VOLUME = 0.5f;
+    const float MIN_VOLUME = 0.2f;
+
+    public float MaxVolume { get { return MAX_VOLUME; } }
+    public float MinVolume { get { return MIN_VOLUME; } }
 
     private void Awake()
     {

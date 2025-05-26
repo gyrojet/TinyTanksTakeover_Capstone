@@ -27,6 +27,7 @@ public class RoundManager : MonoBehaviour
     public int roundStartCountdown;
     public AudioClip countdownSfx;
     public AudioClip endRound;
+    public AudioClip startRound_Doot;
 
     [Header("Identification")]
     [SerializeField] string enemyTag;
@@ -188,6 +189,18 @@ public class RoundManager : MonoBehaviour
             
             if (enemy.canMove)
                 enemy.pathfinder.canMove = value;
+
+            if (enemy.canMakeEngineNoises)
+            {
+                if (value)
+                {
+                    enemy.audioSource.Play();
+                }
+                else
+                {
+                    enemy.audioSource.Stop();
+                }
+            }
         }
     }
 
@@ -218,6 +231,8 @@ public class RoundManager : MonoBehaviour
         ToggleBehavioursOfAllTanks(true);
 
         levelUIManager.isRoundStarted = true;
+
+        sfxManager.PlaySFX(startRound_Doot, gameObject.transform, 1f);
 
         musicManager.PlayLevelMusic();
     }
