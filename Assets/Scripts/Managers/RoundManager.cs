@@ -35,7 +35,7 @@ public class RoundManager : MonoBehaviour
     [SerializeField] string mineTag;
 
     [Header("ObjectPooling")]
-    [SerializeField] SpriteRenderer tankTrackPrefab;
+    [SerializeField] TankTrack tankTrackPrefab;
 
     private void Awake()
     {
@@ -53,7 +53,7 @@ public class RoundManager : MonoBehaviour
     void Start()
     {
         // Create track pool
-        ObjectPool.SetupItemPool(tankTrackPrefab, 100, "TankTracks");
+        ObjectPool.SetupItemPool(tankTrackPrefab, 250, "TankTracks");
 
         if (levelTransmitionManager == null)
             levelTransmitionManager = LevelTransmitionManager.instance;

@@ -115,11 +115,23 @@ public class Player :  BaseTank
             isMoving = false;
 
         if (isMoving)
+        {
             engineNoise.volume = 0.35f;
+            //PrintTankTrack();
+        }
         else
             engineNoise.volume = 0.05f;
+    }
 
-        //HandleTrails();
+    private void PrintTankTrack()
+    {
+        print("PRINTING TRACK");
+
+        TankTrack trackToPlace = ObjectPool.DequeueObject<TankTrack>("TankTracks");
+
+        trackToPlace.gameObject.SetActive(true);
+        trackToPlace.gameObject.transform.position = tankBody.transform.position;
+        trackToPlace.gameObject.transform.rotation = tankBody.transform.rotation;
     }
 
     private void GetComponents()

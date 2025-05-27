@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using JetBrains.Annotations;
+using Unity.VisualScripting.FullSerializer;
 
 public static class ObjectPool
 {
@@ -41,7 +42,8 @@ public static class ObjectPool
 
     public static void SetupItemPool<T>(T pooledItemPrefab, int poolSize, string dictionaryKey) where T : Component
     {
-        itemPoolDictionary.Add(dictionaryKey, new Queue<Component>());
+        if (!itemPoolDictionary.ContainsKey(dictionaryKey))
+            itemPoolDictionary.Add(dictionaryKey, new Queue<Component>());
 
         for (int i = 0; i < poolSize; i++)
         {

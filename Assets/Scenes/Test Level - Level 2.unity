@@ -1720,7 +1720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2427216602072629718, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
       propertyPath: canShootBullets
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6275929807893437348, guid: ed11f18c818105d43bb7f9d6ed7a6734, type: 3}
       propertyPath: m_Name
@@ -10961,11 +10961,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6784497912880253541, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
       propertyPath: canMove
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6784497912880253541, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
       propertyPath: canShootBullets
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6838883117536397898, guid: a34547bd704b426428a2fd54d7ad3168, type: 3}
       propertyPath: m_Name
@@ -11282,7 +11282,7 @@ MonoBehaviour:
   enemyTag: ID Enemy
   bulletTag: Bullet
   mineTag: MineExplosion
-  tankTrackPrefab: {fileID: 3782203136107503523, guid: c573ed188ecc4fc45a346c009aedeaf8, type: 3}
+  tankTrackPrefab: {fileID: -8254521807558997836, guid: c573ed188ecc4fc45a346c009aedeaf8, type: 3}
 --- !u!1001 &4350024943867404336
 PrefabInstance:
   m_ObjectHideFlags: 0

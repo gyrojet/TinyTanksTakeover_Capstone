@@ -11608,6 +11608,7 @@ MonoBehaviour:
   enemyTag: ID Enemy
   bulletTag: Bullet
   mineTag: MineExplosion
+  tankTrackPrefab: {fileID: -8254521807558997836, guid: c573ed188ecc4fc45a346c009aedeaf8, type: 3}
 --- !u!1001 &4350024943867404336
 PrefabInstance:
   m_ObjectHideFlags: 0
