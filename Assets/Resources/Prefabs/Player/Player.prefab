@@ -4901,6 +4901,7 @@ MonoBehaviour:
   minePrefab: {fileID: 2824194964169484779, guid: 4bb8a1345f9f1ce419399f4076f88889, type: 3}
   deathMarker: {fileID: 3470200241154924858, guid: 2f175d582b6dea74cbb4bedd046153d8, type: 3}
   explosionPrefab: {fileID: 2110944849920046143, guid: b701d59f2cf52bd47b5ccee215ef6967, type: 3}
+  tracks: {fileID: -8254521807558997836, guid: c573ed188ecc4fc45a346c009aedeaf8, type: 3}
   bulletTag: Bullet
   activeBullets: []
   shoot: {fileID: 8300000, guid: a5bd54c45972d5043a120bc8b919ce4c, type: 3}

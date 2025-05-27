@@ -53,7 +53,7 @@ public class RoundManager : MonoBehaviour
     void Start()
     {
         // Create track pool
-        ObjectPool.SetupItemPool(tankTrackPrefab, 250, "TankTracks");
+        //ObjectPool.SetupItemPool(tankTrackPrefab, 250, "TankTracks");
 
         if (levelTransmitionManager == null)
             levelTransmitionManager = LevelTransmitionManager.instance;

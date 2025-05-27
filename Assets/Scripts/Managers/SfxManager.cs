@@ -31,6 +31,6 @@ public class SfxManager : MonoBehaviour
         audioSource.Play();
 
         // Destroy sfx setter
-        Destroy(audioSource, clipLength);
+        Destroy(audioSource.gameObject, clipLength);
     }
 }

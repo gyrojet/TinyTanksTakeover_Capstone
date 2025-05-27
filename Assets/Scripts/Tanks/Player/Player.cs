@@ -57,6 +57,10 @@ public class Player :  BaseTank
     [SerializeField] GameObject deathMarker;
     [SerializeField] GameObject explosionPrefab;
 
+    // Remove if performance is poor
+    float trackOffset = 0.1f;
+    [SerializeField] TankTrack tracks;
+
     public string bulletTag = "Bullet";
 
     [SerializeField] private List<Bullet> activeBullets = new List<Bullet>();
@@ -117,7 +121,7 @@ public class Player :  BaseTank
         if (isMoving)
         {
             engineNoise.volume = 0.35f;
-            //PrintTankTrack();
+            PrintTankTrack();
         }
         else
             engineNoise.volume = 0.05f;
@@ -125,13 +129,19 @@ public class Player :  BaseTank
 
     private void PrintTankTrack()
     {
-        print("PRINTING TRACK");
+        trackOffset -= Time.deltaTime;
 
-        TankTrack trackToPlace = ObjectPool.DequeueObject<TankTrack>("TankTracks");
+        if (trackOffset <= 0)
+        {
+            print("PRINTING TRACK");
 
-        trackToPlace.gameObject.SetActive(true);
-        trackToPlace.gameObject.transform.position = tankBody.transform.position;
-        trackToPlace.gameObject.transform.rotation = tankBody.transform.rotation;
+            TankTrack trackToPlace = Instantiate(tracks, tankBody.transform.position, tankBody.transform.rotation);
+
+            trackOffset = 0.1f;
+        }
+        //trackToPlace.gameObject.SetActive(true);
+        //trackToPlace.gameObject.transform.position = tankBody.transform.position;
+        //trackToPlace.gameObject.transform.rotation = tankBody.transform.rotation;
     }
 
     private void GetComponents()

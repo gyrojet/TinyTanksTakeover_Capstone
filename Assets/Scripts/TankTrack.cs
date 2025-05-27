@@ -8,7 +8,7 @@ public class TankTrack : MonoBehaviour
 
     private void Start()
     {
-        activeTime = 3.00f;
+        activeTime = 1.00f;
     }
 
     void Update()
@@ -18,7 +18,7 @@ public class TankTrack : MonoBehaviour
         if (activeTime <= 0)
         {
             print("RETURNING TO POOL");
-            ObjectPool.EnqueueObject(this, "TankTracks");
+            Destroy(gameObject);
         }
     }
 }
