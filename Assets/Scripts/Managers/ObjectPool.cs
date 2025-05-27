@@ -2,12 +2,14 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using JetBrains.Annotations;
 
 public static class ObjectPool
 {
+    public static Dictionary<string, Component> poolLookup = new Dictionary<string, Component>();
     public static Dictionary<string, Queue<Component>> itemPoolDictionary = new Dictionary<string, Queue<Component>>();
 
-    public static void ReturnObjectToPool<T>(T obj, string name) where T : Component
+    public static void EnqueueObject<T>(T obj, string name) where T : Component
     {
         if (!obj.gameObject.activeSelf)
             return;
@@ -19,9 +21,22 @@ public static class ObjectPool
         obj.gameObject.SetActive(false);
     }
 
-    public static T RetrieveObjectFromPool<T>(string dictKey) where T : Component
+    public static T DequeueObject<T>(string dictKey) where T : Component
     {
-        return (T)itemPoolDictionary[dictKey].Dequeue();
+        if (itemPoolDictionary[dictKey].TryDequeue(out var item))
+            return (T)item;
+
+        return (T)EnqueueNewInstance(poolLookup[dictKey], dictKey);
+    }
+
+    public static T EnqueueNewInstance<T>(T item, string key) where T : Component
+    {
+        T newInstance = Object.Instantiate(item);
+        newInstance.gameObject.SetActive(false);
+        newInstance.transform.position = Vector2.zero;
+        itemPoolDictionary[key].Enqueue(newInstance);
+
+        return newInstance;
     }
 
     public static void SetupItemPool<T>(T pooledItemPrefab, int poolSize, string dictionaryKey) where T : Component

@@ -34,6 +34,9 @@ public class RoundManager : MonoBehaviour
     [SerializeField] string bulletTag;
     [SerializeField] string mineTag;
 
+    [Header("ObjectPooling")]
+    [SerializeField] SpriteRenderer tankTrackPrefab;
+
     private void Awake()
     {
         if (instance == null)
@@ -49,8 +52,8 @@ public class RoundManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //if (gameManager == null)
-        //    gameManager = GameManager.gameManagerInstance;
+        // Create track pool
+        ObjectPool.SetupItemPool(tankTrackPrefab, 100, "TankTracks");
 
         if (levelTransmitionManager == null)
             levelTransmitionManager = LevelTransmitionManager.instance;
