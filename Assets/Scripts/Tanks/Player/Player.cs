@@ -264,6 +264,8 @@ public class Player :  BaseTank
         playerInputHandler.canPlayerMove = false;
         playerRB.linearVelocity = Vector2.zero;
 
+        tankBody.GetComponent<Collider2D>().enabled = false;
+
         DisableTankGraphics();
 
         Instantiate(explosionPrefab,
