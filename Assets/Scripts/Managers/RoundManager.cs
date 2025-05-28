@@ -12,6 +12,7 @@ public class RoundManager : MonoBehaviour
     LevelTransmitionManager levelTransmitionManager;
     LevelUIManager levelUIManager;
     TimelineManagerUI timelineManagerUI;
+    LivesManager livesManager;
 
     MusicManager musicManager;
     SfxManager sfxManager;
@@ -28,6 +29,7 @@ public class RoundManager : MonoBehaviour
     public AudioClip countdownSfx;
     public AudioClip endRound;
     public AudioClip startRound_Doot;
+    public AudioClip failLevel;
 
     [Header("Identification")]
     [SerializeField] string enemyTag;
@@ -69,6 +71,9 @@ public class RoundManager : MonoBehaviour
 
         if (sfxManager == null)
             sfxManager = SfxManager.instance;
+
+        if (livesManager == null)
+            livesManager = LivesManager.instance;
 
         levelUIManager.isRoundStarted = false;
 
@@ -123,13 +128,36 @@ public class RoundManager : MonoBehaviour
             sfxManager.PlaySFX(endRound, gameObject.transform, 1f);
             timelineManagerUI.PlayRoundEndTimeline();
         }
+        else
+        {
+            sfxManager.PlaySFX(failLevel, gameObject.transform, 1f);
+        }
 
-        
-        
         if (!isPlayerDead)
             StartCoroutine(LoadNextLevel());
         else
-            StartCoroutine(ReloadLevel());
+        {
+            if (livesManager.Lives <= 0)
+                StartCoroutine(GameOver());
+            else
+                StartCoroutine(ReloadLevel());
+        }
+            
+    }
+
+    private IEnumerator GameOver()
+    {
+        yield return new WaitForSecondsRealtime(3f);
+
+        try
+        {
+            livesManager.SetNumberOfLives(3);
+            levelTransmitionManager.ReturnToTitle();
+        }
+        catch (UnityException e)
+        {
+            Debug.Log(e.Message);
+        }
     }
 
     private IEnumerator ReloadLevel()

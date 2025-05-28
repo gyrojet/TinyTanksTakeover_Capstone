@@ -235,7 +235,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Broken Block Spot_0: 2183782807590326228
+      Broken Block Spot_1: 2183132952077558042
+      Broken Block Spot_2: 7660380400115750458
+      Broken Block Spot_3: 8262114974368991913
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

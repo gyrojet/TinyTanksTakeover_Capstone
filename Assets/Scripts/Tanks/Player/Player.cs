@@ -13,6 +13,7 @@ public class Player :  BaseTank
      * For now, I will focus on getting moving working, then focus on death and shooting.
      */
 
+    LivesManager livesManager;
     SfxManager sfxManager;
 
     public static Player playerInstance;
@@ -102,6 +103,9 @@ public class Player :  BaseTank
 
         if (sfxManager == null)
             sfxManager = SfxManager.instance;
+
+        if (livesManager == null)
+            livesManager = LivesManager.instance;
     }
 
     private void FixedUpdate()
@@ -254,6 +258,8 @@ public class Player :  BaseTank
     private void KillPlayer()
     {
         print("Die called!");
+
+        livesManager.DecreaseLives();
 
         playerInputHandler.canPlayerMove = false;
         playerRB.linearVelocity = Vector2.zero;

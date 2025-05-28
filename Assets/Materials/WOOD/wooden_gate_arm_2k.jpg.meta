@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      wooden_gate_arm_2k_0: -1762082049981231757
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
