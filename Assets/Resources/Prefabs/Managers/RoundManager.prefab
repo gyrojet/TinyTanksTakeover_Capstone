@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3227676449859122650
+--- !u!1 &7593625816255283620
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3552208968983509114}
-  - component: {fileID: 5808861042740483707}
+  - component: {fileID: 6086870602351216013}
+  - component: {fileID: 5241442610574822426}
   m_Layer: 0
   m_Name: RoundManager
   m_TagString: Untagged
@@ -17,28 +17,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3552208968983509114
+--- !u!4 &6086870602351216013
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3227676449859122650}
+  m_GameObject: {fileID: 7593625816255283620}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.01624506, y: -0.57818043, z: -0.025915442}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5808861042740483707
+--- !u!114 &5241442610574822426
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3227676449859122650}
+  m_GameObject: {fileID: 7593625816255283620}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 052d257978b327c4c80f793afda64d89, type: 3}
@@ -55,4 +55,4 @@ MonoBehaviour:
   enemyTag: ID Enemy
   bulletTag: Bullet
   mineTag: MineExplosion
-  tankTrackPrefab: {fileID: 0}
+  tankTrackPrefab: {fileID: -8254521807558997836, guid: c573ed188ecc4fc45a346c009aedeaf8, type: 3}

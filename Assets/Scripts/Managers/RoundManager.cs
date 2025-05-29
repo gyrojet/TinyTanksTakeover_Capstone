@@ -20,6 +20,7 @@ public class RoundManager : MonoBehaviour
     [Header("Enemies & Player")]
     [SerializeField] Player player = null;
     [SerializeField] List<GameObject> activeEnemies = null;
+    List<GameObject> enemiesBackup = null;
 
     public int numOfActiveEnemies;
 
@@ -98,6 +99,9 @@ public class RoundManager : MonoBehaviour
     private void GetActiveEnemies()
     {
         activeEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag(enemyTag));
+
+        enemiesBackup = new List<GameObject>(activeEnemies);
+
         numOfActiveEnemies = activeEnemies.Count;
     }
 
@@ -205,6 +209,13 @@ public class RoundManager : MonoBehaviour
         {
             Mine m = mine.GetComponent<Mine>();
             m.FakeExplode();
+        }
+
+        foreach (GameObject enemy in enemiesBackup)
+        {
+            Enemy e = enemy.GetComponent<Enemy>();
+
+            e.StopAllCoroutines();
         }
     }
 
