@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 144168654}
   - component: {fileID: 144168655}
   - component: {fileID: 144168656}
+  - component: {fileID: 144168657}
   m_Layer: 5
   m_Name: Start Game
   m_TagString: Untagged
@@ -477,6 +478,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &144168657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144168649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.11320752, g: 0.08383764, b: 0.08383764, a: 1}
+  m_EffectDistance: {x: -1, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &187564399
 GameObject:
   m_ObjectHideFlags: 0
