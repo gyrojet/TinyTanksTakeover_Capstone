@@ -6,8 +6,11 @@ public class LivesManager : MonoBehaviour
     public static LivesManager instance;
 
     [SerializeField] int lives;
+    [SerializeField] int currentLevel;
 
     public int Lives {  get { return lives; } }
+
+    public int CurrentLevel {  get { return currentLevel; } }
 
     private void Awake()
     {
@@ -15,6 +18,8 @@ public class LivesManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            currentLevel = 1;
         }
         else
             Destroy(gameObject);
@@ -33,5 +38,15 @@ public class LivesManager : MonoBehaviour
     public void SetNumberOfLives(int numberToSet)
     {
         lives = numberToSet;
+    }
+
+    public void IncrementCurrentLevel()
+    {
+        currentLevel++;
+    }
+
+    public void SetLevel(int level)
+    {
+        currentLevel = level;
     }
 }

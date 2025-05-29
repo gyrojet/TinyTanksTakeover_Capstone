@@ -86,7 +86,7 @@ public class RoundManager : MonoBehaviour
         levelUIManager.UpdateTankCount(numOfActiveEnemies);
 
         // Quick fix to show to jason...
-        levelUIManager.UpdateLevelDisplay(levelTransmitionManager.GetCurrentSceneIndex());
+        levelUIManager.UpdateLevelDisplay(livesManager.CurrentLevel);
 
         StartCoroutine(RoundStartSequence());
     }
@@ -138,7 +138,10 @@ public class RoundManager : MonoBehaviour
         }
 
         if (!isPlayerDead)
+        {
+            livesManager.IncrementCurrentLevel();
             StartCoroutine(LoadNextLevel());
+        }
         else
         {
             if (livesManager.Lives <= 0)

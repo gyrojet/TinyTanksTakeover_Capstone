@@ -15,6 +15,8 @@ public class LevelUIManager : MonoBehaviour
     LevelTransmitionManager levelTransmitionManager;
     RoundManager roundManager;
 
+    LivesManager livesManager;
+
     private const float TIMESCALE_PAUSED = 0.0f;
     private const float TIMESCALE_RUNNING = 1.0f;
 
@@ -58,6 +60,9 @@ public class LevelUIManager : MonoBehaviour
         if (sfxManager == null)
             sfxManager = SfxManager.instance;
 
+        if (livesManager == null)
+            livesManager = LivesManager.instance;
+
         pauseClip = Resources.Load<AudioClip>("Sounds/SFX/UI/PauseSound");
 
         levelTransmitionManager = LevelTransmitionManager.instance;
@@ -66,9 +71,11 @@ public class LevelUIManager : MonoBehaviour
         resumeGame.onClick.AddListener((TogglePause));
 
         endGame.onClick.AddListener(levelTransmitionManager.ReturnToTitle);
+
         endGame.onClick.AddListener(() => {
             musicManager.StopMusic();
             musicManager.SetMusicVolume(musicManager.MaxVolume);
+            livesManager.SetLevel(1);
         });
     }
 
