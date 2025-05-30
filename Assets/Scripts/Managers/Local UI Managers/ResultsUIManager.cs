@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ResultsUIManager : MonoBehaviour
 {
     LivesManager livesManager;
+    TimelineManager_ResultScreen timelineManager;
 
     [Header("UI Elements")]
     [SerializeField] TextMeshProUGUI livesRemaining;
@@ -24,7 +25,18 @@ public class ResultsUIManager : MonoBehaviour
 
     private void Start()
     {
+        if (livesManager == null)
+        {
+            livesManager = LivesManager.instance;
+        }
+
+        if (timelineManager == null)
+        {
+            timelineManager = TimelineManager_ResultScreen.instance;
+        }
+
         SetResults();
+        timelineManager.StartEntranceTimeline();
     }
 
     private void SetResults()

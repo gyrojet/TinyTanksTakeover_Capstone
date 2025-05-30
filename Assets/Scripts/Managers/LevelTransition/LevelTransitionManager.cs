@@ -85,6 +85,10 @@ public class LevelTransmitionManager : MonoBehaviour
 
         if (GetCurrentSceneIndex() != 0)
             animator.SetTrigger(ANIMATION_TRIGGER_FADEIN);
+        //else if (GetCurrentSceneIndex() == resultsIndex)
+        //{
+        //    animator.SetTrigger(ANIMATION_TRIGGER_FADEOUT);
+        //}
     }
 
     
