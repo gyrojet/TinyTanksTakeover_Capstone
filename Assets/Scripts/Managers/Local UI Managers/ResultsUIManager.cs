@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class ResultsUIManager : MonoBehaviour
 {
+    SfxManager sfxManager;
     LivesManager livesManager;
     TimelineManager_ResultScreen timelineManager;
 
@@ -14,6 +15,7 @@ public class ResultsUIManager : MonoBehaviour
 
     [SerializeField] Button returnToMenu;
 
+    [SerializeField] AudioClip buttonPress;
 
     private void Awake()
     {
@@ -34,6 +36,11 @@ public class ResultsUIManager : MonoBehaviour
         {
             timelineManager = TimelineManager_ResultScreen.instance;
         }
+
+        if (sfxManager == null)
+            sfxManager = SfxManager.instance;
+
+        returnToMenu.onClick.AddListener(ReturnToTitle_Event);
 
         SetResults();
         timelineManager.StartEntranceTimeline();
@@ -70,5 +77,11 @@ public class ResultsUIManager : MonoBehaviour
         }
 
         performanceReview.text = performance;
+    }
+
+    private void ReturnToTitle_Event()
+    {
+        sfxManager.PlaySFX(buttonPress, gameObject.transform, 1f);
+        timelineManager.StartEndTimeline();
     }
 }
