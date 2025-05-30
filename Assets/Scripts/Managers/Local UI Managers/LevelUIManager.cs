@@ -37,6 +37,7 @@ public class LevelUIManager : MonoBehaviour
 
     [Header("Level Display")]
     [SerializeField] TextMeshProUGUI levelDisplayText;
+    [SerializeField] TextMeshProUGUI endText;
 
     [Header("Tanks Remaining Display")]
     public TextMeshProUGUI numberOfTanksRemaining;
@@ -124,14 +125,13 @@ public class LevelUIManager : MonoBehaviour
         timerText.text = num.ToString();
     }
 
-    public void UpdateLevelDisplay(int  level)
+    public void UpdateLevelDisplay(int level)
     { 
         levelDisplayText.text = level.ToString();
     }
 
-    // REPLACE WITH TIMELINE ANIMATION
-    public void ToggleRoundStartTimer()
-    {
-        roundStartTimer.SetActive(!roundStartTimer.activeSelf);
+    public void UpdateEndLevelText(string text)
+    { 
+        endText.text = text;
     }
 }

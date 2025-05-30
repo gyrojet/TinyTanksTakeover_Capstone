@@ -12730,10 +12730,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelUI
       objectReference: {fileID: 0}
-    - target: {fileID: 5299001732772614164, guid: 247c20ddd276c864283e614b1173c001, type: 3}
-      propertyPath: pauseButton
-      value: 112
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1709,7 +1709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c469713f3ca2ab443b6203bce82c6cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 99
+  lives: 4
   currentLevel: 1
 --- !u!1 &2146173389
 GameObject:

@@ -1360,7 +1360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064d95bfd0ed7be4b99a23cbe68353b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseButton: 0
+  pauseButton: 112
   isRoundStarted: 0
   pauseScreen: {fileID: 8576485333538714024}
   animator_PauseScreen: {fileID: 4767920002743777062}
@@ -1369,6 +1369,7 @@ MonoBehaviour:
   roundStartTimer: {fileID: 3305889365115235761}
   timerText: {fileID: 2687036436636444479}
   levelDisplayText: {fileID: 1918900993688724697}
+  endText: {fileID: 3418732872905808793}
   numberOfTanksRemaining: {fileID: 1755331603102805621}
   pauseClip: {fileID: 0}
 --- !u!1 &5907283348860475313

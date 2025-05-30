@@ -4891,7 +4891,7 @@ MonoBehaviour:
   cannonBulletFiringCompAngle: -90
   isMoving: 0
   movementVector: {x: 0, y: 0}
-  maxBullets: 5
+  maxBullets: 4
   playerRB: {fileID: 5129442373462447444}
   tankBody: {fileID: 4916616251336609697}
   tankCannon: {fileID: 4243140521456451744}
