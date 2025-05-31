@@ -38,6 +38,7 @@ public class LevelUIManager : MonoBehaviour
     [Header("Level Display")]
     [SerializeField] TextMeshProUGUI levelDisplayText;
     [SerializeField] TextMeshProUGUI endText;
+    [SerializeField] TextMeshProUGUI face;
 
     [Header("Lives Display")]
     [SerializeField] TextMeshProUGUI livesText;
@@ -141,5 +142,10 @@ public class LevelUIManager : MonoBehaviour
     public void UpdateLivesText(int lives)
     {
         livesText.text = lives.ToString();
+    }
+
+    public void UpdateFace(string faceText)
+    {
+        face.text = faceText;
     }
 }

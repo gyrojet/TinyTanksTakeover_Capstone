@@ -133,10 +133,14 @@ public class RoundManager : MonoBehaviour
             if (livesManager.CurrentLevel % 3 == 0)
             {
                 livesManager.IncreaseLives();
+                levelUIManager.UpdateFace(":^D");
                 levelUIManager.UpdateEndLevelText("+1 LIFE!");
             }
             else
+            {
+                levelUIManager.UpdateFace(":^)");
                 levelUIManager.UpdateEndLevelText("AWESOME!");
+            }
 
             sfxManager.PlaySFX(endRound, gameObject.transform, 1f);
         }
@@ -154,6 +158,7 @@ public class RoundManager : MonoBehaviour
         }
         else
         {
+            levelUIManager.UpdateFace(":^(");
             levelUIManager.UpdateEndLevelText("OOPS!");
 
             if (livesManager.Lives <= 0)
