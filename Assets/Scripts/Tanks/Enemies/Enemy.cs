@@ -133,7 +133,8 @@ public class Enemy : BaseTank
 
     public IEnumerator Shoot()
     {
-        print("SHOOT CALLED");
+        yield return new WaitForSeconds(1f);
+
         enemyBehaviour.canShootBullets = false;
 
         yield return new WaitForSeconds(shootingDelay);
@@ -146,8 +147,6 @@ public class Enemy : BaseTank
         newBullet.LaunchBullet(cannonFiringPoint.transform.up);
 
         sfxManager.PlaySFX(shoot, cannonFiringPoint.transform, 1f);
-
-        yield return new WaitForSeconds(1f);
 
         enemyBehaviour.canShootBullets = true;
         

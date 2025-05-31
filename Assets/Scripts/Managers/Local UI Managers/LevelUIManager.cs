@@ -39,6 +39,9 @@ public class LevelUIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI levelDisplayText;
     [SerializeField] TextMeshProUGUI endText;
 
+    [Header("Lives Display")]
+    [SerializeField] TextMeshProUGUI livesText;
+
     [Header("Tanks Remaining Display")]
     public TextMeshProUGUI numberOfTanksRemaining;
 
@@ -133,5 +136,10 @@ public class LevelUIManager : MonoBehaviour
     public void UpdateEndLevelText(string text)
     { 
         endText.text = text;
+    }
+
+    public void UpdateLivesText(int lives)
+    {
+        livesText.text = lives.ToString();
     }
 }

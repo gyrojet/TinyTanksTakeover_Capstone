@@ -87,6 +87,7 @@ public class RoundManager : MonoBehaviour
 
         // Quick fix to show to jason...
         levelUIManager.UpdateLevelDisplay(livesManager.CurrentLevel);
+        levelUIManager.UpdateLivesText(livesManager.Lives);
 
         StartCoroutine(RoundStartSequence());
     }
@@ -129,10 +130,15 @@ public class RoundManager : MonoBehaviour
 
         if (!isPlayerDead)
         {
-            levelUIManager.UpdateEndLevelText("AWESOME!");
+            if (livesManager.CurrentLevel % 3 == 0)
+            {
+                livesManager.IncreaseLives();
+                levelUIManager.UpdateEndLevelText("+1 LIFE!");
+            }
+            else
+                levelUIManager.UpdateEndLevelText("AWESOME!");
 
             sfxManager.PlaySFX(endRound, gameObject.transform, 1f);
-            timelineManagerUI.PlayRoundEndTimeline();
         }
         else
         {
@@ -159,7 +165,8 @@ public class RoundManager : MonoBehaviour
                 StartCoroutine(ReloadLevel());
             }
         }
-            
+
+        timelineManagerUI.PlayRoundEndTimeline();
     }
 
     private IEnumerator GameOver()

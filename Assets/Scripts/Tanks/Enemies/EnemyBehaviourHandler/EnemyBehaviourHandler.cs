@@ -269,7 +269,7 @@ namespace Pathfinding
                 else
                 {
                     attachedEnemy.StopCoroutine(attachedEnemy.shootBullet);
-                    StopAllCoroutines();
+                    
                 }
             }
         }
@@ -326,7 +326,9 @@ namespace Pathfinding
                 if (rayHit.collider.CompareTag("Player"))
                     didFindPlayer = true;
                 else
+                {
                     didFindPlayer = false;
+                }
             }
 
             //Debug.Log($"Raycast Status: {didFindPlayer}");
