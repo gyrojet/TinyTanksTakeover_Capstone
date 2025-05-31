@@ -77,8 +77,8 @@ public class LevelTransmitionManager : MonoBehaviour
 
     private IEnumerator DelayLoadScene(int sceneIndex)
     {
-        //yield return new WaitForSecondsRealtime(transitionDelay);
-
+        yield return new WaitForSecondsRealtime(transitionDelay);
+       
         SceneManager.LoadScene(sceneIndex);
 
         yield return new WaitForSecondsRealtime(transitionDelay);
