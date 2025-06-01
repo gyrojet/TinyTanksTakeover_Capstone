@@ -5,6 +5,8 @@ public class Mine : MonoBehaviour
 {
     SfxManager sfxManager;
 
+    public GameObject owner;
+
     [Header("Attributes")]
     public float explosionDelay = 3f;
     public float explosionSize = 0.245f;
@@ -59,6 +61,8 @@ public class Mine : MonoBehaviour
         sfxManager.PlaySFX(mineExplode, gameObject.transform, 1f);
 
         yield return new WaitForSeconds(0.5f);
+
+        owner.GetComponent<Player>().RemoveMineFromList(this);
 
         Destroy(gameObject);
         #endregion
