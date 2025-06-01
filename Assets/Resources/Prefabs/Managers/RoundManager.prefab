@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7593625816255283620}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.01624506, y: -0.57818043, z: -0.025915442}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -51,6 +51,7 @@ MonoBehaviour:
   countdownSfx: {fileID: 8300000, guid: 6bcdc03867defb3479d2aacdaefe3ac3, type: 3}
   endRound: {fileID: 8300000, guid: dfd6c5c56d27c3b4e88100429bfecbef, type: 3}
   startRound_Doot: {fileID: 8300000, guid: 95c4462dea0e8f249a6a1d1df0d7c20c, type: 3}
+  startFanfare: {fileID: 8300000, guid: 9f8bb2bbce0e5d349be5e78a3a11fd18, type: 3}
   failLevel: {fileID: 8300000, guid: f27c79fbb7b9f284faa812e772cb58fb, type: 3}
   enemyTag: ID Enemy
   bulletTag: Bullet

@@ -30,6 +30,7 @@ public class RoundManager : MonoBehaviour
     public AudioClip countdownSfx;
     public AudioClip endRound;
     public AudioClip startRound_Doot;
+    public AudioClip startFanfare;
     public AudioClip failLevel;
 
     [Header("Identification")]
@@ -283,6 +284,10 @@ public class RoundManager : MonoBehaviour
 
     private IEnumerator RoundStartSequence()
     {
+        sfxManager.PlaySFX(startFanfare, gameObject.transform, 1f);
+
+        yield return new WaitForSecondsRealtime(2.65f);
+
         int countdown = roundStartCountdown;
 
         while (countdown > 0)
