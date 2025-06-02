@@ -39,6 +39,7 @@ public class LevelUIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI levelDisplayText;
     [SerializeField] TextMeshProUGUI endText;
     [SerializeField] TextMeshProUGUI face;
+    [SerializeField] GameObject getReady;
 
     [Header("Lives Display")]
     [SerializeField] TextMeshProUGUI livesText;
@@ -147,5 +148,10 @@ public class LevelUIManager : MonoBehaviour
     public void UpdateFace(string faceText)
     {
         face.text = faceText;
+    }
+
+    public void ToggleGetReady()
+    {
+        getReady.SetActive(false);
     }
 }

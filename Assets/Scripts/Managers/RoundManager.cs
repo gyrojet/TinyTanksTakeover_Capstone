@@ -288,6 +288,8 @@ public class RoundManager : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(2.65f);
 
+        levelUIManager.ToggleGetReady();
+
         int countdown = roundStartCountdown;
 
         while (countdown > 0)
