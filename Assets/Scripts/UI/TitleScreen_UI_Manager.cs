@@ -16,6 +16,8 @@ public class TitleScreen_UI_Manager : MonoBehaviour
     PlayableDirector timelineManager;
 
     [SerializeField] PlayableDirector manager_START_GAME;
+    [SerializeField] PlayableDirector manager_HowToPlay_OPEN;
+    //[SerializeField] PlayableDirector manager_HowToPlay_END;
 
     [Header("Timeline Assets")]
     [SerializeField] TimelineAsset titleScreen_START;
@@ -40,5 +42,12 @@ public class TitleScreen_UI_Manager : MonoBehaviour
 
         print("Starting Exit Timeline!");
         manager_START_GAME.Play();
+    }
+
+    public void StartExpandPanel()
+    {
+        sfxManager.PlaySFX(sfxStart, gameObject.transform, 1f);
+
+        manager_HowToPlay_OPEN.Play();
     }
 }
