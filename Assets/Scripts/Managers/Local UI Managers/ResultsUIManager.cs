@@ -13,8 +13,17 @@ public class ResultsUIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI levelsFinished;
     [SerializeField] TextMeshProUGUI performanceReview;
 
+    [SerializeField] Image medal;
+
     [SerializeField] Button returnToMenu;
 
+    [Header("Medals")]
+    [SerializeField] Sprite medalBAD;
+    [SerializeField] Sprite medalOK;
+    [SerializeField] Sprite medalGOOD;
+    [SerializeField] Sprite medalGREAT;
+
+    [Header("SFX")]
     [SerializeField] AudioClip buttonPress;
 
     private void Awake()
@@ -58,22 +67,27 @@ public class ResultsUIManager : MonoBehaviour
         if (levelsDone == 1)
         {
             performance = "ABYSSMAL!";
+            medal.sprite = medalBAD;
         }
         else if (levelsDone >= 2 && levelsDone < 4)
         {
             performance = "MEDIOCRE!";
+            medal.sprite = medalOK;
         }
         else if (levelsDone >= 4 && levelsDone <= 6)
         {
             performance = "DECENT!";
+            medal.sprite = medalGOOD;
         }
         else if (levelsDone >= 7 && levelsDone <= 9)
         {
             performance = "GREAT!";
+            medal.sprite = medalGOOD;
         }
         else if (levelsDone >= 10)
         {
             performance = "AMAZING!";
+            medal.sprite = medalGREAT;
         }
 
         performanceReview.text = performance;
