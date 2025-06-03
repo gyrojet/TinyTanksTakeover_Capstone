@@ -11,12 +11,15 @@ public class TitleScreen_UI_Manager : MonoBehaviour
     public Button startGame_TEST;
     public bool isIntroOver;
 
+    bool panelToggle = true;
+
     [SerializeField] AudioClip sfxStart;
 
     PlayableDirector timelineManager;
 
     [SerializeField] PlayableDirector manager_START_GAME;
     [SerializeField] PlayableDirector manager_HowToPlay_OPEN;
+    [SerializeField] PlayableDirector manager_HowToPlay_END;
     //[SerializeField] PlayableDirector manager_HowToPlay_END;
 
     [Header("Timeline Assets")]
@@ -48,6 +51,11 @@ public class TitleScreen_UI_Manager : MonoBehaviour
     {
         sfxManager.PlaySFX(sfxStart, gameObject.transform, 1f);
 
-        manager_HowToPlay_OPEN.Play();
+        if (panelToggle)
+            manager_HowToPlay_OPEN.Play();
+        else
+            manager_HowToPlay_END.Play();
+
+        panelToggle = !panelToggle;
     }
 }
