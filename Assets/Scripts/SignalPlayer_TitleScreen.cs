@@ -9,6 +9,7 @@ public class SignalPlayer_TitleScreen : MonoBehaviour
     [SerializeField] LevelTransmitionManager transmitionManager;
 
     [SerializeField] Button start;
+    [SerializeField] Button quit;
 
     void Start()
     {
@@ -46,5 +47,6 @@ public class SignalPlayer_TitleScreen : MonoBehaviour
     public void ToggleButton()
     {
         start.interactable = !start.interactable;
+        quit.interactable = !quit.interactable;
     }
 }

@@ -23,6 +23,8 @@ public class LivesManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
+
+        
     }
 
     public void IncreaseLives()

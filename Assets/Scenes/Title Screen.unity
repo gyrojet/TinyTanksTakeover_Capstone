@@ -361,6 +361,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68376824}
   m_CullTransparentMesh: 1
+--- !u!1 &110208927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 110208928}
+  - component: {fileID: 110208930}
+  - component: {fileID: 110208929}
+  m_Layer: 5
+  m_Name: Medal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &110208928
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110208927}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.8398, y: 1.8398, z: 1.8398}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1363930822}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 497, y: -425}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &110208929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110208927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 6795467416601567747, guid: 7808fae8e754bbc4ea93498395c681f2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &110208930
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110208927}
+  m_CullTransparentMesh: 1
 --- !u!1 &137327904
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,7 +637,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1120, y: -426}
-  m_SizeDelta: {x: 90.4132, y: 52.5422}
+  m_SizeDelta: {x: 90.41321, y: 52.542236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &144168651
 MonoBehaviour:
@@ -843,7 +918,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1189.1306, y: 443.11807}
-  m_SizeDelta: {x: 160, y: 67.0833}
+  m_SizeDelta: {x: 160, y: 67.08331}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &240748030
 Animator:
@@ -1635,7 +1710,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1153, y: -426}
-  m_SizeDelta: {x: 90.4132, y: 52.5422}
+  m_SizeDelta: {x: 90.41321, y: 52.542236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &619130348
 MonoBehaviour:
@@ -1991,6 +2066,7 @@ MonoBehaviour:
   sceneToCall: 1
   transmitionManager: {fileID: 0}
   start: {fileID: 144168651}
+  quit: {fileID: 619130352}
 --- !u!1 &804909767
 GameObject:
   m_ObjectHideFlags: 0
@@ -3390,6 +3466,7 @@ RectTransform:
   - {fileID: 1753388088}
   - {fileID: 240748029}
   - {fileID: 1105504166}
+  - {fileID: 110208928}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4187,6 +4264,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1653879512}
   m_CullTransparentMesh: 1
+--- !u!1 &1664165516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1664165518}
+  - component: {fileID: 1664165517}
+  m_Layer: 0
+  m_Name: Medal Script
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1664165517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664165516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e10c1f062790c04d89b17f8c957770e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  medalToDisplay: {fileID: 110208929}
+  medalSprites:
+  - {fileID: 8618792996653847996, guid: 7808fae8e754bbc4ea93498395c681f2, type: 3}
+  - {fileID: 21300000, guid: aba093ee8e0a2be49b8b440714243b98, type: 3}
+  - {fileID: 21300000, guid: e8172a262edc30949912288220c285e1, type: 3}
+  - {fileID: 21300000, guid: 35469e3df6d18f342820a8ab52c3c15d, type: 3}
+  - {fileID: 21300000, guid: d1e383fb1dd020b4396515ad134c78bf, type: 3}
+--- !u!4 &1664165518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664165516}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2214, y: 418, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1753388087
 GameObject:
   m_ObjectHideFlags: 0
@@ -4222,10 +4350,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1363930822}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1562, y: 107.81}
-  m_SizeDelta: {x: -1631.5796, y: -863.1841}
+  m_SizeDelta: {x: 288.4204, y: 216.81592}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1753388089
 MonoBehaviour:
@@ -4850,3 +4978,4 @@ SceneRoots:
   - {fileID: 7747027304711569478}
   - {fileID: 1808501863387471857}
   - {fileID: 2146173390}
+  - {fileID: 1664165518}
