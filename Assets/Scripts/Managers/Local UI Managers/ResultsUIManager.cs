@@ -59,36 +59,52 @@ public class ResultsUIManager : MonoBehaviour
     {
         livesRemaining.text = livesManager.Lives.ToString();
 
-        levelsFinished.text = livesManager.CurrentLevel.ToString();
+        levelsFinished.text = livesManager.LevelsWon.ToString();
 
-        int levelsDone = livesManager.CurrentLevel;
+        int medalIndex = 0;
+
+        int levelsDone = livesManager.LevelsWon;
         string performance = string.Empty;
 
-        if (levelsDone == 1)
+        if (levelsDone == 0)
         {
             performance = "ABYSSMAL!";
             medal.sprite = medalBAD;
+
+            medalIndex = 1;
         }
-        else if (levelsDone >= 2 && levelsDone < 4)
+        else if (levelsDone >= 1 && levelsDone < 4)
         {
             performance = "MEDIOCRE!";
             medal.sprite = medalOK;
+
+            medalIndex = 2;
         }
         else if (levelsDone >= 4 && levelsDone <= 6)
         {
             performance = "DECENT!";
             medal.sprite = medalGOOD;
+
+            medalIndex = 3;
         }
-        else if (levelsDone >= 7 && levelsDone <= 9)
+        else if (levelsDone >= 7 && levelsDone <= 11)
         {
             performance = "GREAT!";
             medal.sprite = medalGOOD;
+
+            medalIndex = 3;
         }
-        else if (levelsDone >= 10)
+        else if (levelsDone >= 12)
         {
             performance = "AMAZING!";
             medal.sprite = medalGREAT;
+
+            medalIndex = 4;
         }
+
+        
+        PlayerPrefs.SetInt("MedalScore", medalIndex);
+        PlayerPrefs.Save();
 
         performanceReview.text = performance;
     }

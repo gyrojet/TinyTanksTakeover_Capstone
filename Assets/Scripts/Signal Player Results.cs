@@ -4,6 +4,8 @@ public class SignalPlayerResults : MonoBehaviour
 {
     [SerializeField] MusicManager musicManager;
     LevelTransmitionManager levelManager;
+
+    LivesManager livesManager;
     private void Awake()
     {
         if (musicManager == null)
@@ -11,6 +13,9 @@ public class SignalPlayerResults : MonoBehaviour
 
         if (levelManager == null)
             levelManager = LevelTransmitionManager.instance;
+
+        if (livesManager == null)
+            livesManager = LivesManager.instance;
     }
 
     public void PlayResultsMusic()
@@ -26,5 +31,10 @@ public class SignalPlayerResults : MonoBehaviour
     public void LoadTitleScreen()
     {
         levelManager.ReturnToTitle();
+    }
+
+    public void ResetStats()
+    { 
+        livesManager.ResetAll();
     }
 }

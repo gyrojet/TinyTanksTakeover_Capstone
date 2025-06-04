@@ -131,7 +131,7 @@ public class RoundManager : MonoBehaviour
 
         if (!isPlayerDead)
         {
-            if (livesManager.CurrentLevel % 3 == 0)
+            if (livesManager.CurrentLevel % 4 == 0 && livesManager.CurrentLevel != 12)
             {
                 livesManager.IncreaseLives();
                 levelUIManager.UpdateFace(":^D");
@@ -152,8 +152,10 @@ public class RoundManager : MonoBehaviour
 
         if (!isPlayerDead)
         {
-            if (livesManager.CurrentLevel != 10)
+            if (livesManager.CurrentLevel != 12)
                 livesManager.IncrementCurrentLevel();
+
+            livesManager.IncLevelsWon();
 
             StartCoroutine(LoadNextLevel());
         }

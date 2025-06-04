@@ -32,6 +32,7 @@ public class MedalScript : MonoBehaviour
         else
         {
             PlayerPrefs.SetInt("MedalScore", 0);
+            medalToDisplay.sprite = medalSprites[0];
         }
 
         PlayerPrefs.Save();

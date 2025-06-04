@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 110208928}
   - component: {fileID: 110208930}
   - component: {fileID: 110208929}
+  - component: {fileID: 110208931}
   m_Layer: 5
   m_Name: Medal
   m_TagString: Untagged
@@ -395,7 +396,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 497, y: -425}
+  m_AnchoredPosition: {x: 497, y: -690}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &110208929
@@ -418,7 +419,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6795467416601567747, guid: 7808fae8e754bbc4ea93498395c681f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e8172a262edc30949912288220c285e1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -436,6 +437,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110208927}
   m_CullTransparentMesh: 1
+--- !u!95 &110208931
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110208927}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6bf9a7927c0570a43b3f4c80769d7039, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &137327904
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,6 +883,10 @@ PlayableDirector:
     value: {fileID: 619130350}
   - key: {fileID: -4100032307445581943, guid: c633beb528de83443b3e979fc371d861, type: 2}
     value: {fileID: 619130346}
+  - key: {fileID: -6156340524638896950, guid: c633beb528de83443b3e979fc371d861, type: 2}
+    value: {fileID: 110208931}
+  - key: {fileID: -1405667557589431677, guid: c633beb528de83443b3e979fc371d861, type: 2}
+    value: {fileID: 110208927}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &187564402
@@ -1127,6 +1154,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 3902a39d61431af4ba536265e52f16ba, type: 2}
     - {fileID: 0}
     - {fileID: 11400000, guid: 03990cef7c54b72469cdb586a4a099b1, type: 2}
+    - {fileID: 11400000, guid: 038bd5ce6a7a3fa4e9407ab6b8ec9dd5, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -1187,6 +1215,20 @@ MonoBehaviour:
         - m_Target: {fileID: 777620619}
           m_TargetAssemblyTypeName: SignalPlayer_TitleScreen, Assembly-CSharp
           m_MethodName: ToggleButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 777620619}
+          m_TargetAssemblyTypeName: SignalPlayer_TitleScreen, Assembly-CSharp
+          m_MethodName: ResetStats
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4016,6 +4058,8 @@ PlayableDirector:
     value: {fileID: 240748030}
   - key: {fileID: -1663814230551544752, guid: 3068be7834a7bd8408b9bfaefdbc36b3, type: 2}
     value: {fileID: 619130350}
+  - key: {fileID: 7889975668936426060, guid: 3068be7834a7bd8408b9bfaefdbc36b3, type: 2}
+    value: {fileID: 110208931}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1603215644
@@ -4472,6 +4516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 4
   currentLevel: 1
+  levelsWon: 0
 --- !u!1 &2039251928
 GameObject:
   m_ObjectHideFlags: 0
@@ -4722,10 +4767,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1783910529206426618, guid: 6193149b077f0a34ca8777899764d736, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 4730693382585642001, guid: 6193149b077f0a34ca8777899764d736, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.8580615

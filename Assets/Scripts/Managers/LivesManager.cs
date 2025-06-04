@@ -7,10 +7,13 @@ public class LivesManager : MonoBehaviour
 
     [SerializeField] int lives;
     [SerializeField] int currentLevel;
+    [SerializeField] int levelsWon = 0;
 
     public int Lives {  get { return lives; } }
 
     public int CurrentLevel {  get { return currentLevel; } }
+
+    public int LevelsWon { get { return levelsWon; } }
 
     private void Awake()
     {
@@ -50,5 +53,17 @@ public class LivesManager : MonoBehaviour
     public void SetLevel(int level)
     {
         currentLevel = level;
+    }
+
+    public void IncLevelsWon()
+    {
+        levelsWon++;
+    }
+
+    public void ResetAll()
+    { 
+        levelsWon = 0;
+        currentLevel = 1;
+        lives = 4;
     }
 }
