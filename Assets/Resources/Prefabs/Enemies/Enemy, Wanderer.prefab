@@ -5306,7 +5306,7 @@ MonoBehaviour:
   isMoving: 0
   isPlayerVisible: 0
   enemyRB: {fileID: 0}
-  shootingDelay: 2.5
+  shootingDelay: 1.5
   tankBody: {fileID: 5823042231934411042}
   tankCannon: {fileID: 5078649158242691659}
   cannonParent: {fileID: 8857482562941105358}

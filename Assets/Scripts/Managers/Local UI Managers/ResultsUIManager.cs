@@ -102,9 +102,12 @@ public class ResultsUIManager : MonoBehaviour
             medalIndex = 4;
         }
 
-        
-        PlayerPrefs.SetInt("MedalScore", medalIndex);
-        PlayerPrefs.Save();
+
+        if (medalIndex > PlayerPrefs.GetInt("MedalScore"))
+        {
+            PlayerPrefs.SetInt("MedalScore", medalIndex);
+            PlayerPrefs.Save();
+        }
 
         performanceReview.text = performance;
     }

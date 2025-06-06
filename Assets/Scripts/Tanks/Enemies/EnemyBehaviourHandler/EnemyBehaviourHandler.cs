@@ -76,7 +76,7 @@ namespace Pathfinding
 
         [Header("Debugging Propetries")]
         [SerializeField] bool isPlayerWithinRadius;
-        [SerializeField] bool isEligableToShoot;
+        [SerializeField] public bool isEligableToShoot;
         public bool didFindPlayer;
         private Vector2 playerPos;
         [SerializeField] Vector2 currentPosition;

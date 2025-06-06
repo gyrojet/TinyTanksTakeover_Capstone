@@ -139,14 +139,21 @@ public class Enemy : BaseTank
 
         yield return new WaitForSeconds(shootingDelay);
 
-        Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, cannonFiringPoint.rotation)
-                          .GetComponent<Bullet>();
+        if (enemyBehaviour.isEligableToShoot)
+        {
+            print("Firing!");
 
-        newBullet.owner = this.gameObject;
+            Bullet newBullet = Instantiate(bulletPrefab, cannonFiringPoint.position, cannonFiringPoint.rotation)
+                              .GetComponent<Bullet>();
 
-        newBullet.LaunchBullet(cannonFiringPoint.transform.up);
+            newBullet.owner = this.gameObject;
 
-        sfxManager.PlaySFX(shoot, cannonFiringPoint.transform, 1f);
+            newBullet.LaunchBullet(cannonFiringPoint.transform.up);
+
+            sfxManager.PlaySFX(shoot, cannonFiringPoint.transform, 1f);
+        }
+        else
+            print("Lost Sight of target; did not fire");
 
         enemyBehaviour.canShootBullets = true;
         

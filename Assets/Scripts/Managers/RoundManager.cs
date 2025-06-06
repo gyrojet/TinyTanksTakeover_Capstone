@@ -123,6 +123,8 @@ public class RoundManager : MonoBehaviour
 
     public void EndingSequence(bool isPlayerDead)
     {
+        levelUIManager.isRoundStarted = false;
+
         musicManager.StopMusic();
 
         DestroyAllMunitions();

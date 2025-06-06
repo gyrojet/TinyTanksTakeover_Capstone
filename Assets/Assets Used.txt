@@ -1,4 +1,17 @@
-VISUAL
-Top-down Tanks Redux: https://www.kenney.nl/assets/top-down-tanks-redux
+--- VISUAL ---
 
-AUDIO
+Top-down Tanks Redux: https://www.kenney.nl/assets/top-down-tanks-redux (Tank Tracks)
+Red Right Arrow: https://arrowpng.com/red-right-arrow-png/
+Mouse Icons: https://www.flaticon.com/free-icons/computer-mouse-button
+WASD Icons: https://www.flaticon.com/free-icon/keyboard-button_7310364?term=wasd&page=1&position=3&origin=tag&related_id=7310364
+
+Card Suits: Wikimedia Commons
+--- AUDIO ---
+
+SFX:
+ Sourced from Wii Play (2006): Composed by Shinobu Tanaka, Ryo Nagamatsu
+
+MUSIC USED:
+ Tank Battle (Dragon Quest Heroes: Rocket Slime): Composed by Koichi Sugiyama
+ shiny-meadows: Composed by i-lite https://modarchive.org/index.php?request=view_by_moduleid&query= 190833
+ Bait 'n Switch: Composed by Burnt Fishy https://modarchive.org/index.php?request=view_by_moduleid&query=196609
