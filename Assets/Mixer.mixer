@@ -58,7 +58,7 @@ AudioMixerController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Micer
+  m_Name: Mixer
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
@@ -67,12 +67,19 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: c4156c2d52dca27479ae7b49e59b5140
+    name: sfxVolume
+  - guid: 617d7f4c55bd6d44dacc00c9b0b72834
+    name: musicVolume
+  - guid: 934e542735c02b14ba224e6daa91c30b
+    name: engineVolume
   m_AudioMixerGroupViews:
   - guids:
     - e36e1478a1d62de4ebc89c7320296b50
     - ef567e8bdc5899e4ea9ae7f845099698
     - 64f3bb720e6c3024e80358161a0479c2
+    - aa09209dc36cf1f4d849ec3617381a11
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -88,6 +95,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -3187722315208380696}
   - {fileID: -8627349448337622276}
+  - {fileID: 8965628390358796825}
   m_Volume: 902076b44e30e4741a3063ecdb2b687f
   m_Pitch: 624b5ffce3467384db281ced9b429733
   m_Send: 00000000000000000000000000000000
@@ -122,6 +130,20 @@ AudioMixerSnapshotController:
   m_SnapshotID: 60ebf3c3443cace44ad0b3e92d17c4de
   m_FloatValues: {}
   m_TransitionOverrides: {}
+--- !u!244 &561222435101992559
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 04c6ccb67be783d49958e79033b5d39f
+  m_EffectName: Attenuation
+  m_MixLevel: ed7df1b996e8f834b85f27f1bce2c100
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &8293086447439704831
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -136,3 +158,22 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &8965628390358796825
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Engine
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: aa09209dc36cf1f4d849ec3617381a11
+  m_Children: []
+  m_Volume: c4156c2d52dca27479ae7b49e59b5140
+  m_Pitch: 349abc9b23beddc498b680606159898c
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 561222435101992559}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0

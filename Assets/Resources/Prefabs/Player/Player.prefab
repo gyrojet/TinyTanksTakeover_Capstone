@@ -4892,6 +4892,7 @@ MonoBehaviour:
   isMoving: 0
   movementVector: {x: 0, y: 0}
   maxBullets: 4
+  maxMines: 2
   playerRB: {fileID: 5129442373462447444}
   tankBody: {fileID: 4916616251336609697}
   tankCannon: {fileID: 4243140521456451744}
@@ -4904,6 +4905,7 @@ MonoBehaviour:
   tracks: {fileID: -8254521807558997836, guid: c573ed188ecc4fc45a346c009aedeaf8, type: 3}
   bulletTag: Bullet
   activeBullets: []
+  activeMines: []
   shoot: {fileID: 8300000, guid: a5bd54c45972d5043a120bc8b919ce4c, type: 3}
   setMine: {fileID: 8300000, guid: 303bbde837235a342a61a2585777cede, type: 3}
   die: {fileID: 8300000, guid: f8da937ac3ed2584b84f917eddf112c5, type: 3}
@@ -4990,11 +4992,11 @@ AudioSource:
   m_GameObject: {fileID: 3114594733371538703}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8965628390358796825, guid: f55d3575f79591b4d845c2da9dc7e238, type: 2}
   m_audioClip: {fileID: 8300000, guid: 3026898fc3d3ecd49a0bd66111059305, type: 3}
   m_Resource: {fileID: 8300000, guid: 3026898fc3d3ecd49a0bd66111059305, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0

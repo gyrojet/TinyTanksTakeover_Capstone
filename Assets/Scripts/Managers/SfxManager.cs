@@ -23,7 +23,7 @@ public class SfxManager : MonoBehaviour
 
         audioSource.clip = clip;
 
-        audioSource.volume = 0.5f;
+       // audioSource.volume = volume;
 
         float clipLength = audioSource.clip.length;
 
