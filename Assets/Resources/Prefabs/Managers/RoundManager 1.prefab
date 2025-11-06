@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2599724355255455120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6019668143512609997}
+  - component: {fileID: 7764560424875429940}
+  m_Layer: 0
+  m_Name: RoundManager 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6019668143512609997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2599724355255455120}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.01624506, y: -0.57818043, z: -0.025915442}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7764560424875429940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2599724355255455120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052d257978b327c4c80f793afda64d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  activeEnemies: []
+  numOfActiveEnemies: 0
+  roundStartCountdown: 3
+  countdownSfx: {fileID: 8300000, guid: 6bcdc03867defb3479d2aacdaefe3ac3, type: 3}
+  endRound: {fileID: 8300000, guid: dfd6c5c56d27c3b4e88100429bfecbef, type: 3}
+  startRound_Doot: {fileID: 8300000, guid: 95c4462dea0e8f249a6a1d1df0d7c20c, type: 3}
+  failLevel: {fileID: 8300000, guid: f27c79fbb7b9f284faa812e772cb58fb, type: 3}
+  enemyTag: ID Enemy
+  bulletTag: Bullet
+  mineTag: MineExplosion
+  tankTrackPrefab: {fileID: -8254521807558997836, guid: c573ed188ecc4fc45a346c009aedeaf8, type: 3}

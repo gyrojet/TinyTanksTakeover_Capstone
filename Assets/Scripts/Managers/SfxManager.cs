@@ -15,7 +15,7 @@ public class SfxManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
-
+    
     public void PlaySFX(AudioClip clip, Transform objSpawnPoint, float volume)
     {
         // Assign audio source and get data
@@ -23,7 +23,7 @@ public class SfxManager : MonoBehaviour
 
         audioSource.clip = clip;
 
-        audioSource.volume = volume;
+       // audioSource.volume = volume;
 
         float clipLength = audioSource.clip.length;
 

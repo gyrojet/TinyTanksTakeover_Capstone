@@ -98,9 +98,16 @@ public class Bullet : MonoBehaviour
             {
                 print("Hit Enemy!");
 
-                Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
+                try
+                {
+                    Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
 
-                enemy.KillTank();
+                    enemy.KillTank();
+                }
+                catch
+                {
+                    print("Check this out!");
+                }
                 // Enemy Manager kill script here
             }
 

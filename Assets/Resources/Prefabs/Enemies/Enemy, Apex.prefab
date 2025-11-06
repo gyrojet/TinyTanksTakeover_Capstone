@@ -5306,7 +5306,7 @@ MonoBehaviour:
   isMoving: 0
   isPlayerVisible: 0
   enemyRB: {fileID: 0}
-  shootingDelay: 1.5
+  shootingDelay: 1.25
   tankBody: {fileID: 5823042231934411042}
   tankCannon: {fileID: 5078649158242691659}
   cannonParent: {fileID: 8857482562941105358}
@@ -5353,6 +5353,7 @@ MonoBehaviour:
   pathfindingTargetRadius: 4.5
   pathfindingTargetOffset: 1.5
   randomMoveRange: 2
+  trackOffset: 0.1
   playersLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -5398,6 +5399,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+  tracks: {fileID: -8254521807558997836, guid: c573ed188ecc4fc45a346c009aedeaf8, type: 3}
   isPlayerWithinRadius: 0
   isEligableToShoot: 0
   didFindPlayer: 0

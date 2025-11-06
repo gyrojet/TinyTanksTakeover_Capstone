@@ -13,6 +13,7 @@ public class Player :  BaseTank
      * For now, I will focus on getting moving working, then focus on death and shooting.
      */
 
+    LivesManager livesManager;
     SfxManager sfxManager;
 
     public static Player playerInstance;
@@ -39,6 +40,7 @@ public class Player :  BaseTank
     public Vector2 movementVector;
 
     public int maxBullets = 5;
+    public int maxMines = 2;
 
     [SerializeField] Rigidbody2D playerRB;
 
@@ -64,6 +66,7 @@ public class Player :  BaseTank
     public string bulletTag = "Bullet";
 
     [SerializeField] private List<Bullet> activeBullets = new List<Bullet>();
+    [SerializeField] private List<Mine> activeMines = new List<Mine>();
 
     SpriteRenderer playerBodySR;
     SpriteRenderer playerCannonSR;
@@ -102,6 +105,9 @@ public class Player :  BaseTank
 
         if (sfxManager == null)
             sfxManager = SfxManager.instance;
+
+        if (livesManager == null)
+            livesManager = LivesManager.instance;
     }
 
     private void FixedUpdate()
@@ -133,8 +139,6 @@ public class Player :  BaseTank
 
         if (trackOffset <= 0)
         {
-            print("PRINTING TRACK");
-
             TankTrack trackToPlace = Instantiate(tracks, tankBody.transform.position, tankBody.transform.rotation);
 
             trackOffset = 0.1f;
@@ -224,14 +228,28 @@ public class Player :  BaseTank
 
     public override void HandleMines()
     {
-        Debug.Log("Plop!");
+        try
+        {
+            if (activeMines.Count < maxMines)
+            {
+                Debug.Log("Plop!");
 
-        Mine newMine = Instantiate(minePrefab, tankBody.transform.position, Quaternion.identity)
-                       .GetComponent<Mine>();
+                Mine newMine = Instantiate(minePrefab, tankBody.transform.position, Quaternion.identity)
+                               .GetComponent<Mine>();
 
-        sfxManager.PlaySFX(setMine, newMine.transform, 1f);
+                sfxManager.PlaySFX(setMine, newMine.transform, 1f);
 
-        newMine.StartExplosionCount();
+                newMine.owner = this.gameObject;
+
+                newMine.StartExplosionCount();
+
+                activeMines.Add(newMine);
+            }
+        }
+        catch (UnityException ex)
+        {
+            print(ex.Message);
+        }
     }
 
     public void DeathRoutine()
@@ -255,8 +273,12 @@ public class Player :  BaseTank
     {
         print("Die called!");
 
+        livesManager.DecreaseLives();
+
         playerInputHandler.canPlayerMove = false;
         playerRB.linearVelocity = Vector2.zero;
+
+        tankBody.GetComponent<Collider2D>().enabled = false;
 
         DisableTankGraphics();
 
@@ -285,5 +307,10 @@ public class Player :  BaseTank
         {
             print(ex.Message);
         }
+    }
+
+    public void RemoveMineFromList(Mine mineToRemove)
+    {
+        activeMines.Remove(mineToRemove);
     }
 }

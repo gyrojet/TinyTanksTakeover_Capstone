@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelTransmitionManager : MonoBehaviour
 {
+    public int resultsIndex = 11;
+
     public static LevelTransmitionManager instance;
 
     public Animator animator;
@@ -58,6 +60,16 @@ public class LevelTransmitionManager : MonoBehaviour
         StartCoroutine(DelayLoadScene(0));
     }
 
+    public void LoadResultsScreen()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        if (currentScene.buildIndex != 0)
+            animator.SetTrigger(ANIMATION_TRIGGER_FADEOUT);
+
+        StartCoroutine(DelayLoadScene(resultsIndex));
+    }
+
     public int GetCurrentSceneIndex()
     {
         return SceneManager.GetActiveScene().buildIndex;
@@ -65,13 +77,19 @@ public class LevelTransmitionManager : MonoBehaviour
 
     private IEnumerator DelayLoadScene(int sceneIndex)
     {
-        //yield return new WaitForSecondsRealtime(transitionDelay);
-
+        yield return new WaitForSecondsRealtime(transitionDelay);
+       
         SceneManager.LoadScene(sceneIndex);
 
         yield return new WaitForSecondsRealtime(transitionDelay);
 
         if (GetCurrentSceneIndex() != 0)
             animator.SetTrigger(ANIMATION_TRIGGER_FADEIN);
+        //else if (GetCurrentSceneIndex() == resultsIndex)
+        //{
+        //    animator.SetTrigger(ANIMATION_TRIGGER_FADEOUT);
+        //}
     }
+
+    
 }

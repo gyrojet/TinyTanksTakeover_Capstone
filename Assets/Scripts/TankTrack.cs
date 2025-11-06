@@ -17,7 +17,7 @@ public class TankTrack : MonoBehaviour
 
         if (activeTime <= 0)
         {
-            print("RETURNING TO POOL");
+            //print("RETURNING TO POOL");
             Destroy(gameObject);
         }
     }

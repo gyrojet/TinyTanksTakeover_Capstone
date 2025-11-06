@@ -57,7 +57,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
@@ -258,5 +258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8a72d11eed1ee4f8891fe9e2d4704e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resultsIndex: 13
   animator: {fileID: 1035895850958104067}
   transitionDelay: 0.5

@@ -52,6 +52,8 @@ namespace Pathfinding
 
         public float randomMoveRange = 2f;
 
+        public float trackOffset = 0.1f;
+
         public LayerMask playersLayer;
         public LayerMask nodeLayer;
 
@@ -69,9 +71,12 @@ namespace Pathfinding
 
         bool isChosenTargetValid = false;
 
+        [Header("TrackPrefab")]
+        [SerializeField] TankTrack tracks;
+
         [Header("Debugging Propetries")]
         [SerializeField] bool isPlayerWithinRadius;
-        [SerializeField] bool isEligableToShoot;
+        [SerializeField] public bool isEligableToShoot;
         public bool didFindPlayer;
         private Vector2 playerPos;
         [SerializeField] Vector2 currentPosition;
@@ -210,6 +215,26 @@ namespace Pathfinding
         private void FixedUpdate()
         {
             CheckRadiusForPlayer();
+
+            if (isEnabled && canMove)
+                PrintTankTrack();
+        }
+
+        private void PrintTankTrack()
+        {
+            trackOffset -= Time.deltaTime;
+
+            if (trackOffset <= 0)
+            {
+                print("PRINTING TRACK");
+
+                TankTrack trackToPlace = Instantiate(tracks, attachedEnemy.tankBody.transform.position, attachedEnemy.tankBody.transform.rotation);
+
+                trackOffset = 0.1f;
+            }
+            //trackToPlace.gameObject.SetActive(true);
+            //trackToPlace.gameObject.transform.position = tankBody.transform.position;
+            //trackToPlace.gameObject.transform.rotation = tankBody.transform.rotation;
         }
 
         private void ApplyMovement()
@@ -244,7 +269,7 @@ namespace Pathfinding
                 else
                 {
                     attachedEnemy.StopCoroutine(attachedEnemy.shootBullet);
-                    StopAllCoroutines();
+                    
                 }
             }
         }
@@ -301,7 +326,9 @@ namespace Pathfinding
                 if (rayHit.collider.CompareTag("Player"))
                     didFindPlayer = true;
                 else
+                {
                     didFindPlayer = false;
+                }
             }
 
             //Debug.Log($"Raycast Status: {didFindPlayer}");

@@ -15,6 +15,8 @@ public class LevelUIManager : MonoBehaviour
     LevelTransmitionManager levelTransmitionManager;
     RoundManager roundManager;
 
+    LivesManager livesManager;
+
     private const float TIMESCALE_PAUSED = 0.0f;
     private const float TIMESCALE_RUNNING = 1.0f;
 
@@ -35,6 +37,12 @@ public class LevelUIManager : MonoBehaviour
 
     [Header("Level Display")]
     [SerializeField] TextMeshProUGUI levelDisplayText;
+    [SerializeField] TextMeshProUGUI endText;
+    [SerializeField] TextMeshProUGUI face;
+    [SerializeField] GameObject getReady;
+
+    [Header("Lives Display")]
+    [SerializeField] TextMeshProUGUI livesText;
 
     [Header("Tanks Remaining Display")]
     public TextMeshProUGUI numberOfTanksRemaining;
@@ -58,6 +66,9 @@ public class LevelUIManager : MonoBehaviour
         if (sfxManager == null)
             sfxManager = SfxManager.instance;
 
+        if (livesManager == null)
+            livesManager = LivesManager.instance;
+
         pauseClip = Resources.Load<AudioClip>("Sounds/SFX/UI/PauseSound");
 
         levelTransmitionManager = LevelTransmitionManager.instance;
@@ -66,9 +77,11 @@ public class LevelUIManager : MonoBehaviour
         resumeGame.onClick.AddListener((TogglePause));
 
         endGame.onClick.AddListener(levelTransmitionManager.ReturnToTitle);
+
         endGame.onClick.AddListener(() => {
             musicManager.StopMusic();
             musicManager.SetMusicVolume(musicManager.MaxVolume);
+            livesManager.SetLevel(1);
         });
     }
 
@@ -117,14 +130,28 @@ public class LevelUIManager : MonoBehaviour
         timerText.text = num.ToString();
     }
 
-    public void UpdateLevelDisplay(int  level)
+    public void UpdateLevelDisplay(int level)
     { 
         levelDisplayText.text = level.ToString();
     }
 
-    // REPLACE WITH TIMELINE ANIMATION
-    public void ToggleRoundStartTimer()
+    public void UpdateEndLevelText(string text)
+    { 
+        endText.text = text;
+    }
+
+    public void UpdateLivesText(int lives)
     {
-        roundStartTimer.SetActive(!roundStartTimer.activeSelf);
+        livesText.text = lives.ToString();
+    }
+
+    public void UpdateFace(string faceText)
+    {
+        face.text = faceText;
+    }
+
+    public void ToggleGetReady()
+    {
+        getReady.SetActive(false);
     }
 }

@@ -10,6 +10,7 @@ public class MusicManager : MonoBehaviour
     [Header("Music Tracks")]
     [SerializeField] AudioClip mainMenu;
     [SerializeField] AudioClip level_v1;
+    [SerializeField] AudioClip results;
 
     const float MAX_VOLUME = 0.35f;
     const float MIN_VOLUME = 0.2f;
@@ -44,6 +45,13 @@ public class MusicManager : MonoBehaviour
     public void PlayLevelMusic()
     {
         musicSource.clip = level_v1;
+
+        musicSource.Play();
+    }
+
+    public void PlayResultsMusic()
+    {
+        musicSource.clip = results;
 
         musicSource.Play();
     }

@@ -12,6 +12,7 @@ public class RoundManager : MonoBehaviour
     LevelTransmitionManager levelTransmitionManager;
     LevelUIManager levelUIManager;
     TimelineManagerUI timelineManagerUI;
+    LivesManager livesManager;
 
     MusicManager musicManager;
     SfxManager sfxManager;
@@ -19,6 +20,7 @@ public class RoundManager : MonoBehaviour
     [Header("Enemies & Player")]
     [SerializeField] Player player = null;
     [SerializeField] List<GameObject> activeEnemies = null;
+    List<GameObject> enemiesBackup = null;
 
     public int numOfActiveEnemies;
 
@@ -28,6 +30,8 @@ public class RoundManager : MonoBehaviour
     public AudioClip countdownSfx;
     public AudioClip endRound;
     public AudioClip startRound_Doot;
+    public AudioClip startFanfare;
+    public AudioClip failLevel;
 
     [Header("Identification")]
     [SerializeField] string enemyTag;
@@ -70,6 +74,9 @@ public class RoundManager : MonoBehaviour
         if (sfxManager == null)
             sfxManager = SfxManager.instance;
 
+        if (livesManager == null)
+            livesManager = LivesManager.instance;
+
         levelUIManager.isRoundStarted = false;
 
         GetActivePlayer();
@@ -80,7 +87,8 @@ public class RoundManager : MonoBehaviour
         levelUIManager.UpdateTankCount(numOfActiveEnemies);
 
         // Quick fix to show to jason...
-        levelUIManager.UpdateLevelDisplay(levelTransmitionManager.GetCurrentSceneIndex());
+        levelUIManager.UpdateLevelDisplay(livesManager.CurrentLevel);
+        levelUIManager.UpdateLivesText(livesManager.Lives);
 
         StartCoroutine(RoundStartSequence());
     }
@@ -93,6 +101,9 @@ public class RoundManager : MonoBehaviour
     private void GetActiveEnemies()
     {
         activeEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag(enemyTag));
+
+        enemiesBackup = new List<GameObject>(activeEnemies);
+
         numOfActiveEnemies = activeEnemies.Count;
     }
 
@@ -112,6 +123,8 @@ public class RoundManager : MonoBehaviour
 
     public void EndingSequence(bool isPlayerDead)
     {
+        levelUIManager.isRoundStarted = false;
+
         musicManager.StopMusic();
 
         DestroyAllMunitions();
@@ -120,16 +133,65 @@ public class RoundManager : MonoBehaviour
 
         if (!isPlayerDead)
         {
+            if (livesManager.CurrentLevel % 4 == 0 && livesManager.CurrentLevel != 12)
+            {
+                livesManager.IncreaseLives();
+                levelUIManager.UpdateFace(":^D");
+                levelUIManager.UpdateEndLevelText("+1 LIFE!");
+            }
+            else
+            {
+                levelUIManager.UpdateFace(":^)");
+                levelUIManager.UpdateEndLevelText("AWESOME!");
+            }
+
             sfxManager.PlaySFX(endRound, gameObject.transform, 1f);
-            timelineManagerUI.PlayRoundEndTimeline();
+        }
+        else
+        {
+            sfxManager.PlaySFX(failLevel, gameObject.transform, 1f);
         }
 
-        
-        
         if (!isPlayerDead)
+        {
+            if (livesManager.CurrentLevel != 12)
+                livesManager.IncrementCurrentLevel();
+
+            livesManager.IncLevelsWon();
+
             StartCoroutine(LoadNextLevel());
+        }
         else
-            StartCoroutine(ReloadLevel());
+        {
+            levelUIManager.UpdateFace(":^(");
+            levelUIManager.UpdateEndLevelText("OOPS!");
+
+            if (livesManager.Lives <= 0)
+            {
+                StartCoroutine(GameOver());
+            }
+            else
+            {
+                StartCoroutine(ReloadLevel());
+            }
+        }
+
+        timelineManagerUI.PlayRoundEndTimeline();
+    }
+
+    private IEnumerator GameOver()
+    {
+        yield return new WaitForSecondsRealtime(3f);
+
+        try
+        {
+            //livesManager.SetNumberOfLives(3);
+            levelTransmitionManager.LoadResultsScreen();
+        }
+        catch (UnityException e)
+        {
+            Debug.Log(e.Message);
+        }
     }
 
     private IEnumerator ReloadLevel()
@@ -178,6 +240,13 @@ public class RoundManager : MonoBehaviour
             Mine m = mine.GetComponent<Mine>();
             m.FakeExplode();
         }
+
+        foreach (GameObject enemy in enemiesBackup)
+        {
+            Enemy e = enemy.GetComponent<Enemy>();
+
+            e.StopAllCoroutines();
+        }
     }
 
     public void ToggleBehavioursOfAllTanks(bool value)
@@ -219,6 +288,12 @@ public class RoundManager : MonoBehaviour
 
     private IEnumerator RoundStartSequence()
     {
+        sfxManager.PlaySFX(startFanfare, gameObject.transform, 1f);
+
+        yield return new WaitForSecondsRealtime(2.65f);
+
+        levelUIManager.ToggleGetReady();
+
         int countdown = roundStartCountdown;
 
         while (countdown > 0)
