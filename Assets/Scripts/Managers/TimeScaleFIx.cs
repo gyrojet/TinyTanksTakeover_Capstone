@@ -1,4 +1,6 @@
 using UnityEngine;
+using Unity;
+using System;
 
 public class TimeScaleFIx : MonoBehaviour
 {
